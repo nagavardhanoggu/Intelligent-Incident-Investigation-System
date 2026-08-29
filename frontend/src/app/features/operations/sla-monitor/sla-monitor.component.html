@@ -1,0 +1,54 @@
+<header class="page-header">
+  <div>
+    <h1>SLA Monitor</h1>
+    <p class="page-subtitle">Track SLA health, breach risk, response windows, and operational commitments.</p>
+  </div>
+  <span class="header-pill"><mat-icon>timer</mat-icon>{{ kpis[0]?.value || '-' }} SLA</span>
+</header>
+
+<section class="summary-grid">
+  @for (item of kpis; track item.label) {
+    <mat-card class="kpi-card">
+      <span><mat-icon>{{ item.icon }}</mat-icon>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+      <small>{{ item.helper }}</small>
+    </mat-card>
+  }
+</section>
+
+<section class="content-grid">
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>SLA Risk Queue</h2>
+      <span>{{ services.length }} services</span>
+    </div>
+    <div class="item-list">
+      @for (service of services; track service.name) {
+        <article class="item-row">
+          <span class="item-icon"><mat-icon>{{ service.icon }}</mat-icon></span>
+          <div>
+            <strong>{{ service.name }}</strong>
+            <span>{{ service.detail }}</span>
+            <small>Owner: {{ service.owner }}</small>
+          </div>
+          <em class="status-chip" [class.warning]="service.status === 'Warning'" [class.critical]="service.status === 'Critical'">{{ service.status }}</em>
+        </article>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>SLA Policies</h2>
+      <span>Operational rules</span>
+    </div>
+    <div class="side-list">
+      @for (policy of policies; track policy.title) {
+        <article>
+          <strong>{{ policy.title }}</strong>
+          <span>{{ policy.detail }}</span>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>

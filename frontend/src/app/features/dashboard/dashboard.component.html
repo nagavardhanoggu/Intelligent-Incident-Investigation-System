@@ -1,0 +1,117 @@
+<h1>Dashboard</h1>
+<p class="page-subtitle">Monitor incident volume, service risk, SLA health, and predicted root cause patterns.</p>
+<section class="kpis">
+  <mat-card><span>Total Incidents</span><strong>{{ kpis.total }}</strong></mat-card>
+  <mat-card><span>Open Incidents</span><strong>{{ kpis.open }}</strong></mat-card>
+  <mat-card><span>Closed Incidents</span><strong>{{ kpis.closed }}</strong></mat-card>
+  <mat-card><span>Critical Incidents</span><strong>{{ kpis.critical }}</strong></mat-card>
+</section>
+
+<section class="health-grid">
+  @for (item of serviceHealth; track item.label) {
+    <mat-card>
+      <span>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+      <small>{{ item.trend }}</small>
+    </mat-card>
+  }
+</section>
+
+<section class="charts">
+  <mat-card>
+    <h2>Incident Trends</h2>
+    <canvas #trend></canvas>
+  </mat-card>
+  <mat-card>
+    <h2>Root Cause Distribution</h2>
+    <canvas #causes></canvas>
+  </mat-card>
+</section>
+
+<section class="data-grid">
+  <mat-card>
+    <h2>Open Incidents by Priority</h2>
+    <div class="stack-list">
+      @for (item of priorityBreakdown; track item.label) {
+        <div>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+        </div>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h2>Top Assignment Groups</h2>
+    <div class="stack-list">
+      @for (group of assignmentGroups; track group.name) {
+        <div>
+          <span>{{ group.name }}</span>
+          <strong>{{ group.incidents }}</strong>
+        </div>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h2>Recent ML Root Causes</h2>
+    <div class="root-causes">
+      @for (cause of recentCauses; track cause.cause) {
+        <div>
+          <strong>{{ cause.cause }}</strong>
+          <span>{{ cause.count }} incidents · {{ cause.confidence }} confidence</span>
+        </div>
+      }
+    </div>
+  </mat-card>
+</section>
+
+@if (canViewInvestigationWidgets()) {
+  <section class="investigation-grid">
+    <mat-card>
+      <h2>Active Investigation Queue</h2>
+      <div class="queue-list">
+        @for (incident of activeQueue; track incident.key) {
+          <article>
+            <div>
+              <strong>{{ incident.key }}</strong>
+              <span>{{ incident.service }}</span>
+            </div>
+            <span class="priority">{{ incident.priority }}</span>
+            <span>{{ incident.status }}</span>
+            <span>{{ incident.owner }}</span>
+            <span>{{ incident.mttr }}</span>
+          </article>
+        }
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <h2>Anomaly Signals</h2>
+      <div class="anomaly-list">
+        @for (signal of anomalySignals; track signal.metric) {
+          <div>
+            <span>
+              <strong>{{ signal.metric }}</strong>
+              <small>{{ signal.source }}</small>
+            </span>
+            <b>{{ signal.value }}</b>
+            <em>{{ signal.severity }}</em>
+          </div>
+        }
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <h2>{{ canViewAdminWidgets() ? 'Operational Control Actions' : 'Recommended Actions' }}</h2>
+      <div class="actions-list">
+        @for (action of actionItems; track action) {
+          <div>
+            <span>{{ $index + 1 }}</span>
+            <p>{{ action }}</p>
+          </div>
+        }
+      </div>
+    </mat-card>
+  </section>
+}

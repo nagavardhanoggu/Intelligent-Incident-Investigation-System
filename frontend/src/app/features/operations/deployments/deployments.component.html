@@ -1,0 +1,54 @@
+<header class="page-header">
+  <div>
+    <h1>Deployments</h1>
+    <p class="page-subtitle">Review recent production changes and correlate deployments with incident timelines.</p>
+  </div>
+  <span class="header-pill"><mat-icon>rocket_launch</mat-icon>Release activity</span>
+</header>
+
+<section class="summary-grid">
+  @for (item of kpis; track item.label) {
+    <mat-card class="kpi-card">
+      <span><mat-icon>{{ item.icon }}</mat-icon>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+      <small>{{ item.helper }}</small>
+    </mat-card>
+  }
+</section>
+
+<section class="content-grid">
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>Recent Deployments</h2>
+      <span>{{ deployments.length }} changes</span>
+    </div>
+    <div class="item-list">
+      @for (deployment of deployments; track deployment.name) {
+        <article class="item-row">
+          <span class="item-icon"><mat-icon>{{ deployment.icon }}</mat-icon></span>
+          <div>
+            <strong>{{ deployment.name }}</strong>
+            <span>{{ deployment.detail }}</span>
+            <small>Owner: {{ deployment.owner }}</small>
+          </div>
+          <em class="status-chip" [class.warning]="deployment.status === 'Warning'" [class.critical]="deployment.status === 'Critical'">{{ deployment.status }}</em>
+        </article>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>Rollback Checklist</h2>
+      <span>Recommended</span>
+    </div>
+    <div class="side-list">
+      @for (checkpoint of checkpoints; track checkpoint.title) {
+        <article>
+          <strong>{{ checkpoint.title }}</strong>
+          <span>{{ checkpoint.detail }}</span>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>

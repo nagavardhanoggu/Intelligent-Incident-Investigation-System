@@ -1,0 +1,6 @@
+timestamp,level,service,event,message,status_code,response_time_ms,error_code
+2026-08-26T14:05:00Z,INFO,checkout-service,REQUEST_STARTED,Checkout request received,200,118,
+2026-08-26T14:05:12Z,WARN,checkout-service,SLOW_RESPONSE,Payment authorization response exceeded threshold,200,1450,
+2026-08-26T14:05:28Z,ERROR,payment-gateway,UPSTREAM_TIMEOUT,Payment gateway timeout while authorizing transaction,504,3100,PAYMENT_TIMEOUT
+2026-08-26T14:05:40Z,ERROR,checkout-service,CHECKOUT_FAILED,Checkout failed after payment timeout,504,3280,CHECKOUT_FAILURE
+2026-08-26T14:06:10Z,INFO,checkout-service,RETRY_SUCCESS,Retry completed successfully after gateway recovery,200,420,

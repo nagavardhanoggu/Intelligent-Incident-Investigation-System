@@ -1,0 +1,129 @@
+<h1>Account Settings</h1>
+<p class="page-subtitle">Manage alert preferences, security posture, and investigation workspace settings.</p>
+
+<section class="summary-grid">
+  @for (item of summary(); track item.label) {
+    <mat-card [class]="item.state">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+    </mat-card>
+  }
+</section>
+
+<section class="settings-grid">
+  <mat-card>
+    <h2>Notification Preferences</h2>
+    <div class="setting-list">
+      <article>
+        <mat-icon>notifications_active</mat-icon>
+        <div>
+          <strong>Email incident alerts</strong>
+          <span>Receive assignment, SLA, and escalation updates.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="emailAlerts" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+      <article>
+        <mat-icon>priority_high</mat-icon>
+        <div>
+          <strong>Critical incidents only</strong>
+          <span>Limit interruptive alerts to critical production incidents.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="criticalOnly" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+      <article>
+        <mat-icon>summarize</mat-icon>
+        <div>
+          <strong>Weekly operations digest</strong>
+          <span>Get MTTR, SLA, and root-cause trend summaries.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="weeklyDigest" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+      <article>
+        <mat-icon>campaign</mat-icon>
+        <div>
+          <strong>Browser push alerts</strong>
+          <span>Show real-time critical incident notifications in the browser.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="browserPush" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h2>Security</h2>
+    <div class="setting-list">
+      <article>
+        <mat-icon>verified_user</mat-icon>
+        <div>
+          <strong>Multi-factor authentication</strong>
+          <span>Require an additional verification step during sign in.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="mfaEnabled" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+      @for (item of securityItems(); track item.label) {
+        <article class="read-only-row">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <div>
+            <strong>{{ item.label }}</strong>
+            <span>{{ item.value }}</span>
+          </div>
+          <mat-chip>Verified</mat-chip>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>
+
+<section class="settings-grid lower-grid">
+  <mat-card>
+    <h2>Workspace Preferences</h2>
+    <div class="setting-list">
+      <article>
+        <mat-icon>assignment_ind</mat-icon>
+        <div>
+          <strong>Auto-assign matching incidents</strong>
+          <span>Suggest your ownership when incidents match your service scope.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="autoAssign" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+      <article>
+        <mat-icon>view_compact</mat-icon>
+        <div>
+          <strong>Compact investigation workspace</strong>
+          <span>Use denser cards and tables for repeated operational workflows.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="compactWorkspace" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+      <article>
+        <mat-icon>download</mat-icon>
+        <div>
+          <strong>Allow audit exports</strong>
+          <span>Permit CSV/PDF exports for investigations and access reviews.</span>
+        </div>
+        <mat-slide-toggle [(ngModel)]="auditExports" (ngModelChange)="saveSettings()" [disabled]="saving" />
+      </article>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <div class="card-heading">
+      <h2>Active Sessions</h2>
+      <button mat-button type="button" (click)="signOutAll()">Sign out all</button>
+    </div>
+    <div class="session-list">
+      @for (session of sessions(); track session.device) {
+        <article>
+          <mat-icon>computer</mat-icon>
+          <div>
+            <strong>{{ session.device }}</strong>
+            <span>{{ session.location }} · {{ session.lastSeen }}</span>
+          </div>
+          @if (session.current) {
+            <mat-chip>Current</mat-chip>
+          }
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>

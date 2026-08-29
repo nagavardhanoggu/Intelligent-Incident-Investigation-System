@@ -1,0 +1,23 @@
+.modal-route-fallback {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+
+  mat-card {
+    width: min(520px, 100%);
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  button {
+    height: 44px;
+    border-radius: 999px;
+    background: #f04b23;
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,54 @@
+<header class="page-header">
+  <div>
+    <h1>Alert Rules</h1>
+    <p class="page-subtitle">Review operational alert policies, thresholds, routing logic, and ML-assisted triage rules.</p>
+  </div>
+  <span class="header-pill"><mat-icon>notifications_active</mat-icon>Rule coverage</span>
+</header>
+
+<section class="summary-grid">
+  @for (item of kpis; track item.label) {
+    <mat-card class="kpi-card">
+      <span><mat-icon>{{ item.icon }}</mat-icon>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+      <small>{{ item.helper }}</small>
+    </mat-card>
+  }
+</section>
+
+<section class="content-grid">
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>Alert Rule Catalog</h2>
+      <span>{{ rules.length }} rules</span>
+    </div>
+    <div class="item-list">
+      @for (rule of rules; track rule.name) {
+        <article class="item-row">
+          <span class="item-icon"><mat-icon>{{ rule.icon }}</mat-icon></span>
+          <div>
+            <strong>{{ rule.name }}</strong>
+            <span>{{ rule.detail }}</span>
+            <small>Owner: {{ rule.owner }}</small>
+          </div>
+          <em class="status-chip" [class.warning]="rule.status === 'Warning'" [class.critical]="rule.status === 'Critical'">{{ rule.status }}</em>
+        </article>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>Routing Logic</h2>
+      <span>Escalation</span>
+    </div>
+    <div class="side-list">
+      @for (item of routing; track item.title) {
+        <article>
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.detail }}</span>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>

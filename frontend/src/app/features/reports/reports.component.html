@@ -1,0 +1,91 @@
+<header class="report-header">
+  <div>
+    <h1>Reports</h1>
+    <p class="page-subtitle">Review monthly incident trends, MTTR performance, SLA compliance, and recurring operational risk.</p>
+  </div>
+  @if (canExport()) {
+    <button mat-flat-button class="export-button" type="button" [disabled]="loading() || !rows().length" (click)="exportReport()">
+      <mat-icon>download</mat-icon>
+      <span>Export CSV</span>
+    </button>
+  }
+</header>
+
+@if (loading()) {
+  <mat-card class="status-card">Loading report data...</mat-card>
+} @else if (error()) {
+  <mat-card class="status-card error-card">
+    <p>{{ error() }}</p>
+    <button mat-flat-button type="button" (click)="loadReports()">Retry</button>
+  </mat-card>
+} @else if (kpis(); as reportKpis) {
+  <section class="cards">
+    <mat-card><span>Average MTTR</span><strong>{{ reportKpis.averageMttr }}</strong></mat-card>
+    <mat-card><span>SLA Compliance</span><strong>{{ reportKpis.slaCompliance }}</strong></mat-card>
+    <mat-card><span>Repeat Incidents</span><strong>{{ reportKpis.repeatIncidents }}</strong></mat-card>
+  </section>
+
+  <mat-card>
+    <h2>Monthly Incident Report</h2>
+    @if (rows().length) {
+      <table mat-table [dataSource]="rows()">
+        <ng-container matColumnDef="month">
+          <th mat-header-cell *matHeaderCellDef>Month</th>
+          <td mat-cell *matCellDef="let row">{{ row.month }}</td>
+        </ng-container>
+        <ng-container matColumnDef="incidents">
+          <th mat-header-cell *matHeaderCellDef>Incidents</th>
+          <td mat-cell *matCellDef="let row">{{ row.incidents }}</td>
+        </ng-container>
+        <ng-container matColumnDef="critical">
+          <th mat-header-cell *matHeaderCellDef>Critical</th>
+          <td mat-cell *matCellDef="let row">{{ row.critical }}</td>
+        </ng-container>
+        <ng-container matColumnDef="mttr">
+          <th mat-header-cell *matHeaderCellDef>MTTR</th>
+          <td mat-cell *matCellDef="let row">{{ row.mttr }}</td>
+        </ng-container>
+        <ng-container matColumnDef="sla">
+          <th mat-header-cell *matHeaderCellDef>SLA</th>
+          <td mat-cell *matCellDef="let row">{{ row.sla }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+      </table>
+    } @else {
+      <p class="empty-state">No incident data is available for reporting.</p>
+    }
+  </mat-card>
+
+  <section class="report-grid">
+    <mat-card>
+      <h2>Report Insights</h2>
+      <div class="insight-list">
+        @for (insight of insights(); track insight.title) {
+          <article [class.warning]="insight.severity === 'warning'" [class.critical]="insight.severity === 'critical'">
+            <span class="insight-icon"><mat-icon>{{ insight.icon }}</mat-icon></span>
+            <div>
+              <strong>{{ insight.title }}</strong>
+              <p>{{ insight.detail }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <h2>Review Checklist</h2>
+      <div class="review-list">
+        @for (item of reviewItems(); track item.title; let index = $index) {
+          <article>
+            <span>{{ index + 1 }}</span>
+            <div>
+              <strong>{{ item.title }}</strong>
+              <p>{{ item.detail }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    </mat-card>
+  </section>
+}

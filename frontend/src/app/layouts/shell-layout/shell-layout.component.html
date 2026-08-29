@@ -1,0 +1,151 @@
+<mat-sidenav-container class="shell">
+  <mat-sidenav mode="side" opened class="nav">
+    <div class="brand">
+      <mat-icon>hub</mat-icon>
+      <span>IIIS</span>
+    </div>
+    <nav class="nav-groups" aria-label="Primary navigation">
+      @for (group of visibleNavGroups(); track group.label) {
+        <section class="nav-group">
+          <span class="nav-section-title">{{ group.label }}</span>
+          @for (item of group.items; track item.route) {
+            <a mat-button [routerLink]="item.route" routerLinkActive="active">
+              <mat-icon aria-hidden="true">{{ item.icon }}</mat-icon>
+              <span>{{ item.label }}</span>
+            </a>
+          }
+        </section>
+      }
+    </nav>
+    <button mat-button class="signout" type="button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Sign out</span>
+    </button>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="topbar">
+      <div class="topbar-grid">
+        <div class="title-block">
+          <span class="product-name">Incident Investigation</span>
+          <span class="product-subtitle">Intelligent Incident Investigation System</span>
+        </div>
+
+        <form class="search-shell" (submit)="submitSearch($event)">
+          <label class="global-search">
+            <mat-icon>search</mat-icon>
+            <input
+              #globalSearchInput
+              type="text"
+              placeholder="Search incidents, logs, services"
+              [value]="searchQuery()"
+              (input)="updateSearch($event)"
+              (focus)="searchFocused.set(true)"
+              (blur)="closeSearchResults()"
+            />
+            @if (searchQuery()) {
+              <button class="search-clear" type="button" aria-label="Clear search" (mousedown)="clearSearch($event)">
+                <mat-icon>close</mat-icon>
+              </button>
+            }
+            <span class="search-hint">Ctrl K</span>
+          </label>
+          @if (showSearchResults()) {
+            <div class="search-results">
+              @if (hasSearchResults()) {
+                @for (result of searchResults(); track result.route) {
+                  <button type="button" (mousedown)="selectSearchResult(result)">
+                    <mat-icon>{{ result.icon }}</mat-icon>
+                    <span>
+                      <strong>{{ result.label }}</strong>
+                      <small>{{ result.detail }}</small>
+                    </span>
+                  </button>
+                }
+              } @else {
+                <div class="search-empty">
+                  <mat-icon>search_off</mat-icon>
+                  <span>
+                    <strong>No results found</strong>
+                    <small>Try incident ID, service, root cause, logs, or reports.</small>
+                  </span>
+                </div>
+              }
+            </div>
+          }
+        </form>
+
+        @if (dashboardSummary(); as summary) {
+          <div class="status-strip" aria-label="Incident status summary">
+            <span class="status at-risk">{{ summary.criticalIncidents }} Critical</span>
+            <span class="status active">{{ summary.openIncidents }} Open</span>
+            <span class="status healthy">{{ summary.slaCompliance }}% SLA</span>
+          </div>
+        }
+
+        <div class="topbar-actions">
+          <button
+            mat-icon-button
+            class="alerts-button"
+            type="button"
+            aria-label="Open alerts"
+            [matMenuTriggerFor]="alertsMenu"
+            [matBadge]="unreadAlerts() || null"
+            matBadgeColor="warn"
+            matBadgeSize="small"
+          >
+            <mat-icon>notifications</mat-icon>
+          </button>
+          <mat-menu #alertsMenu="matMenu" yPosition="below" xPosition="before" panelClass="alerts-menu-panel">
+            <div class="alerts-header" (click)="$event.stopPropagation()">
+              <div>
+                <strong>Notifications</strong>
+                <span>{{ unreadAlerts() }} unread alerts</span>
+              </div>
+              <button mat-button type="button" (click)="markAllAlertsRead($event)">Mark all read</button>
+            </div>
+
+            <div class="alerts-list">
+              @for (alert of unreadAlertItems(); track alert.id) {
+                <a [routerLink]="alert.route" class="alert-item" [class.unread]="!alert.read" (click)="markAlertRead(alert.id)">
+                  <span class="alert-icon" [class]="alert.severity">
+                    <mat-icon>{{ alert.icon }}</mat-icon>
+                  </span>
+                  <span class="alert-copy">
+                    <strong>{{ alert.title }}</strong>
+                    <small>{{ alert.detail }}</small>
+                    <em>{{ alert.time }}</em>
+                  </span>
+                </a>
+              }
+            </div>
+            <div class="alerts-footer">
+              <a routerLink="/notifications">View All Notifications</a>
+            </div>
+          </mat-menu>
+          <button class="user-panel" type="button" [matMenuTriggerFor]="profileMenu" aria-label="Open account menu">
+            <span class="avatar">{{ user()?.fullName?.charAt(0) }}</span>
+            <span class="user-copy">
+              <strong>{{ user()?.fullName }}</strong>
+              <small>{{ user()?.role }}</small>
+            </span>
+            <mat-icon class="chevron">expand_more</mat-icon>
+          </button>
+          <mat-menu #profileMenu="matMenu" yPosition="below" xPosition="before" class="profile-menu-panel">
+            <a mat-menu-item routerLink="/account/profile">
+              <mat-icon>person</mat-icon>
+              <span>Profile</span>
+            </a>
+            <button mat-menu-item type="button" class="signout-menu-item" (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Sign out</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </mat-toolbar>
+    <main class="content">
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

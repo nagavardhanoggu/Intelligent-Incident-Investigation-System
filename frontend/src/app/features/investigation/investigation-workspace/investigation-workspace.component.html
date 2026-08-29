@@ -1,0 +1,254 @@
+@if (workspace$ | async; as workspace) {
+  <header class="page-header">
+    <div>
+      <h1>Investigation Workspace</h1>
+      <p class="page-subtitle">Correlate incident context, telemetry, logs, timeline signals, and ML prediction evidence.</p>
+    </div>
+    <div class="incident-badge">
+      <span>{{ workspace.incident.incidentKey }}</span>
+      <strong>{{ workspace.summary.riskLevel }} Risk</strong>
+    </div>
+  </header>
+
+  <section class="incident-hero">
+    <mat-card class="incident-summary">
+      <div class="summary-icon">
+        <mat-icon>manage_search</mat-icon>
+      </div>
+      <div class="summary-copy">
+        <span class="eyebrow">{{ workspace.incident.status }}</span>
+        <h2>{{ workspace.incident.title }}</h2>
+        <p>{{ workspace.incident.description }}</p>
+      </div>
+      <div class="summary-meta">
+        <mat-chip-set>
+          <mat-chip>{{ workspace.incident.priority }}</mat-chip>
+          <mat-chip>{{ workspace.incident.impact }} Impact</mat-chip>
+          <mat-chip>{{ workspace.incident.urgency }} Urgency</mat-chip>
+          <mat-chip>{{ workspace.incident.assignedUser || 'Unassigned' }}</mat-chip>
+        </mat-chip-set>
+      </div>
+    </mat-card>
+
+    <div class="signal-grid">
+      <mat-card>
+        <div>
+          <span><mat-icon>hub</mat-icon>Total Signals</span>
+          <strong>{{ workspace.summary.signalCount }}</strong>
+          <small>Correlated evidence</small>
+        </div>
+      </mat-card>
+      <mat-card>
+        <div>
+          <span><mat-icon>timeline</mat-icon>Timeline Events</span>
+          <strong>{{ workspace.summary.timelineCount }}</strong>
+          <small>Ordered sequence</small>
+        </div>
+      </mat-card>
+      <mat-card>
+        <div>
+          <span><mat-icon>monitoring</mat-icon>Metric Points</span>
+          <strong>{{ workspace.summary.metricCount }}</strong>
+          <small>Telemetry samples</small>
+        </div>
+      </mat-card>
+      <mat-card>
+        <div>
+          <span><mat-icon>article</mat-icon>Uploaded Logs</span>
+          <strong>{{ workspace.summary.logCount }}</strong>
+          <small>Indexed files</small>
+        </div>
+      </mat-card>
+    </div>
+  </section>
+
+  <mat-tab-group class="workspace-tabs">
+    <mat-tab label="Timeline">
+      <mat-card class="workspace-card">
+        <div class="section-title">
+          <h2>Investigation Timeline</h2>
+          <span>{{ workspace.timeline.length }} events</span>
+        </div>
+        <ol class="timeline">
+          @for (event of workspace.timeline; track event.id) {
+            <li>
+              <time>{{ event.eventTime | date: 'HH:mm' }}</time>
+              <span class="timeline-dot"></span>
+              <div>
+                <strong>{{ event.eventType }}</strong>
+                <p>{{ event.description }}</p>
+                <small>{{ event.source }}</small>
+              </div>
+            </li>
+          } @empty {
+            <div class="empty-state">
+              <mat-icon>timeline</mat-icon>
+              <strong>No timeline events</strong>
+              <span>Timeline records will appear after incident events are stored.</span>
+            </div>
+          }
+        </ol>
+      </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Metrics">
+      <mat-card class="workspace-card">
+        <div class="section-title">
+          <h2>Metric Correlation</h2>
+          <span>Peak CPU {{ peakMetric(workspace.metrics, 'cpuUsage') | number: '1.0-1' }}%</span>
+        </div>
+        <div class="metric-summary">
+          <div>
+            <span>Peak Memory</span>
+            <strong>{{ peakMetric(workspace.metrics, 'memoryUsage') | number: '1.0-1' }}%</strong>
+          </div>
+          <div>
+            <span>Peak Response</span>
+            <strong>{{ peakMetric(workspace.metrics, 'responseTimeMs') | number: '1.0-0' }}ms</strong>
+          </div>
+          <div>
+            <span>Peak Error Rate</span>
+            <strong>{{ peakMetric(workspace.metrics, 'errorRate') | number: '1.0-2' }}%</strong>
+          </div>
+        </div>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>CPU</th>
+                <th>Memory</th>
+                <th>Disk</th>
+                <th>Response</th>
+                <th>Error Rate</th>
+                <th>DB Connections</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (metric of workspace.metrics; track metric.id) {
+                <tr>
+                  <td>{{ metric.capturedAt | date: 'HH:mm' }}</td>
+                  <td>{{ metricValue(metric.cpuUsage, '%') }}</td>
+                  <td>{{ metricValue(metric.memoryUsage, '%') }}</td>
+                  <td>{{ metricValue(metric.diskUsage, '%') }}</td>
+                  <td>{{ metricValue(metric.responseTimeMs, 'ms') }}</td>
+                  <td>{{ metricValue(metric.errorRate, '%') }}</td>
+                  <td>{{ metricValue(metric.databaseConnections) }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </mat-card>
+    </mat-tab>
+
+    <mat-tab label="ML Prediction">
+      <mat-card class="workspace-card prediction-card">
+        <div class="section-title">
+          <h2>Root Cause Prediction</h2>
+          <span>{{ workspace.prediction?.modelVersion || 'No model result' }}</span>
+        </div>
+        @if (workspace.prediction; as prediction) {
+          <div class="prediction-layout">
+            <div class="cause-panel">
+              <span>Predicted Root Cause</span>
+              <strong>{{ prediction.predictedCause }}</strong>
+              <p>Prediction time: {{ prediction.predictedAt | date: 'medium' }}</p>
+              <mat-progress-bar mode="determinate" [value]="confidencePercent(prediction.confidenceScore)" />
+              <small>Confidence {{ confidencePercent(prediction.confidenceScore) }}%</small>
+            </div>
+            <div class="factor-panel">
+              <h3>Decision Factors</h3>
+              <mat-chip-set>
+                @for (feature of featureEntries(prediction.modelFeatures); track feature.key) {
+                  <mat-chip>{{ feature.key }}: {{ feature.value }}</mat-chip>
+                }
+              </mat-chip-set>
+            </div>
+          </div>
+        } @else {
+          <div class="empty-state">
+            <mat-icon>psychology</mat-icon>
+            <strong>No prediction stored</strong>
+            <span>Run incident analysis to save an ML prediction for this incident.</span>
+          </div>
+        }
+      </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Logs">
+      <mat-card class="workspace-card">
+        <div class="section-title">
+          <h2>Incident Logs</h2>
+          <span>{{ workspace.logs.length }} files</span>
+        </div>
+        <div class="log-list">
+          @for (log of workspace.logs; track log.id) {
+            <article>
+              <div class="log-meta">
+                <mat-icon>article</mat-icon>
+                <div>
+                  <strong>{{ log.fileName }}</strong>
+                  <span>{{ log.fileType }} - {{ log.uploadedAt | date: 'medium' }}</span>
+                </div>
+              </div>
+              <pre>{{ log.parsedContent || 'No parsed preview available.' }}</pre>
+            </article>
+          } @empty {
+            <div class="empty-state">
+              <mat-icon>folder_open</mat-icon>
+              <strong>No logs uploaded</strong>
+              <span>Uploaded incident log previews will appear here.</span>
+            </div>
+          }
+        </div>
+      </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Actions">
+      <mat-card class="workspace-card actions-card">
+        <div class="section-title">
+          <h2>Recommended Actions</h2>
+          <span>{{ workspace.recommendedActions.length }} actions</span>
+        </div>
+        <div class="action-list">
+          @for (action of workspace.recommendedActions; track action; let index = $index) {
+            <article>
+              <span>{{ index + 1 }}</span>
+              <p>{{ action }}</p>
+            </article>
+          } @empty {
+            <div class="empty-state">
+              <mat-icon>rule</mat-icon>
+              <strong>No recommendations available</strong>
+              <span>Recommendations appear after a prediction is stored for this incident.</span>
+            </div>
+          }
+        </div>
+        <div class="similar-box">
+          <h3>Similar Incidents</h3>
+          <mat-chip-set>
+            @for (incidentKey of workspace.similarIncidentKeys; track incidentKey) {
+              <mat-chip>{{ incidentKey }}</mat-chip>
+            } @empty {
+              <mat-chip>No related incident records</mat-chip>
+            }
+          </mat-chip-set>
+        </div>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+} @else {
+  @if (loadError()) {
+    <mat-card class="loading-card error-card">
+      <mat-icon>error_outline</mat-icon>
+      <strong>Investigation workspace unavailable</strong>
+      <span>{{ loadError() }}</span>
+    </mat-card>
+  } @else {
+    <mat-card class="loading-card">
+      <mat-icon>hourglass_top</mat-icon>
+      <strong>Loading investigation workspace</strong>
+    </mat-card>
+  }
+}

@@ -1,0 +1,46 @@
+<h1>Notifications</h1>
+<p class="page-subtitle">Review incident alerts, SLA warnings, model updates, and operational notifications.</p>
+
+<mat-card>
+  <div class="section-title">
+    <div>
+      <h2>All Notifications</h2>
+      <span>{{ visibleNotifications().length }} visible · {{ unreadCount() }} unread</span>
+    </div>
+    <div class="toolbar-actions">
+      <button mat-button type="button" [class.active]="filter() === 'all'" (click)="setFilter('all')">All</button>
+      <button mat-button type="button" [class.active]="filter() === 'unread'" (click)="setFilter('unread')">Unread</button>
+      <button mat-button type="button" (click)="markAllRead()">Mark all read</button>
+      <button mat-button type="button" class="danger" (click)="clearAll()">Clear all</button>
+    </div>
+  </div>
+  <div class="notification-list">
+    @for (item of visibleNotifications(); track item.id) {
+      <article [class.read]="item.read">
+        <span class="notification-icon">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </span>
+        <div>
+          <strong>{{ item.title }}</strong>
+          <p>{{ item.detail }}</p>
+          <small>{{ item.time }}</small>
+        </div>
+        <mat-chip [class]="item.severity">{{ severityLabel(item) }}</mat-chip>
+        <div class="row-actions">
+          <button mat-icon-button type="button" [matTooltip]="item.read ? 'Mark unread' : 'Mark read'" (click)="toggleRead(item.id)">
+            <mat-icon>{{ item.read ? 'mark_email_unread' : 'drafts' }}</mat-icon>
+          </button>
+          <button mat-icon-button type="button" matTooltip="Delete notification" (click)="deleteNotification(item.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </article>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>notifications_off</mat-icon>
+        <strong>No notifications</strong>
+        <span>There are no notifications for the selected filter.</span>
+      </div>
+    }
+  </div>
+</mat-card>

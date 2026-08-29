@@ -1,0 +1,54 @@
+<header class="page-header">
+  <div>
+    <h1>Change Calendar</h1>
+    <p class="page-subtitle">Track production changes, release windows, freeze periods, and incident-linked deployments.</p>
+  </div>
+  <span class="header-pill"><mat-icon>event</mat-icon>Release schedule</span>
+</header>
+
+<section class="summary-grid">
+  @for (item of kpis; track item.label) {
+    <mat-card class="kpi-card">
+      <span><mat-icon>{{ item.icon }}</mat-icon>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+      <small>{{ item.helper }}</small>
+    </mat-card>
+  }
+</section>
+
+<section class="content-grid">
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>Scheduled Changes</h2>
+      <span>{{ changes.length }} changes</span>
+    </div>
+    <div class="item-list">
+      @for (change of changes; track change.name) {
+        <article class="item-row">
+          <span class="item-icon"><mat-icon>{{ change.icon }}</mat-icon></span>
+          <div>
+            <strong>{{ change.name }}</strong>
+            <span>{{ change.detail }}</span>
+            <small>Owner: {{ change.owner }}</small>
+          </div>
+          <em class="status-chip" [class.warning]="change.status === 'Warning'" [class.critical]="change.status === 'Critical'">{{ change.status }}</em>
+        </article>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card class="section-card">
+    <div class="section-title">
+      <h2>Change Controls</h2>
+      <span>Governance</span>
+    </div>
+    <div class="side-list">
+      @for (control of controls; track control.title) {
+        <article>
+          <strong>{{ control.title }}</strong>
+          <span>{{ control.detail }}</span>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>

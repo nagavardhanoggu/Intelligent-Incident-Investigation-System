@@ -1,0 +1,63 @@
+<section class="dialog-shell">
+  <header class="dialog-header">
+    <span class="header-icon">
+      <mat-icon>{{ data.mode === 'edit' ? 'edit' : 'person_add' }}</mat-icon>
+    </span>
+    <div class="header-copy">
+      <h2>{{ data.mode === 'edit' ? 'Edit User Access' : 'Create User Access' }}</h2>
+      <p>{{ data.mode === 'edit' ? 'Update role, status, and account details.' : 'Add a new user and assign platform access.' }}</p>
+    </div>
+    <button mat-icon-button mat-dialog-close type="button" class="close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  <mat-dialog-content class="dialog-body">
+    <form [formGroup]="form" id="userAccessForm" class="access-form" (ngSubmit)="save()">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+
+      @if (showPassword()) {
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always">
+          <mat-label>Temporary Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+      }
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always" class="access-select-field">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            @for (role of data.roles ?? []; track role) {
+              <mat-option [value]="role">{{ role }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always" class="access-select-field">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            @for (status of statuses; track status) {
+              <mat-option [value]="status">{{ status }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" class="dialog-footer">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button mat-flat-button color="primary" form="userAccessForm" type="submit">
+      <mat-icon>{{ data.mode === 'edit' ? 'save' : 'person_add' }}</mat-icon>
+      {{ data.mode === 'edit' ? 'Update User' : 'Create User' }}
+    </button>
+  </mat-dialog-actions>
+</section>

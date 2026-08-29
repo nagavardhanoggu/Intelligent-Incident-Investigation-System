@@ -1,0 +1,275 @@
+h1 {
+  margin: 0;
+}
+
+.summary,
+.charts,
+.details-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.summary {
+  grid-template-columns: repeat(4, minmax(170px, 1fr));
+  margin-bottom: 16px;
+}
+
+.charts {
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  margin-bottom: 16px;
+}
+
+.details-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  margin-bottom: 16px;
+}
+
+mat-card {
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.summary-card {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: center;
+  gap: 4px 12px;
+  min-height: 118px;
+  border-left: 4px solid #f04b23;
+}
+
+.summary-card.warning {
+  border-left-color: #f79009;
+}
+
+.summary-card mat-icon {
+  grid-row: span 3;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 10px;
+  background: #fff1eb;
+  color: #f04b23;
+  font-size: 22px;
+}
+
+.summary-card.warning mat-icon {
+  background: #fff4db;
+  color: #f79009;
+}
+
+span,
+small {
+  color: #5d6b7a;
+}
+
+.summary-card strong {
+  display: block;
+  margin-top: 0;
+  color: #111827;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.summary-card span {
+  font-size: 13px;
+}
+
+.summary-card small {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.card-title span {
+  font-size: 13px;
+}
+
+mat-chip {
+  --mdc-chip-label-text-color: #d43f1d;
+  --mdc-chip-elevated-container-color: #fff1eb;
+}
+
+.service-list,
+.threshold-list,
+.correlation-list {
+  display: grid;
+  gap: 10px;
+}
+
+.service-list {
+  max-height: min(520px, calc(100vh - 320px));
+  overflow-y: auto;
+  padding-right: 6px;
+  overscroll-behavior: contain;
+  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.service-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.service-list::-webkit-scrollbar-thumb {
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: #cbd5e1;
+}
+
+.service-list article,
+.threshold-list article,
+.correlation-list article {
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.service-list article {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.service-head,
+.service-footer,
+.metric-line,
+.threshold-list article,
+.correlation-list article {
+  display: flex;
+  align-items: center;
+}
+
+.service-head,
+.service-footer {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.service-head strong,
+.threshold-list strong,
+.correlation-list strong {
+  margin: 0;
+  color: #17202a;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.service-footer {
+  font-size: 13px;
+}
+
+.metric-line {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 42px;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.metric-line b,
+.threshold-list b {
+  color: #17202a;
+  font-size: 14px;
+}
+
+:host ::ng-deep .mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #f04b23;
+  --mdc-linear-progress-track-color: #ffe2d8;
+  height: 7px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: #fff1eb;
+  color: #d43f1d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.status.healthy {
+  background: #e7f8ef;
+  color: #087443;
+}
+
+.threshold-list article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 58px 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+}
+
+.threshold-list article div {
+  min-width: 0;
+}
+
+.threshold-list small {
+  display: block;
+  margin-top: 4px;
+}
+
+.correlation-card {
+  margin-bottom: 8px;
+}
+
+.correlation-list article {
+  gap: 14px;
+  padding: 12px;
+}
+
+time {
+  display: grid;
+  width: 54px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: #fff1eb;
+  color: #d43f1d;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.correlation-list p {
+  margin: 4px 0 0;
+  color: #5d6b7a;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .summary,
+  .charts,
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-title,
+  .threshold-list article {
+    align-items: flex-start;
+  }
+
+  .threshold-list article {
+    grid-template-columns: 1fr;
+  }
+}

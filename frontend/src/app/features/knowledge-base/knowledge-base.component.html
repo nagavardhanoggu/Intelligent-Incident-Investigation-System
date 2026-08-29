@@ -1,0 +1,118 @@
+<h1>Resolution Knowledge Base</h1>
+<p class="page-subtitle">Search previous resolutions, root causes, prevention steps, and reusable investigation knowledge.</p>
+
+@if (loading()) {
+  <mat-card class="status-card">Loading resolution articles...</mat-card>
+} @else if (error()) {
+  <mat-card class="status-card error-card">
+    <p>{{ error() }}</p>
+    <button mat-flat-button type="button" (click)="loadArticles()">Retry</button>
+  </mat-card>
+} @else {
+  <section class="summary-grid">
+    @for (item of summary(); track item.label) {
+      <mat-card>
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.label }}</span>
+        <strong>{{ item.value }}</strong>
+      </mat-card>
+    }
+  </section>
+
+  <section class="knowledge-layout">
+    <mat-card class="search-card">
+      <div class="search-copy">
+        <h2>Resolution Library</h2>
+        <p>Find known fixes by incident, root cause, resolution, or prevention step.</p>
+      </div>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          placeholder="Search root cause or incident ID"
+          [value]="searchQuery()"
+          (input)="updateSearch($event)"
+        />
+        @if (searchQuery()) {
+          <button mat-icon-button matSuffix type="button" aria-label="Clear search" (click)="clearSearch()">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+      <div class="search-tags">
+        @for (tag of searchTags(); track tag) {
+          <button type="button" [class.active]="searchQuery() === tag" (click)="applySearchTag(tag)">
+            {{ tag }}
+          </button>
+        }
+      </div>
+    </mat-card>
+
+    <mat-card class="quick-card">
+      <h2>Recent Resolutions</h2>
+      <div class="quick-links">
+        @for (article of recentArticles(); track article.id) {
+          <button type="button" (click)="findArticle(article)">
+            <mat-icon>bolt</mat-icon>
+            <span>{{ article.incidentTitle }}</span>
+          </button>
+        } @empty {
+          <p class="quick-empty">No resolution articles are available.</p>
+        }
+      </div>
+    </mat-card>
+  </section>
+
+  <mat-card class="article-card">
+    <div class="section-title">
+      <h2>Resolution Articles</h2>
+      <span>{{ filteredArticles().length }} articles</span>
+    </div>
+
+    <mat-accordion>
+      @for (article of filteredArticles(); track article.id) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="article-title-row">
+                <span class="article-id">#{{ article.id }}</span>
+                <span class="article-title">{{ article.incidentTitle }}</span>
+              </span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="cause-chip">{{ article.rootCause }}</span>
+              <span>Incident #{{ article.incidentId }}</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="article-body">
+            <div class="article-meta">
+              <span><mat-icon>history</mat-icon>Updated {{ formatUpdatedAt(article.updatedAt) }}</span>
+            </div>
+
+            <div class="article-columns">
+              <section>
+                <h3>Resolution</h3>
+                <p>{{ article.resolution }}</p>
+              </section>
+              <section>
+                <h3>Prevention Steps</h3>
+                <p>{{ article.preventionSteps || 'No prevention steps recorded.' }}</p>
+              </section>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      } @empty {
+        <div class="empty-state">
+          <mat-icon>{{ articles().length ? 'search_off' : 'menu_book' }}</mat-icon>
+          <strong>{{ articles().length ? 'No matching resolution articles' : 'No resolution articles yet' }}</strong>
+          <span>
+            {{ articles().length
+              ? 'Try another root cause or incident ID.'
+              : 'Saved incident resolutions will appear here.' }}
+          </span>
+        </div>
+      }
+    </mat-accordion>
+  </mat-card>
+}

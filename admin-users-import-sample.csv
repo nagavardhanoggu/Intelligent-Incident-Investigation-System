@@ -1,0 +1,4 @@
+name,email,password,role,status
+Neha Sharma,neha.sharma@example.com,Password123,INVESTIGATOR,Active
+Vikram Patel,vikram.patel@example.com,Password123,VIEWER,Active
+Sana Khan,sana.khan@example.com,Password123,ADMIN,Inactive

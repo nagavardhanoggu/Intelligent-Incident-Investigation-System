@@ -1,0 +1,264 @@
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.page-subtitle {
+  max-width: 760px;
+  margin-top: 8px;
+  color: #53627a;
+  line-height: 1.45;
+}
+
+.header-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid #fed7c8;
+  border-radius: 8px;
+  background: #fff7f3;
+  color: #d43f1d;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.header-pill mat-icon,
+.header-pill .mat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+mat-card {
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+}
+
+.kpi-card {
+  display: grid;
+  gap: 10px;
+  min-height: 112px;
+  padding: 18px;
+}
+
+.kpi-card span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #53627a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.kpi-card mat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  padding: 5px;
+  border-radius: 8px;
+  background: #fff1eb;
+  color: #f04b23;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.kpi-card strong {
+  color: #111827;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.kpi-card small {
+  color: #667085;
+  font-size: 12px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: 16px;
+}
+
+.section-card {
+  padding: 20px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.section-title h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.section-title span {
+  color: #53627a;
+  font-size: 13px;
+}
+
+.item-list {
+  display: grid;
+  gap: 10px;
+}
+
+.side-list {
+  display: grid;
+  gap: 12px;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding: 12px;
+  border: 1px solid #edf0f4;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  flex: 0 0 42px;
+  border-radius: 10px;
+  background: #fff1eb;
+  color: #f04b23;
+}
+
+.item-icon mat-icon,
+.item-icon .mat-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  font-size: 22px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.item-row strong,
+.item-row div > span,
+.item-row small {
+  display: block;
+}
+
+.item-row strong {
+  color: #111827;
+  font-size: 14px;
+}
+
+.item-row div > span {
+  margin-top: 4px;
+  color: #53627a;
+  font-size: 13px;
+}
+
+.item-row small {
+  color: #667085;
+  font-size: 12px;
+}
+
+.status-chip {
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: #e7f8ef;
+  color: #087443;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.status-chip.warning {
+  background: #fff4db;
+  color: #9a5b00;
+}
+
+.status-chip.critical {
+  background: #fde8e8;
+  color: #b42318;
+}
+
+.side-list article {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.side-list strong {
+  font-size: 14px;
+}
+
+.side-list span {
+  color: #53627a;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (max-width: 1180px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-header,
+  .section-title,
+  .item-row {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

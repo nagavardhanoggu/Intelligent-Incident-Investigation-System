@@ -1,0 +1,77 @@
+<h1>Profile</h1>
+<p class="page-subtitle">Review your account identity, operational assignment, and platform activity.</p>
+
+<section class="profile-grid">
+  <mat-card class="identity-card">
+    <div class="profile-cover">
+      <span class="avatar">{{ user()?.fullName?.charAt(0) }}</span>
+    </div>
+    <div class="identity-copy">
+      <h2>{{ user()?.fullName }}</h2>
+      <p>{{ user()?.email }}</p>
+      <div class="identity-tags">
+        <mat-chip>{{ user()?.role }}</mat-chip>
+        <span class="online-status">
+          <mat-icon>radio_button_checked</mat-icon>
+          {{ profile()?.user?.status === 'INACTIVE' ? 'Inactive' : 'Active' }}
+        </span>
+      </div>
+      <div class="profile-actions">
+        <button mat-flat-button type="button" class="edit-profile-btn" (click)="editProfile()">
+          <mat-icon>edit</mat-icon>
+          Edit Profile
+        </button>
+        <button mat-stroked-button type="button" class="change-password-btn" (click)="changePassword()">
+          <mat-icon>lock_reset</mat-icon>
+          Change Password
+        </button>
+      </div>
+    </div>
+    <div class="profile-stats">
+      @for (stat of stats(); track stat.label) {
+        <article>
+          <strong>{{ stat.value }}</strong>
+          <span>{{ stat.label }}</span>
+        </article>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card class="details-card">
+    <h2>Account Details</h2>
+    <div class="detail-list">
+      @for (item of details(); track item.label) {
+        <article>
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <div>
+            <span>{{ item.label }}</span>
+            <strong>{{ item.value }}</strong>
+          </div>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>
+
+<mat-card class="activity-card">
+  <h2>Recent Activity</h2>
+  <div class="activity-list">
+    @for (item of activity(); track item.title) {
+      <article>
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <div>
+          <strong>{{ item.title }}</strong>
+          <span>{{ formatActivityTime(item.time) }}</span>
+        </div>
+      </article>
+    } @empty {
+      <article class="empty-activity">
+        <mat-icon>history</mat-icon>
+        <div>
+          <strong>No recent activity</strong>
+          <span>Activity will appear here after audit events are saved.</span>
+        </div>
+      </article>
+    }
+  </div>
+</mat-card>

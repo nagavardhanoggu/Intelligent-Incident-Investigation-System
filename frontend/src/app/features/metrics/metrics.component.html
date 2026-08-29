@@ -1,0 +1,100 @@
+<h1>Metrics Management</h1>
+<p class="page-subtitle">Track infrastructure and application health metrics linked to production incidents.</p>
+
+<section class="summary">
+  @for (item of summary; track item.label) {
+    <mat-card class="summary-card" [class.critical]="item.state === 'critical'" [class.warning]="item.state === 'warning'">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+      <small>{{ item.detail }}</small>
+    </mat-card>
+  }
+</section>
+
+<section class="charts">
+  <mat-card>
+    <div class="card-title">
+      <h2>Resource Utilization</h2>
+      <mat-chip>5 min interval</mat-chip>
+    </div>
+    <canvas #resourceChart></canvas>
+  </mat-card>
+  <mat-card>
+    <div class="card-title">
+      <h2>Response Time</h2>
+      <mat-chip>p95 latency</mat-chip>
+    </div>
+    <canvas #latencyChart></canvas>
+  </mat-card>
+</section>
+
+<section class="details-grid">
+  <mat-card>
+    <div class="card-title">
+      <h2>Service Health</h2>
+      <span>Live operational signals</span>
+    </div>
+    <div class="service-list">
+      @for (service of serviceHealth; track service.service) {
+        <article>
+          <div class="service-head">
+            <strong>{{ service.service }}</strong>
+            <span class="status" [class.healthy]="service.status === 'Healthy'">{{ service.status }}</span>
+          </div>
+          <div class="metric-line">
+            <span>CPU</span>
+            <mat-progress-bar mode="determinate" [value]="service.cpu"></mat-progress-bar>
+            <b>{{ service.cpu }}%</b>
+          </div>
+          <div class="metric-line">
+            <span>Memory</span>
+            <mat-progress-bar mode="determinate" [value]="service.memory"></mat-progress-bar>
+            <b>{{ service.memory }}%</b>
+          </div>
+          <div class="service-footer">
+            <span>Latency {{ service.latency }}</span>
+            <span>Error rate {{ service.errors }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <div class="card-title">
+      <h2>Threshold Watchlist</h2>
+      <span>Alert policy status</span>
+    </div>
+    <div class="threshold-list">
+      @for (item of thresholds; track item.metric) {
+        <article>
+          <div>
+            <strong>{{ item.metric }}</strong>
+            <small>{{ item.threshold }}</small>
+          </div>
+          <b>{{ item.current }}</b>
+          <span class="status" [class.healthy]="item.status === 'Normal'">{{ item.status }}</span>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>
+
+<mat-card class="correlation-card">
+  <div class="card-title">
+    <h2>Incident Metric Correlation</h2>
+    <span>Signals aligned with investigation timeline</span>
+  </div>
+  <div class="correlation-list">
+    @for (item of correlations; track item.time) {
+      <article>
+        <time>{{ item.time | date: 'MMM d, h:mm a' }}</time>
+        <div>
+          <strong>{{ item.signal }}</strong>
+          <p>{{ item.impact }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</mat-card>

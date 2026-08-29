@@ -1,0 +1,126 @@
+ROLE_ADMIN = "ADMIN"
+ROLE_INVESTIGATOR = "INVESTIGATOR"
+ROLE_VIEWER = "VIEWER"
+
+ROLES = {
+    ROLE_ADMIN: {
+        "description": "Full platform administrator",
+        "priority": 100,
+    },
+    ROLE_INVESTIGATOR: {
+        "description": "Incident investigation engineer",
+        "priority": 50,
+    },
+    ROLE_VIEWER: {
+        "description": "Read-only dashboard and incident viewer",
+        "priority": 10,
+    },
+}
+
+PERMISSIONS = {
+    "users:create": ("Users", "Create users"),
+    "users:update": ("Users", "Update users"),
+    "users:delete": ("Users", "Delete users"),
+    "users:assign_roles": ("Users", "Assign roles"),
+    "users:view": ("Users", "View users"),
+    "incidents:create": ("Incidents", "Create incidents"),
+    "incidents:view": ("Incidents", "View incidents"),
+    "incidents:view_details": ("Incidents", "View incident details"),
+    "incidents:update_any": ("Incidents", "Update any incident"),
+    "incidents:update_assigned": ("Incidents", "Update assigned incidents"),
+    "incidents:assign": ("Incidents", "Assign incidents"),
+    "incidents:close": ("Incidents", "Close incidents"),
+    "incidents:delete": ("Incidents", "Delete incidents"),
+    "logs:upload": ("Logs", "Upload logs"),
+    "logs:view": ("Logs", "View logs"),
+    "logs:search": ("Logs", "Search logs"),
+    "metrics:create": ("Metrics", "Create metric records"),
+    "metrics:view": ("Metrics", "View metrics"),
+    "predictions:run": ("Predictions", "Run ML predictions"),
+    "predictions:view": ("Predictions", "View ML predictions"),
+    "resolutions:create": ("Resolutions", "Create resolutions"),
+    "resolutions:view": ("Resolutions", "View knowledge base"),
+    "resolutions:manage": ("Resolutions", "Manage knowledge base"),
+    "reports:view": ("Reports", "View reports"),
+    "reports:export": ("Reports", "Export reports"),
+    "reports:manage": ("Reports", "Manage reports"),
+    "operations:services:view": ("Operations", "View service health"),
+    "operations:deployments:view": ("Operations", "View deployment activity"),
+    "operations:changes:view": ("Operations", "View change calendar"),
+    "operations:sla:view": ("Operations", "View SLA monitor"),
+    "operations:alerts:view": ("Operations", "View alert rules"),
+    "operations:oncall:view": ("Operations", "View on-call coverage"),
+    "operations:rootcause:view": ("Operations", "View root cause intelligence"),
+    "triage:view": ("Triage", "View triage board"),
+    "evidence:view": ("Evidence", "View evidence center"),
+    "runbooks:view": ("Runbooks", "View runbooks"),
+    "postmortems:view": ("Postmortems", "View postmortems"),
+    "service_catalog:view": ("Service Catalog", "View service catalog"),
+    "escalations:view": ("Escalations", "View escalations"),
+    "model_monitoring:view": ("Model Monitoring", "View model monitoring"),
+    "data_sources:view": ("Data Sources", "View data sources"),
+    "audit_trail:view": ("Audit Trail", "View audit trail"),
+    "settings:view": ("Settings", "View system settings"),
+    "dashboard:view": ("Dashboard", "View dashboard"),
+    "dashboard:admin": ("Dashboard", "View admin widgets"),
+    "dashboard:investigator": ("Dashboard", "View investigator widgets"),
+    "dashboard:viewer": ("Dashboard", "View viewer widgets"),
+}
+
+ROLE_PERMISSIONS = {
+    ROLE_ADMIN: set(PERMISSIONS),
+    ROLE_INVESTIGATOR: {
+        "dashboard:view",
+        "dashboard:investigator",
+        "incidents:create",
+        "incidents:view",
+        "incidents:view_details",
+        "incidents:update_assigned",
+        "incidents:close",
+        "logs:upload",
+        "logs:view",
+        "logs:search",
+        "metrics:create",
+        "metrics:view",
+        "predictions:run",
+        "predictions:view",
+        "resolutions:create",
+        "resolutions:view",
+        "reports:view",
+        "operations:services:view",
+        "operations:deployments:view",
+        "operations:changes:view",
+        "operations:sla:view",
+        "operations:alerts:view",
+        "operations:oncall:view",
+        "operations:rootcause:view",
+        "triage:view",
+        "evidence:view",
+        "runbooks:view",
+        "postmortems:view",
+        "service_catalog:view",
+        "escalations:view",
+        "model_monitoring:view",
+    },
+    ROLE_VIEWER: {
+        "dashboard:view",
+        "dashboard:viewer",
+        "incidents:view",
+        "incidents:view_details",
+        "predictions:view",
+        "resolutions:view",
+        "reports:view",
+        "operations:rootcause:view",
+        "evidence:view",
+        "runbooks:view",
+        "postmortems:view",
+        "service_catalog:view",
+    },
+}
+
+
+def permissions_for_roles(roles: list[str]) -> list[str]:
+    permissions: set[str] = set()
+    for role in roles:
+        permissions.update(ROLE_PERMISSIONS.get(role, set()))
+    return sorted(permissions)

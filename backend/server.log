@@ -1,0 +1,99 @@
+INFO:     127.0.0.1:2921 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2922 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2922 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2937 - "POST /api/v1/logs/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2953 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2953 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2968 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2969 - "OPTIONS /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2969 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2998 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2999 - "OPTIONS /api/v1/logs/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2999 - "POST /api/v1/logs/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3017 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3073 - "OPTIONS /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3073 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3076 - "OPTIONS /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3076 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3077 - "POST /api/v1/logs/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3108 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3130 - "POST /api/v1/logs/upload HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:3187 - "OPTIONS /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3187 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3201 - "OPTIONS /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3201 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3201 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3201 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3203 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3227 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3228 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3228 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3228 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3228 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3235 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3235 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3236 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3236 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3268 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3269 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3298 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3321 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3322 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3336 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3355 - "OPTIONS /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3355 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3371 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3395 - "POST /api/v1/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3396 - "OPTIONS /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3396 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3396 - "GET /api/v1/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3396 - "OPTIONS /api/v1/investigations/101 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3396 - "GET /api/v1/investigations/101 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3408 - "OPTIONS /api/v1/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3409 - "OPTIONS /api/v1/users/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3408 - "GET /api/v1/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3409 - "GET /api/v1/users/roles HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:3440 - "GET /api/v1/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3441 - "GET /api/v1/users/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3483 - "GET /api/v1/users/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3482 - "GET /api/v1/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3519 - "OPTIONS /api/v1/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3520 - "OPTIONS /api/v1/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3521 - "OPTIONS /api/v1/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3520 - "POST /api/v1/users HTTP/1.1" 201 Created
+INFO:     127.0.0.1:3519 - "POST /api/v1/users HTTP/1.1" 201 Created
+INFO:     127.0.0.1:3521 - "POST /api/v1/users HTTP/1.1" 201 Created
+  INFO:     127.0.0.1:3592 - "OPTIONS /api/v1/account/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3592 - "GET /api/v1/account/settings HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:3599 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3599 - "GET /api/v1/account/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3601 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3601 - "PUT /api/v1/account/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3604 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3604 - "PUT /api/v1/account/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3623 - "GET /api/v1/account/settings HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:3672 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3672 - "PUT /api/v1/account/password HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:3676 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3676 - "PUT /api/v1/account/password HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3676 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3676 - "PUT /api/v1/account/password HTTP/1.1" 200 OK
+  INFO:     127.0.0.1:3736 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3736 - "GET /api/v1/account/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3752 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3752 - "PUT /api/v1/account/profile HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:3788 - "OPTIONS /api/v1/dashboard/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3788 - "OPTIONS /api/v1/account/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3788 - "GET /api/v1/dashboard/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3788 - "GET /api/v1/account/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3791 - "GET /api/v1/account/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3803 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3803 - "GET /api/v1/dashboard/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3823 - "GET /api/v1/dashboard/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3823 - "GET /api/v1/account/profile HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:3929 - "OPTIONS /api/v1/dashboard/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3928 - "OPTIONS /api/v1/navigation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3928 - "GET /api/v1/navigation HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:3929 - "GET /api/v1/dashboard/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3934 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3934 - "GET /api/v1/navigation HTTP/1.1" 404 Not Found

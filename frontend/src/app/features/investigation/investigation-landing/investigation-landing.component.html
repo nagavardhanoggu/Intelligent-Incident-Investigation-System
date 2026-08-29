@@ -1,0 +1,102 @@
+<header class="page-header">
+  <div>
+    <h1>Investigation Workspace</h1>
+    <p class="page-subtitle">
+      Select an incident to correlate context, telemetry, logs, timeline signals, and predictions.
+    </p>
+  </div>
+  <a mat-stroked-button routerLink="/incidents">
+    <mat-icon>list</mat-icon>
+    View all incidents
+  </a>
+</header>
+
+<section class="summary-grid" aria-label="Investigation summary">
+  @for (item of summary(); track item.label) {
+    <mat-card appearance="raised" class="summary-card">
+      <mat-card-header>
+        <div mat-card-avatar class="summary-icon">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </div>
+        <mat-card-title>{{ item.value }}</mat-card-title>
+        <mat-card-subtitle>{{ item.label }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  }
+</section>
+
+<mat-card appearance="raised" class="selector-card">
+  <div class="selector-header">
+    <div>
+      <h2>Choose an incident</h2>
+      <p>Open a focused workspace for the incident you want to investigate.</p>
+    </div>
+
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        matInput
+        type="search"
+        placeholder="Search incident ID, title, or assignee"
+        aria-label="Search investigation incidents"
+        [value]="searchQuery()"
+        (input)="updateSearch($event)"
+      />
+      @if (searchQuery()) {
+        <button mat-icon-button matSuffix type="button" aria-label="Clear search" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
+
+  <div class="incident-grid">
+    @for (incident of filteredIncidents(); track incident.id) {
+      <mat-card appearance="raised" class="incident-card">
+        <mat-card-header>
+          <div mat-card-avatar class="incident-icon">
+            <mat-icon>troubleshoot</mat-icon>
+          </div>
+          <mat-card-title>{{ incident.title }}</mat-card-title>
+          <mat-card-subtitle>{{ incident.incidentKey }}</mat-card-subtitle>
+          <div class="card-priority">
+            <app-severity-chip [value]="incident.priority" />
+          </div>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p class="incident-description">{{ incident.description }}</p>
+
+          <div class="incident-meta">
+            <span><mat-icon>pending_actions</mat-icon>{{ incident.status }}</span>
+            <span><mat-icon>person</mat-icon>{{ incident.assignedUser || 'Unassigned' }}</span>
+            <span><mat-icon>schedule</mat-icon>{{ incident.updatedAt | date: 'medium' }}</span>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions align="end" class="incident-actions">
+          <a mat-button [routerLink]="['/incidents', incident.id]">View details</a>
+          <a mat-flat-button [routerLink]="['/investigation', incident.id]">
+            Open workspace
+            <mat-icon>arrow_forward</mat-icon>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>{{ searchQuery() ? 'search_off' : 'inbox' }}</mat-icon>
+        <strong>{{ searchQuery() ? 'No matching incidents' : 'No incidents available' }}</strong>
+        <span>
+          {{ searchQuery()
+            ? 'Try searching with another incident ID, title, or assignee.'
+            : 'Create an incident before starting an investigation.' }}
+        </span>
+        @if (searchQuery()) {
+          <button mat-stroked-button type="button" (click)="clearSearch()">Clear search</button>
+        } @else {
+          <a mat-stroked-button routerLink="/incidents">Go to incidents</a>
+        }
+      </div>
+    }
+  </div>
+</mat-card>

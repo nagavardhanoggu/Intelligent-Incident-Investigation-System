@@ -1,0 +1,247 @@
+<section class="page-heading">
+  <div>
+    <h1>Incident Prediction</h1>
+    <p class="page-subtitle">Run Decision Tree analysis from incident attributes and review root-cause output.</p>
+  </div>
+  <div class="model-badge">
+    <mat-icon>account_tree</mat-icon>
+    <span>DecisionTreeClassifier</span>
+  </div>
+</section>
+
+<section class="prediction-layout">
+  <mat-card class="analysis-card">
+    <div class="card-heading">
+      <span class="heading-icon"><mat-icon>manage_search</mat-icon></span>
+      <div>
+        <h2>Run Incident Analysis</h2>
+        <p>Enter incident attributes and analyze the most likely root cause.</p>
+      </div>
+    </div>
+
+    <form [formGroup]="predictionForm" (ngSubmit)="analyzeIncident()">
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Priority</mat-label>
+          <mat-select formControlName="priority" required>
+            @for (option of priorityOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Impact</mat-label>
+          <mat-select formControlName="impact" required>
+            @for (option of impactOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Urgency</mat-label>
+          <mat-select formControlName="urgency" required>
+            @for (option of urgencyOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Reassignment Count</mat-label>
+          <input matInput type="number" min="0" formControlName="reassignment_count" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Reopen Count</mat-label>
+          <input matInput type="number" min="0" formControlName="reopen_count" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>SLA Status</mat-label>
+          <mat-select formControlName="sla_status" required>
+            @for (option of slaOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="advanced-heading">
+        <mat-icon>tune</mat-icon>
+        <div>
+          <strong>Model Context</strong>
+          <span>These fields improve prediction quality because they were learned from the historical dataset.</span>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category" required>
+            @for (option of categoryOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Subcategory</mat-label>
+          <mat-select formControlName="subcategory" required>
+            @for (option of subcategoryOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Symptom</mat-label>
+          <mat-select formControlName="u_symptom" required>
+            @for (option of symptomOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Assignment Group</mat-label>
+          <mat-select formControlName="assignment_group" required>
+            @for (option of assignmentGroupOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contact Type</mat-label>
+          <mat-select formControlName="contact_type" required>
+            @for (option of contactTypeOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Knowledge Used</mat-label>
+          <mat-select formControlName="knowledge" required>
+            @for (option of knowledgeOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline" class="compact-field">
+        <mat-label>System Modification Count</mat-label>
+        <input matInput type="number" min="0" formControlName="sys_mod_count" required />
+      </mat-form-field>
+
+      @if (predictionError()) {
+        <p class="error-state">
+          <mat-icon>error</mat-icon>
+          {{ predictionError() }}
+        </p>
+      }
+
+      <button mat-flat-button type="submit" [disabled]="loading()">
+        <span class="button-content">
+          <span class="button-icon-slot">
+            @if (loading()) {
+              <mat-icon class="loading-icon">autorenew</mat-icon>
+            } @else {
+              <mat-icon>psychology</mat-icon>
+            }
+          </span>
+          @if (loading()) {
+            <span>Analyzing...</span>
+          } @else {
+            <span>Analyze Incident</span>
+          }
+        </span>
+      </button>
+    </form>
+  </mat-card>
+
+  <mat-card class="result-card" [class.has-result]="prediction()">
+    <div class="card-heading">
+      <span class="heading-icon"><mat-icon>online_prediction</mat-icon></span>
+      <div>
+        <h2>Prediction Result</h2>
+        <p>Decision Tree model prediction returned by ML service.</p>
+      </div>
+    </div>
+
+    @if (loading()) {
+      <div class="loading-state">
+        <mat-spinner diameter="42" />
+        <strong>Analyzing incident attributes</strong>
+        <p>Calling FastAPI and evaluating the Decision Tree model.</p>
+      </div>
+    } @else if (prediction(); as result) {
+      <section class="root-cause-card">
+        <span>Predicted Root Cause</span>
+        <strong>{{ result.predictedCause }}</strong>
+      </section>
+
+      <section class="confidence-card" [class]="confidenceClass()">
+        <div>
+          <span>Confidence Score</span>
+          <strong>Confidence: {{ confidencePercent() }}%</strong>
+        </div>
+        <mat-progress-bar mode="determinate" [value]="confidencePercent()" />
+      </section>
+
+      <section class="result-section">
+        <h3>Top Probable Causes</h3>
+        <div class="cause-list">
+          @for (cause of result.topProbableCauses; track cause.cause; let index = $index) {
+            <div>
+              <span>{{ index + 1 }}. {{ cause.cause }}</span>
+              <strong>{{ cause.probability | number: '1.0-0' }}%</strong>
+            </div>
+          }
+        </div>
+      </section>
+
+      <section class="result-section">
+        <h3>Key Decision Factors</h3>
+        <mat-chip-set>
+          @for (factor of result.keyDecisionFactors; track factor) {
+            <mat-chip>{{ factor }}</mat-chip>
+          }
+        </mat-chip-set>
+      </section>
+
+      <section class="result-section">
+        <h3>Recommended Actions</h3>
+        <ul>
+          @for (action of result.recommendedActions; track action) {
+            <li><mat-icon>task_alt</mat-icon>{{ action }}</li>
+          }
+        </ul>
+      </section>
+
+      <section class="metadata">
+        <div>
+          <span>Model Version</span>
+          <strong>{{ result.modelVersion }}</strong>
+        </div>
+        <div>
+          <span>Prediction Time</span>
+          <strong>{{ result.predictionTime | date: 'yyyy-MM-dd HH:mm:ss' }}</strong>
+        </div>
+      </section>
+    } @else {
+      <div class="empty-state">
+        <mat-icon>schema</mat-icon>
+        <strong>No prediction generated</strong>
+        <p>Complete the required fields and run incident analysis to view root-cause classification.</p>
+      </div>
+    }
+  </mat-card>
+</section>

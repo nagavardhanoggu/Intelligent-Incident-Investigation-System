@@ -1,0 +1,79 @@
+<h1>Access Role</h1>
+<p class="page-subtitle">Review your assigned role, permission scope, and investigation access.</p>
+
+<section class="scope-grid">
+  @for (item of scopeCards; track item.label) {
+    <mat-card>
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+    </mat-card>
+  }
+</section>
+
+<section class="role-grid">
+  <mat-card class="role-card">
+    <div class="role-hero">
+      <mat-icon>shield</mat-icon>
+      <div>
+        <span>Current Role</span>
+        <strong>{{ user()?.role }}</strong>
+      </div>
+    </div>
+    <p>Role permissions are enforced through route guards, API authorization policies, and audit review workflows.</p>
+    <div class="role-meta">
+      <span>Account</span>
+      <strong>{{ user()?.email }}</strong>
+    </div>
+    <div class="role-meta">
+      <span>Status</span>
+      <strong>{{ accountStatus }}</strong>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h2>Permission Matrix</h2>
+    <div class="permission-list">
+      @for (permission of permissions; track permission.label) {
+        <article>
+          <mat-icon>{{ permission.enabled ? 'check_circle' : 'cancel' }}</mat-icon>
+          <div>
+            <strong>{{ permission.label }}</strong>
+            <span>{{ permission.description }}</span>
+          </div>
+          <small>{{ permission.area }}</small>
+          <mat-chip>{{ permission.enabled ? 'Allowed' : 'Blocked' }}</mat-chip>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>
+
+<section class="access-grid">
+  <mat-card>
+    <h2>Access Boundaries</h2>
+    <div class="boundary-list">
+      @for (item of boundaries; track item.label) {
+        <article>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+        </article>
+      }
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h2>Audit Trail</h2>
+    <div class="audit-list">
+      @for (item of auditTrail; track item.event) {
+        <article>
+          <mat-icon>history</mat-icon>
+          <div>
+            <strong>{{ item.event }}</strong>
+            <span>{{ item.time | date: 'MMM d, y, h:mm a' }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </mat-card>
+</section>

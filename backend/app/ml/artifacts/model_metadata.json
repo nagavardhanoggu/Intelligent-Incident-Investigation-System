@@ -1,0 +1,95 @@
+{
+  "accuracy": 0.9516,
+  "macro_precision": 0.9516055170664341,
+  "macro_recall": 0.9516,
+  "macro_f1": 0.9515998854120984,
+  "classification_report": {
+    "Application Failure": {
+      "precision": 0.9525083612040134,
+      "recall": 0.9493333333333334,
+      "f1-score": 0.9509181969949917,
+      "support": 6000.0
+    },
+    "Database Issue": {
+      "precision": 0.9503664223850766,
+      "recall": 0.951,
+      "f1-score": 0.9506831056314562,
+      "support": 6000.0
+    },
+    "Deployment Issue": {
+      "precision": 0.9510896689402761,
+      "recall": 0.9528333333333333,
+      "f1-score": 0.9519607026892015,
+      "support": 6000.0
+    },
+    "Memory Leak": {
+      "precision": 0.9495937655446858,
+      "recall": 0.9545,
+      "f1-score": 0.9520405618818053,
+      "support": 6000.0
+    },
+    "Network Issue": {
+      "precision": 0.9544693672581185,
+      "recall": 0.9503333333333334,
+      "f1-score": 0.9523968598630366,
+      "support": 6000.0
+    },
+    "accuracy": 0.9516,
+    "macro avg": {
+      "precision": 0.9516055170664341,
+      "recall": 0.9516,
+      "f1-score": 0.9515998854120984,
+      "support": 30000.0
+    },
+    "weighted avg": {
+      "precision": 0.951605517066434,
+      "recall": 0.9516,
+      "f1-score": 0.9515998854120983,
+      "support": 30000.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      5696,
+      0,
+      0,
+      304,
+      0
+    ],
+    [
+      0,
+      5706,
+      294,
+      0,
+      0
+    ],
+    [
+      283,
+      0,
+      5717,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      5727,
+      272
+    ],
+    [
+      0,
+      298,
+      0,
+      0,
+      5702
+    ]
+  ],
+  "labels": [
+    "Application Failure",
+    "Database Issue",
+    "Deployment Issue",
+    "Memory Leak",
+    "Network Issue"
+  ]
+}

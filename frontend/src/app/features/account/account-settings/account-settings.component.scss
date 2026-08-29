@@ -1,0 +1,162 @@
+h1 {
+  margin: 0;
+}
+
+.page-subtitle {
+  margin-bottom: 20px;
+}
+
+.summary-grid,
+.settings-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.summary-grid {
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  margin-bottom: 16px;
+}
+
+.settings-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
+}
+
+.lower-grid {
+  margin-top: 16px;
+}
+
+mat-card {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.summary-grid mat-card {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  gap: 5px 12px;
+  min-height: 104px;
+  border-left: 4px solid #f04b23;
+}
+
+.summary-grid mat-card.watch {
+  border-left-color: #f79009;
+}
+
+.summary-grid mat-icon {
+  grid-row: span 2;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 10px;
+  background: #fff1eb;
+  color: #f04b23;
+}
+
+.summary-grid mat-card.watch mat-icon {
+  background: #fff4db;
+  color: #f79009;
+}
+
+.summary-grid span {
+  color: #667085;
+  font-size: 13px;
+}
+
+.summary-grid strong {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+h2,
+.card-heading {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-heading h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.card-heading button {
+  color: #f04b23;
+  font-weight: 700;
+}
+
+.setting-list {
+  display: grid;
+  gap: 12px;
+}
+
+.setting-list article,
+.session-list article {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.setting-list mat-icon {
+  color: #f04b23;
+}
+
+.setting-list strong,
+.setting-list span,
+.session-list strong,
+.session-list span {
+  display: block;
+}
+
+.setting-list strong,
+.session-list strong {
+  font-size: 14px;
+}
+
+.setting-list span,
+.session-list span {
+  margin-top: 3px;
+  color: #667085;
+  font-size: 13px;
+}
+
+.read-only-row mat-chip,
+.session-list mat-chip {
+  --mdc-chip-label-text-color: #087443;
+  --mdc-chip-elevated-container-color: #e7f8ef;
+}
+
+.session-list {
+  display: grid;
+  gap: 12px;
+}
+
+.session-list mat-icon {
+  color: #f04b23;
+}
+
+@media (max-width: 900px) {
+  .summary-grid,
+  .settings-grid,
+  .setting-list article,
+  .session-list article {
+    grid-template-columns: 1fr;
+  }
+}

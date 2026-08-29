@@ -1,0 +1,88 @@
+@if (loading()) {
+  <mat-card class="state-card">Loading page data...</mat-card>
+} @else if (error()) {
+  <mat-card class="state-card error-card">
+    <mat-icon>error</mat-icon>
+    <span>{{ error() }}</span>
+  </mat-card>
+} @else if (page(); as pageData) {
+  <header class="feature-header">
+    <div>
+      <h1>{{ pageData.title }}</h1>
+      <p class="page-subtitle">{{ pageData.subtitle }}</p>
+    </div>
+    @if (pageData.pill) {
+      <span class="header-pill">
+        <mat-icon>{{ pageData.pill.icon }}</mat-icon>
+        {{ pageData.pill.label }}
+      </span>
+    }
+  </header>
+
+  <section class="kpi-grid">
+    @for (kpi of pageData.kpis; track kpi.label) {
+      <mat-card class="kpi-card" [ngClass]="stateClass(kpi.state)">
+        <mat-icon>{{ kpi.icon }}</mat-icon>
+        <span>{{ kpi.label }}</span>
+        <strong>{{ kpi.value }}</strong>
+        <small>{{ kpi.helper }}</small>
+      </mat-card>
+    }
+  </section>
+
+  <section class="feature-grid">
+    @for (section of pageData.sections; track section.title) {
+      <mat-card class="section-card">
+        <div class="section-title">
+          <div>
+            <h2>{{ section.title }}</h2>
+            @if (section.caption) {
+              <span>{{ section.caption }}</span>
+            }
+          </div>
+          <small>{{ section.items.length }} items</small>
+        </div>
+
+        <div class="feature-list">
+          @for (item of section.items; track item.title) {
+            <a class="feature-item" [routerLink]="item.route || null" [class.clickable]="item.route" [attr.aria-disabled]="!item.route">
+              <span class="item-icon">
+                <mat-icon>{{ itemIcon(item.icon) }}</mat-icon>
+              </span>
+              <div class="item-copy">
+                <div class="item-head">
+                  <strong>{{ item.title }}</strong>
+                  @if (item.status) {
+                    <em class="status-chip" [ngClass]="stateClass(item.status)">{{ item.status }}</em>
+                  }
+                </div>
+                @if (item.subtitle) {
+                  <span>{{ item.subtitle }}</span>
+                }
+                <p>{{ item.detail }}</p>
+                @if (item.meta) {
+                  <small>{{ item.meta }}</small>
+                }
+                @if (item.progress !== undefined) {
+                  <mat-progress-bar mode="determinate" [value]="item.progress" />
+                }
+                @if (item.tags?.length) {
+                  <mat-chip-set>
+                    @for (tag of item.tags; track tag) {
+                      <mat-chip>{{ tag }}</mat-chip>
+                    }
+                  </mat-chip-set>
+                }
+              </div>
+            </a>
+          } @empty {
+            <div class="empty-list">
+              <mat-icon>inbox</mat-icon>
+              <span>No records available.</span>
+            </div>
+          }
+        </div>
+      </mat-card>
+    }
+  </section>
+}

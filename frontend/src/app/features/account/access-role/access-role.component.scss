@@ -1,0 +1,274 @@
+h1 {
+  margin: 0;
+}
+
+.page-subtitle {
+  margin-bottom: 20px;
+}
+
+.scope-grid,
+.role-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.scope-grid {
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  margin-bottom: 16px;
+}
+
+.role-grid {
+  grid-template-columns: 340px minmax(0, 1fr);
+  margin-bottom: 16px;
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: 16px;
+}
+
+.access-grid mat-card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  max-height: min(560px, calc(100vh - 300px));
+  overflow: hidden;
+}
+
+mat-card {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.scope-grid mat-card {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  gap: 5px 12px;
+  min-height: 104px;
+}
+
+.scope-grid mat-icon {
+  grid-row: span 2;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 10px;
+  background: #fff1eb;
+  color: #f04b23;
+}
+
+.scope-grid span,
+.role-card span,
+.permission-list span,
+.permission-list small,
+.audit-list span {
+  color: #667085;
+}
+
+.scope-grid strong {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.role-card {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  border-left: 4px solid #f04b23;
+}
+
+.role-hero {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.role-hero mat-icon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 14px;
+  background: #fff1eb;
+  color: #f04b23;
+  font-size: 34px;
+}
+
+.role-card strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.role-card p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.45;
+}
+
+.role-meta {
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.role-meta strong {
+  overflow: hidden;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+h2 {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e7ec;
+  font-size: 20px;
+}
+
+.permission-list {
+  display: grid;
+  gap: 10px;
+  max-height: min(560px, calc(100vh - 330px));
+  overflow-y: auto;
+  padding-right: 6px;
+  overscroll-behavior: contain;
+  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.permission-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.permission-list::-webkit-scrollbar-thumb {
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: #cbd5e1;
+}
+
+.permission-list article {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 150px auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.permission-list mat-icon {
+  color: #12b76a;
+}
+
+.permission-list strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+.permission-list span,
+.permission-list small {
+  font-size: 13px;
+}
+
+mat-chip {
+  --mdc-chip-label-text-color: #087443;
+  --mdc-chip-elevated-container-color: #e7f8ef;
+}
+
+.boundary-list,
+.audit-list {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.boundary-list {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 6px;
+  overscroll-behavior: contain;
+  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.boundary-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.boundary-list::-webkit-scrollbar-thumb {
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: #cbd5e1;
+}
+
+.boundary-list article,
+.audit-list article {
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.boundary-list article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+}
+
+.boundary-list span {
+  color: #344054;
+}
+
+.boundary-list strong {
+  color: #d43f1d;
+  font-size: 13px;
+}
+
+.audit-list article {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.audit-list mat-icon {
+  color: #f04b23;
+}
+
+.audit-list strong {
+  display: block;
+  font-size: 14px;
+}
+
+.audit-list span {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .scope-grid,
+  .role-grid,
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .permission-list article {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+  .permission-list small,
+  .permission-list mat-chip {
+    grid-column: 2;
+    width: fit-content;
+  }
+}

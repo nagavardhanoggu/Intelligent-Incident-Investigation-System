@@ -1,0 +1,11 @@
+timestamp,level,service,event,message,status_code,response_time_ms,error_code
+2026-08-25T10:00:00Z,INFO,payment-gateway,DEPLOYMENT_STARTED,Payment gateway deployment started,200,120,
+2026-08-25T10:02:00Z,INFO,checkout-service,SERVICE_RESTART,Checkout service restarted by Kubernetes,200,180,
+2026-08-25T10:05:00Z,WARN,checkout-service,CPU_SPIKE,CPU usage crossed 90 percent threshold,200,980,
+2026-08-25T10:06:02Z,ERROR,checkout-service,DATABASE_TIMEOUT,Database connection timeout from checkout-primary,504,2400,DB_TIMEOUT
+2026-08-25T10:06:11Z,ERROR,payment-gateway,CALLBACK_FAILED,Payment callback failed while waiting for checkout response,504,2310,GATEWAY_TIMEOUT
+2026-08-25T10:07:18Z,WARN,orders-api,CONNECTION_POOL_HIGH,Database connection pool saturation detected,200,1450,POOL_SATURATION
+2026-08-25T10:08:43Z,ERROR,checkout-service,SLA_BREACH,Checkout failure rate breached SLA threshold,500,2600,SLA_BREACH
+2026-08-25T10:10:05Z,INFO,checkout-service,ROLLBACK_STARTED,Rollback initiated for latest payment gateway deployment,200,820,
+2026-08-25T10:11:30Z,INFO,database,POOL_RECOVERY,Database connection pool returned below alert threshold,200,430,
+2026-08-25T10:12:00Z,INFO,checkout-service,INCIDENT_STABILIZED,Checkout latency and errors returned to normal range,200,260,

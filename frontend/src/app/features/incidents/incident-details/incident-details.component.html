@@ -1,0 +1,125 @@
+@if (viewModel$ | async; as viewModel) {
+  <section class="details-page">
+    <header class="page-hero">
+      <div>
+        <span class="eyebrow">{{ viewModel.workspace.incident.incidentKey }}</span>
+        <h1>{{ viewModel.workspace.incident.title }}</h1>
+        <p class="page-subtitle">{{ viewModel.workspace.incident.description }}</p>
+      </div>
+      <div class="hero-actions">
+        <app-severity-chip [value]="viewModel.workspace.incident.priority" />
+        <a mat-flat-button [routerLink]="['/investigation', viewModel.workspace.incident.id]">
+          <mat-icon>manage_search</mat-icon>
+          Open Workspace
+        </a>
+      </div>
+    </header>
+
+    <section class="impact-grid">
+      @for (item of impactSummary(viewModel.workspace); track item.label) {
+        <mat-card class="impact-card">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+          <small>{{ item.note }}</small>
+        </mat-card>
+      }
+    </section>
+
+    <section class="content-grid">
+      <mat-card class="overview-card">
+        <div class="card-title">
+          <h2>Incident Overview</h2>
+          <span class="status-pill">{{ viewModel.workspace.incident.status }}</span>
+        </div>
+        <dl class="meta-grid">
+          <div><dt>Assigned Engineer</dt><dd>{{ viewModel.workspace.incident.assignedUser }}</dd></div>
+          <div><dt>Impact</dt><dd>{{ viewModel.workspace.incident.impact }}</dd></div>
+          <div><dt>Urgency</dt><dd>{{ viewModel.workspace.incident.urgency }}</dd></div>
+          <div><dt>Created</dt><dd>{{ viewModel.workspace.incident.createdAt | date: 'MMM d, h:mm a' }}</dd></div>
+          <div><dt>Last Updated</dt><dd>{{ viewModel.workspace.incident.updatedAt | date: 'MMM d, h:mm a' }}</dd></div>
+          <div><dt>Escalation Owner</dt><dd>{{ viewModel.workspace.incident.assignedUser }}</dd></div>
+        </dl>
+      </mat-card>
+
+      @if (viewModel.workspace.prediction; as prediction) {
+        <mat-card class="prediction-card">
+          <div class="card-title">
+            <h2>Root Cause Prediction</h2>
+            <span>{{ prediction.modelVersion }}</span>
+          </div>
+          <div class="prediction-score">
+            <mat-icon>psychology</mat-icon>
+            <div><span>Most likely cause</span><strong>{{ prediction.predictedCause }}</strong></div>
+            <b>{{ prediction.confidenceScore * 100 }}%</b>
+          </div>
+          <mat-progress-bar mode="determinate" [value]="prediction.confidenceScore * 100" />
+          <mat-chip-set>
+            @for (action of viewModel.workspace.recommendedActions; track action) {
+              <mat-chip>{{ action }}</mat-chip>
+            }
+          </mat-chip-set>
+        </mat-card>
+      }
+    </section>
+
+    <section class="content-grid lower">
+      <mat-card>
+        <div class="card-title"><h2>Timeline</h2><span>{{ viewModel.workspace.timeline.length }} events</span></div>
+        <ol class="timeline">
+          @for (event of viewModel.workspace.timeline; track event.id) {
+            <li>
+              <time>{{ event.eventTime | date: 'MMM d, h:mm a' }}</time>
+              <span class="timeline-marker"></span>
+              <div><strong>{{ event.eventType }}</strong><p>{{ event.description }}</p><small>{{ event.source }}</small></div>
+            </li>
+          }
+        </ol>
+      </mat-card>
+
+      <mat-card>
+        <div class="card-title"><h2>Metrics Snapshot</h2><span>{{ viewModel.workspace.metrics.length }} records</span></div>
+        <div class="metric-list">
+          @for (metric of viewModel.workspace.metrics; track metric.id) {
+            <article>
+              <time>{{ metric.capturedAt | date: 'h:mm a' }}</time>
+              <div><span>CPU {{ metric.cpuUsage || 0 }}%</span><mat-progress-bar mode="determinate" [value]="metric.cpuUsage || 0" /></div>
+              <div><span>Errors {{ metric.errorRate || 0 }}%</span><mat-progress-bar mode="determinate" [value]="(metric.errorRate || 0) * 10" /></div>
+            </article>
+          }
+        </div>
+      </mat-card>
+    </section>
+
+    <section class="content-grid lower">
+      <mat-card>
+        <div class="card-title"><h2>Log Evidence</h2><span>{{ viewModel.workspace.logs.length }} files</span></div>
+        <div class="log-list">
+          @for (log of evidenceLogs(viewModel.workspace); track log) {
+            <code [title]="log">{{ log }}</code>
+          } @empty {
+            <span>No parsed log evidence is stored for this incident.</span>
+          }
+        </div>
+      </mat-card>
+
+      <mat-card>
+        <div class="card-title"><h2>Related Resolutions</h2><span>{{ viewModel.resolutions.length }} articles</span></div>
+        <div class="resolution-list">
+          @for (resolution of viewModel.resolutions; track resolution.id) {
+            <article><strong>{{ resolution.incidentTitle }}</strong><span>{{ resolution.rootCause }}</span><p>{{ resolution.resolution }}</p></article>
+          } @empty {
+            <span>No resolution article is stored for this incident.</span>
+          }
+        </div>
+      </mat-card>
+    </section>
+  </section>
+} @else {
+  <mat-card class="empty-state">
+    <mat-icon>search_off</mat-icon>
+    <h1>Incident Not Found</h1>
+    <p class="page-subtitle">The selected incident is unavailable or may have been removed.</p>
+    <a mat-flat-button routerLink="/incidents">Back to Incidents</a>
+  </mat-card>
+}
