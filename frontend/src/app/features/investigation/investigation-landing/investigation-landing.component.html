@@ -13,19 +13,21 @@
 
 <section class="summary-grid" aria-label="Investigation summary">
   @for (item of summary(); track item.label) {
-    <mat-card appearance="raised" class="summary-card">
-      <mat-card-header>
-        <div mat-card-avatar class="summary-icon">
+    <mat-card class="summary-card">
+      <div class="summary-card-top">
+        <span class="summary-card-icon">
           <mat-icon>{{ item.icon }}</mat-icon>
+        </span>
+        <div>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
         </div>
-        <mat-card-title>{{ item.value }}</mat-card-title>
-        <mat-card-subtitle>{{ item.label }}</mat-card-subtitle>
-      </mat-card-header>
+      </div>
     </mat-card>
   }
 </section>
 
-<mat-card appearance="raised" class="selector-card">
+<mat-card class="selector-card">
   <div class="selector-header">
     <div>
       <h2>Choose an incident</h2>
@@ -52,7 +54,7 @@
 
   <div class="incident-grid">
     @for (incident of filteredIncidents(); track incident.id) {
-      <mat-card appearance="raised" class="incident-card">
+      <mat-card class="incident-card">
         <mat-card-header>
           <div mat-card-avatar class="incident-icon">
             <mat-icon>troubleshoot</mat-icon>

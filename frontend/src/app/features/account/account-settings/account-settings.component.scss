@@ -33,14 +33,12 @@ mat-card {
 .summary-grid mat-card {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-rows: auto auto;
   align-items: center;
-  gap: 5px 12px;
-  min-height: 104px;
-  border-left: 4px solid #f04b23;
-}
-
-.summary-grid mat-card.watch {
-  border-left-color: #f79009;
+  align-content: center;
+  gap: 6px 14px;
+  min-height: 118px;
+  padding: 18px 24px;
 }
 
 .summary-grid mat-icon {
@@ -54,19 +52,17 @@ mat-card {
   color: #f04b23;
 }
 
-.summary-grid mat-card.watch mat-icon {
-  background: #fff4db;
-  color: #f79009;
-}
-
 .summary-grid span {
-  color: #667085;
-  font-size: 13px;
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
 }
 
 .summary-grid strong {
-  font-size: 22px;
-  line-height: 1.1;
+  color: #101828;
+  font-size: 24px;
+  line-height: 1;
 }
 
 h2,
@@ -77,6 +73,9 @@ h2,
 }
 
 h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
   font-size: 20px;
 }
 
@@ -93,6 +92,19 @@ h2 {
   border: 0;
 }
 
+.card-heading > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.card-heading p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .card-heading button {
   color: #f04b23;
   font-weight: 700;
@@ -106,16 +118,34 @@ h2 {
 .setting-list article,
 .session-list article {
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 14px;
+  min-height: 78px;
+  padding: 14px 16px;
   border-radius: 8px;
   background: #f8fafc;
 }
 
-.setting-list mat-icon {
+.setting-list article > div,
+.session-list article > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.setting-list mat-icon,
+.session-list mat-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
+  border-radius: 8px;
+  background: #ffe1d8;
   color: #f04b23;
+  font-size: 22px;
+  line-height: 1;
 }
 
 .setting-list strong,
@@ -132,9 +162,16 @@ h2 {
 
 .setting-list span,
 .session-list span {
-  margin-top: 3px;
   color: #667085;
   font-size: 13px;
+  line-height: 1.35;
+}
+
+.setting-list mat-slide-toggle,
+.read-only-row mat-chip,
+.session-list mat-chip {
+  align-self: start;
+  margin-top: 1px;
 }
 
 .read-only-row mat-chip,
@@ -146,10 +183,6 @@ h2 {
 .session-list {
   display: grid;
   gap: 12px;
-}
-
-.session-list mat-icon {
-  color: #f04b23;
 }
 
 @media (max-width: 900px) {

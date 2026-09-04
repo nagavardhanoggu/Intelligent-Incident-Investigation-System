@@ -24,8 +24,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Priority</mat-label>
           <mat-select formControlName="priority" required>
-            @for (option of priorityOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().priority; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -33,8 +33,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Impact</mat-label>
           <mat-select formControlName="impact" required>
-            @for (option of impactOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().impact; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -42,8 +42,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Urgency</mat-label>
           <mat-select formControlName="urgency" required>
-            @for (option of urgencyOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().urgency; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -63,8 +63,8 @@
         <mat-form-field appearance="outline">
           <mat-label>SLA Status</mat-label>
           <mat-select formControlName="sla_status" required>
-            @for (option of slaOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().sla_status; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -82,8 +82,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
           <mat-select formControlName="category" required>
-            @for (option of categoryOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().category; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -91,8 +91,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Subcategory</mat-label>
           <mat-select formControlName="subcategory" required>
-            @for (option of subcategoryOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().subcategory; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -100,8 +100,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Symptom</mat-label>
           <mat-select formControlName="u_symptom" required>
-            @for (option of symptomOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().u_symptom; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -111,8 +111,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Assignment Group</mat-label>
           <mat-select formControlName="assignment_group" required>
-            @for (option of assignmentGroupOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().assignment_group; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -120,8 +120,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Contact Type</mat-label>
           <mat-select formControlName="contact_type" required>
-            @for (option of contactTypeOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().contact_type; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -129,8 +129,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Knowledge Used</mat-label>
           <mat-select formControlName="knowledge" required>
-            @for (option of knowledgeOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+            @for (option of predictionOptions().knowledge; track option) {
+              <mat-option [value]="option">{{ formatOption(option) }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -141,6 +141,13 @@
         <input matInput type="number" min="0" formControlName="sys_mod_count" required />
       </mat-form-field>
 
+      @if (optionsError()) {
+        <p class="error-state">
+          <mat-icon>error</mat-icon>
+          {{ optionsError() }}
+        </p>
+      }
+
       @if (predictionError()) {
         <p class="error-state">
           <mat-icon>error</mat-icon>
@@ -148,16 +155,18 @@
         </p>
       }
 
-      <button mat-flat-button type="submit" [disabled]="loading()">
+      <button mat-flat-button type="submit" [disabled]="loading() || optionsLoading()">
         <span class="button-content">
           <span class="button-icon-slot">
-            @if (loading()) {
+            @if (loading() || optionsLoading()) {
               <mat-icon class="loading-icon">autorenew</mat-icon>
             } @else {
               <mat-icon>psychology</mat-icon>
             }
           </span>
-          @if (loading()) {
+          @if (optionsLoading()) {
+            <span>Loading fields...</span>
+          } @else if (loading()) {
             <span>Analyzing...</span>
           } @else {
             <span>Analyze Incident</span>

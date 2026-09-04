@@ -1,13 +1,17 @@
 @if (loading()) {
-  <mat-card class="state-card">Loading page data...</mat-card>
+  <mat-card class="state-card">Loading subpage data...</mat-card>
 } @else if (error()) {
   <mat-card class="state-card error-card">
     <mat-icon>error</mat-icon>
     <span>{{ error() }}</span>
   </mat-card>
 } @else if (page(); as pageData) {
-  <header class="feature-header">
+  <header class="feature-header detail-header">
     <div>
+      <a mat-button class="back-link" [routerLink]="parentRoute()">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Back to {{ parentLabel() }}</span>
+      </a>
       <h1>{{ pageData.title }}</h1>
       <p class="page-subtitle">{{ pageData.subtitle }}</p>
     </div>
@@ -35,7 +39,7 @@
     }
   </section>
 
-  <section class="feature-grid">
+  <section class="feature-grid detail-grid">
     @for (section of pageData.sections; track section.title) {
       <mat-card class="section-card">
         <div class="section-title">

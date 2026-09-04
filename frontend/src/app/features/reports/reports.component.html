@@ -20,13 +20,28 @@
   </mat-card>
 } @else if (kpis(); as reportKpis) {
   <section class="cards">
-    <mat-card><span>Average MTTR</span><strong>{{ reportKpis.averageMttr }}</strong></mat-card>
-    <mat-card><span>SLA Compliance</span><strong>{{ reportKpis.slaCompliance }}</strong></mat-card>
-    <mat-card><span>Repeat Incidents</span><strong>{{ reportKpis.repeatIncidents }}</strong></mat-card>
+    @for (card of reportCards(); track card.label) {
+      <mat-card class="summary-card">
+        <div class="summary-card-top">
+          <span class="summary-card-icon">
+            <mat-icon>{{ card.icon }}</mat-icon>
+          </span>
+          <div>
+            <span>{{ card.label }}</span>
+            <strong>{{ card.value }}</strong>
+          </div>
+        </div>
+      </mat-card>
+    }
   </section>
 
   <mat-card>
-    <h2>Monthly Incident Report</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Monthly Incident Report</h2>
+        <p>Monthly incident volume, critical count, MTTR, and SLA performance.</p>
+      </div>
+    </div>
     @if (rows().length) {
       <table mat-table [dataSource]="rows()">
         <ng-container matColumnDef="month">
@@ -59,7 +74,12 @@
 
   <section class="report-grid">
     <mat-card>
-      <h2>Report Insights</h2>
+      <div class="card-heading">
+        <div>
+          <h2>Report Insights</h2>
+          <p>Operational patterns derived from the current reporting dataset.</p>
+        </div>
+      </div>
       <div class="insight-list">
         @for (insight of insights(); track insight.title) {
           <article [class.warning]="insight.severity === 'warning'" [class.critical]="insight.severity === 'critical'">
@@ -74,7 +94,12 @@
     </mat-card>
 
     <mat-card>
-      <h2>Review Checklist</h2>
+      <div class="card-heading">
+        <div>
+          <h2>Review Checklist</h2>
+          <p>Follow-up checks for recurring risk and SLA ownership review.</p>
+        </div>
+      </div>
       <div class="review-list">
         @for (item of reviewItems(); track item.title; let index = $index) {
           <article>

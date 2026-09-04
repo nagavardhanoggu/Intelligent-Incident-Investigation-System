@@ -86,6 +86,16 @@
         <div class="topbar-actions">
           <button
             mat-icon-button
+            class="theme-toggle-button"
+            type="button"
+            [attr.aria-label]="themeToggleLabel()"
+            [title]="themeToggleLabel()"
+            (click)="toggleTheme()"
+          >
+            <mat-icon>{{ themeIcon() }}</mat-icon>
+          </button>
+          <button
+            mat-icon-button
             class="alerts-button"
             type="button"
             aria-label="Open alerts"
@@ -96,7 +106,7 @@
           >
             <mat-icon>notifications</mat-icon>
           </button>
-          <mat-menu #alertsMenu="matMenu" yPosition="below" xPosition="before" panelClass="alerts-menu-panel">
+          <mat-menu #alertsMenu="matMenu" yPosition="below" xPosition="before" class="alerts-menu-panel">
             <div class="alerts-header" (click)="$event.stopPropagation()">
               <div>
                 <strong>Notifications</strong>
@@ -132,14 +142,38 @@
             <mat-icon class="chevron">expand_more</mat-icon>
           </button>
           <mat-menu #profileMenu="matMenu" yPosition="below" xPosition="before" class="profile-menu-panel">
-            <a mat-menu-item routerLink="/account/profile">
-              <mat-icon>person</mat-icon>
-              <span>Profile</span>
-            </a>
-            <button mat-menu-item type="button" class="signout-menu-item" (click)="logout()">
-              <mat-icon>logout</mat-icon>
-              <span>Sign out</span>
-            </button>
+            @if (user(); as currentUser) {
+              <div class="profile-menu-summary" (click)="$event.stopPropagation()">
+                <span class="avatar large">{{ currentUser.fullName.charAt(0) }}</span>
+                <span class="profile-menu-identity">
+                  <strong>{{ currentUser.fullName }}</strong>
+                  <small>{{ currentUser.email }}</small>
+                </span>
+                <span class="profile-menu-meta">
+                  <span class="role-pill">{{ currentUser.role }}</span>
+                  <span>{{ permissionCount() }} permissions</span>
+                </span>
+              </div>
+            }
+
+            <div class="profile-menu-links">
+              @for (item of visibleAccountMenuLinks(); track item.route) {
+                <a mat-menu-item [routerLink]="item.route">
+                  <mat-icon>{{ item.icon }}</mat-icon>
+                  <span class="menu-link-copy">
+                    <strong>{{ item.label }}</strong>
+                    <small>{{ item.detail }}</small>
+                  </span>
+                </a>
+              }
+            </div>
+
+            <div class="profile-menu-footer">
+              <button mat-menu-item type="button" class="signout-menu-item" (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Sign out</span>
+              </button>
+            </div>
           </mat-menu>
         </div>
       </div>

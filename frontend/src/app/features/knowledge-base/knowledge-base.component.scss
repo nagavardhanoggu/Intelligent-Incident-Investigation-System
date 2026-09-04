@@ -17,22 +17,61 @@ h1 {
   border-radius: 8px;
 }
 
-.summary-grid mat-card {
+.summary-grid .summary-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 118px;
+  padding: 18px 24px;
+}
+
+.summary-grid .summary-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.summary-grid .summary-card-top div {
   display: grid;
-  gap: 8px;
+  min-width: 0;
+  gap: 6px;
 }
 
-.summary-grid mat-icon {
+.summary-grid .summary-card-icon {
+  display: grid;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
+  border-radius: 8px;
+  background: #ffe1d8;
   color: #d43f1d;
+  font-size: 22px;
+  line-height: 1;
 }
 
-.summary-grid span {
-  color: #667085;
+.summary-grid .summary-card-icon mat-icon {
+  width: 21px;
+  height: 21px;
+  font-size: 21px;
+  line-height: 1;
 }
 
-.summary-grid strong {
+.summary-grid .summary-card-top span:not(.summary-card-icon) {
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.summary-grid .summary-card-top strong {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .knowledge-layout {
@@ -117,10 +156,29 @@ h2 {
   color: #ffffff;
 }
 
-.quick-card h2,
+.card-heading,
 .section-title {
   padding-bottom: 12px;
   border-bottom: 1px solid #e4e7ec;
+}
+
+.card-heading {
+  margin-bottom: 12px;
+}
+
+.card-heading div,
+.section-title div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.card-heading p,
+.section-title p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .quick-links {

@@ -308,7 +308,7 @@ export class UserManagementComponent {
   }
 
   private showMessage(message: string): void {
-    this.snackBar.open(message, '×', {
+    this.snackBar.open(message, 'Close', {
       duration: 3500,
       horizontalPosition: 'right',
       verticalPosition: 'top',

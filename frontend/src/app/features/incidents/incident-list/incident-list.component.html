@@ -11,7 +11,7 @@
   }
 </header>
 
-<section class="filters-panel" aria-label="Incident filters">
+<mat-card class="filters-panel" aria-label="Incident filters">
   <mat-form-field appearance="outline" class="search-filter">
     <mat-icon matPrefix>search</mat-icon>
     <input
@@ -31,7 +31,7 @@
       (selectionChange)="updatePriority($event.value)"
     >
       <mat-option value="ALL">All priorities</mat-option>
-      @for (priority of priorityOptions; track priority) {
+      @for (priority of priorityOptions(); track priority) {
         <mat-option [value]="priority">{{ priority }}</mat-option>
       }
     </mat-select>
@@ -44,7 +44,7 @@
       (selectionChange)="updateStatus($event.value)"
     >
       <mat-option value="ALL">All statuses</mat-option>
-      @for (status of statusOptions; track status) {
+      @for (status of statusOptions(); track status) {
         <mat-option [value]="status">{{ status }}</mat-option>
       }
     </mat-select>
@@ -67,84 +67,92 @@
     <mat-icon>filter_alt_off</mat-icon>
     Clear
   </button>
-</section>
+</mat-card>
 
-<div class="table-summary">
-  <span>{{ filteredIncidents().length }} incidents shown</span>
-</div>
+<mat-card class="table-panel">
+  <div class="table-summary">
+    <div>
+      <h2>Incident Registry</h2>
+      <p>Filtered incident records from the investigation database.</p>
+    </div>
+    <span>{{ filteredIncidents().length }} incidents shown</span>
+  </div>
 
-<table mat-table [dataSource]="filteredIncidents()" class="incident-table">
-  <ng-container matColumnDef="incidentKey">
-    <th mat-header-cell *matHeaderCellDef>Incident ID</th>
-    <td mat-cell *matCellDef="let incident">{{ incident.incidentKey }}</td>
-  </ng-container>
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell *matCellDef="let incident">{{ incident.title }}</td>
-  </ng-container>
-  <ng-container matColumnDef="priority">
-    <th mat-header-cell *matHeaderCellDef>Priority</th>
-    <td mat-cell *matCellDef="let incident"><app-severity-chip [value]="incident.priority" /></td>
-  </ng-container>
-  <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef>Status</th>
-    <td mat-cell *matCellDef="let incident">{{ incident.status }}</td>
-  </ng-container>
-  <ng-container matColumnDef="assignedUser">
-    <th mat-header-cell *matHeaderCellDef>Assigned</th>
-    <td mat-cell *matCellDef="let incident">{{ incident.assignedUser }}</td>
-  </ng-container>
-  <ng-container matColumnDef="createdAt">
-    <th mat-header-cell *matHeaderCellDef>Created</th>
-    <td mat-cell *matCellDef="let incident">{{ incident.createdAt }}</td>
-  </ng-container>
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Actions</th>
-    <td mat-cell *matCellDef="let incident" class="actions-cell">
-      <div class="row-actions">
-        <a
-          mat-icon-button
-          class="view-action"
-          [routerLink]="['/incidents', incident.id]"
-          aria-label="View incident"
-          matTooltip="View incident"
-          matTooltipPosition="below"
-        >
-          <mat-icon>visibility</mat-icon>
-        </a>
-        @if (canEditIncident()) {
-          <button
-            mat-icon-button
-            class="edit-action"
-            type="button"
-            aria-label="Edit incident"
-            matTooltip="Edit incident"
-            matTooltipPosition="below"
-            (click)="editIncident(incident)"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        }
-        @if (canDeleteIncident()) {
-          <button
-            mat-icon-button
-            class="delete-action"
-            type="button"
-            aria-label="Delete incident"
-            matTooltip="Delete incident"
-            matTooltipPosition="below"
-            (click)="deleteIncident(incident)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        }
-      </div>
-    </td>
-  </ng-container>
+  <div class="table-scroll">
+    <table mat-table [dataSource]="filteredIncidents()" class="incident-table">
+      <ng-container matColumnDef="incidentKey">
+        <th mat-header-cell *matHeaderCellDef>Incident ID</th>
+        <td mat-cell *matCellDef="let incident">{{ incident.incidentKey }}</td>
+      </ng-container>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let incident">{{ incident.title }}</td>
+      </ng-container>
+      <ng-container matColumnDef="priority">
+        <th mat-header-cell *matHeaderCellDef>Priority</th>
+        <td mat-cell *matCellDef="let incident"><app-severity-chip [value]="incident.priority" /></td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let incident">{{ incident.status }}</td>
+      </ng-container>
+      <ng-container matColumnDef="assignedUser">
+        <th mat-header-cell *matHeaderCellDef>Assigned</th>
+        <td mat-cell *matCellDef="let incident">{{ incident.assignedUser }}</td>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Created</th>
+        <td mat-cell *matCellDef="let incident">{{ incident.createdAt }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let incident" class="actions-cell">
+          <div class="row-actions">
+            <a
+              mat-icon-button
+              class="view-action"
+              [routerLink]="['/incidents', incident.id]"
+              aria-label="View incident"
+              matTooltip="View incident"
+              matTooltipPosition="below"
+            >
+              <mat-icon>visibility</mat-icon>
+            </a>
+            @if (canEditIncident()) {
+              <button
+                mat-icon-button
+                class="edit-action"
+                type="button"
+                aria-label="Edit incident"
+                matTooltip="Edit incident"
+                matTooltipPosition="below"
+                (click)="editIncident(incident)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            }
+            @if (canDeleteIncident()) {
+              <button
+                mat-icon-button
+                class="delete-action"
+                type="button"
+                aria-label="Delete incident"
+                matTooltip="Delete incident"
+                matTooltipPosition="below"
+                (click)="deleteIncident(incident)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            }
+          </div>
+        </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columns"></tr>
-  <tr mat-row *matRowDef="let row; columns: columns"></tr>
-  <tr class="mat-row empty-row" *matNoDataRow>
-    <td class="mat-cell" [attr.colspan]="columns.length">No incidents match the selected filters.</td>
-  </tr>
-</table>
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns"></tr>
+      <tr class="mat-row empty-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="columns.length">No incidents match the selected filters.</td>
+      </tr>
+    </table>
+  </div>
+</mat-card>

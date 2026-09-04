@@ -40,26 +40,41 @@ mat-card {
   border-radius: 8px;
 }
 
-.scope-grid mat-card {
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
+.scope-grid .summary-card {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 5px 12px;
-  min-height: 104px;
+  justify-content: flex-start;
+  min-height: 118px;
+  padding: 18px 24px;
 }
 
-.scope-grid mat-icon {
-  grid-row: span 2;
+.scope-grid .summary-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.scope-grid .summary-card-top div {
   display: grid;
+  min-width: 0;
+  gap: 6px;
+}
+
+.scope-grid .summary-card-icon {
+  display: grid;
+  flex: 0 0 40px;
   width: 40px;
   height: 40px;
   place-items: center;
-  border-radius: 10px;
-  background: #fff1eb;
+  border: 1px solid #ffc7b6;
+  border-radius: 8px;
+  background: #ffe1d8;
   color: #f04b23;
 }
 
-.scope-grid span,
 .role-card span,
 .permission-list span,
 .permission-list small,
@@ -67,9 +82,24 @@ mat-card {
   color: #667085;
 }
 
-.scope-grid strong {
-  font-size: 22px;
-  line-height: 1.1;
+.scope-grid .summary-card-icon mat-icon {
+  width: 21px;
+  height: 21px;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.scope-grid .summary-card-top strong {
+  color: #101828;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.scope-grid .summary-card-top span:not(.summary-card-icon) {
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
 }
 
 .role-card {
@@ -124,10 +154,27 @@ mat-card {
 }
 
 h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.card-heading {
   margin: 0 0 14px;
   padding-bottom: 12px;
   border-bottom: 1px solid #e4e7ec;
-  font-size: 20px;
+}
+
+.card-heading div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.card-heading p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .permission-list {
@@ -154,27 +201,49 @@ h2 {
 
 .permission-list article {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) 150px auto;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
+  grid-template-columns: 40px minmax(0, 1fr) 150px auto;
+  align-items: start;
+  gap: 14px;
+  min-height: 72px;
+  padding: 14px 16px;
   border-radius: 8px;
   background: #f8fafc;
 }
 
+.permission-list article > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
 .permission-list mat-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #b8ebd3;
+  border-radius: 8px;
+  background: #d9f7e8;
   color: #12b76a;
+  font-size: 22px;
+  line-height: 1;
 }
 
 .permission-list strong {
   display: block;
-  margin-bottom: 3px;
   font-size: 14px;
 }
 
 .permission-list span,
 .permission-list small {
   font-size: 13px;
+  line-height: 1.35;
+}
+
+.permission-list small,
+.permission-list mat-chip {
+  align-self: start;
+  margin-top: 2px;
 }
 
 mat-chip {
@@ -199,11 +268,23 @@ mat-chip {
   scrollbar-width: thin;
 }
 
-.boundary-list::-webkit-scrollbar {
+.audit-list {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 6px;
+  overscroll-behavior: contain;
+  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.boundary-list::-webkit-scrollbar,
+.audit-list::-webkit-scrollbar {
   width: 8px;
 }
 
-.boundary-list::-webkit-scrollbar-thumb {
+.boundary-list::-webkit-scrollbar-thumb,
+.audit-list::-webkit-scrollbar-thumb {
   border: 2px solid #ffffff;
   border-radius: 999px;
   background: #cbd5e1;
@@ -234,14 +315,30 @@ mat-chip {
 
 .audit-list article {
   display: grid;
-  grid-template-columns: 36px minmax(0, 1fr);
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: start;
+  gap: 14px;
+  min-height: 72px;
+  padding: 14px 16px;
+}
+
+.audit-list article > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
 }
 
 .audit-list mat-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
+  border-radius: 8px;
+  background: #ffe1d8;
   color: #f04b23;
+  font-size: 22px;
+  line-height: 1;
 }
 
 .audit-list strong {
@@ -251,8 +348,8 @@ mat-chip {
 
 .audit-list span {
   display: block;
-  margin-top: 3px;
   font-size: 13px;
+  line-height: 1.35;
 }
 
 @media (max-width: 900px) {
@@ -263,7 +360,7 @@ mat-chip {
   }
 
   .permission-list article {
-    grid-template-columns: 32px minmax(0, 1fr);
+    grid-template-columns: 40px minmax(0, 1fr);
   }
 
   .permission-list small,

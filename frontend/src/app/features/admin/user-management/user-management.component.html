@@ -25,27 +25,48 @@
 </header>
 
 <section class="summary-grid">
-  <mat-card>
-    <mat-icon>group</mat-icon>
-    <span>Total Users</span>
-    <strong>{{ users.length }}</strong>
+  <mat-card class="summary-card">
+    <div class="summary-card-top">
+      <span class="summary-card-icon">
+        <mat-icon>group</mat-icon>
+      </span>
+      <div>
+        <span>Total Users</span>
+        <strong>{{ users.length }}</strong>
+      </div>
+    </div>
   </mat-card>
-  <mat-card>
-    <mat-icon>verified_user</mat-icon>
-    <span>Active Users</span>
-    <strong>{{ activeUsers }}</strong>
+  <mat-card class="summary-card">
+    <div class="summary-card-top">
+      <span class="summary-card-icon">
+        <mat-icon>verified_user</mat-icon>
+      </span>
+      <div>
+        <span>Active Users</span>
+        <strong>{{ activeUsers }}</strong>
+      </div>
+    </div>
   </mat-card>
-  <mat-card>
-    <mat-icon>admin_panel_settings</mat-icon>
-    <span>Admins</span>
-    <strong>{{ adminUsers }}</strong>
+  <mat-card class="summary-card">
+    <div class="summary-card-top">
+      <span class="summary-card-icon">
+        <mat-icon>admin_panel_settings</mat-icon>
+      </span>
+      <div>
+        <span>Admins</span>
+        <strong>{{ adminUsers }}</strong>
+      </div>
+    </div>
   </mat-card>
 </section>
 
 <section class="management-grid">
   <mat-card class="table-card">
     <div class="table-header">
-      <h2>Access Directory</h2>
+      <div>
+        <h2>Access Directory</h2>
+        <p>Review account status, assigned roles, and platform access ownership.</p>
+      </div>
       <span>{{ users.length }} users</span>
     </div>
 

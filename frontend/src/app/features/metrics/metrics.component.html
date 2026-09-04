@@ -15,14 +15,20 @@
 <section class="charts">
   <mat-card>
     <div class="card-title">
-      <h2>Resource Utilization</h2>
+      <div>
+        <h2>Resource Utilization</h2>
+        <p>CPU, memory, and error pressure tracked from metric samples.</p>
+      </div>
       <mat-chip>5 min interval</mat-chip>
     </div>
     <canvas #resourceChart></canvas>
   </mat-card>
   <mat-card>
     <div class="card-title">
-      <h2>Response Time</h2>
+      <div>
+        <h2>Response Time</h2>
+        <p>Latency trend from service response time measurements.</p>
+      </div>
       <mat-chip>p95 latency</mat-chip>
     </div>
     <canvas #latencyChart></canvas>
@@ -32,7 +38,10 @@
 <section class="details-grid">
   <mat-card>
     <div class="card-title">
-      <h2>Service Health</h2>
+      <div>
+        <h2>Service Health</h2>
+        <p>Current health signals for production services.</p>
+      </div>
       <span>Live operational signals</span>
     </div>
     <div class="service-list">
@@ -63,7 +72,10 @@
 
   <mat-card>
     <div class="card-title">
-      <h2>Threshold Watchlist</h2>
+      <div>
+        <h2>Threshold Watchlist</h2>
+        <p>Metrics approaching or exceeding alert policy limits.</p>
+      </div>
       <span>Alert policy status</span>
     </div>
     <div class="threshold-list">
@@ -83,7 +95,10 @@
 
 <mat-card class="correlation-card">
   <div class="card-title">
-    <h2>Incident Metric Correlation</h2>
+    <div>
+      <h2>Incident Metric Correlation</h2>
+      <p>Metric events aligned to known incident timelines.</p>
+    </div>
     <span>Signals aligned with investigation timeline</span>
   </div>
   <div class="correlation-list">

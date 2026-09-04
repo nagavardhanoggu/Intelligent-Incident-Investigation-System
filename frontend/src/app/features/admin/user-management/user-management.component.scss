@@ -51,25 +51,62 @@ h1 {
   margin-bottom: 16px;
 }
 
-.summary-grid mat-card {
-  display: grid;
-  gap: 8px;
-  padding: 18px;
-  border-radius: 8px;
+.summary-grid .summary-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 118px;
+  padding: 18px 24px;
 }
 
-.summary-grid mat-icon {
+.summary-grid .summary-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.summary-grid .summary-card-top div {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+}
+
+.summary-grid .summary-card-icon {
+  display: grid;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
+  border-radius: 8px;
+  background: #ffe1d8;
   color: #f04b23;
 }
 
-.summary-grid span,
 .table-header span {
   color: #667085;
 }
 
-.summary-grid strong {
+.summary-grid .summary-card-icon mat-icon {
+  width: 21px;
+  height: 21px;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.summary-grid .summary-card-top span:not(.summary-card-icon) {
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.summary-grid .summary-card-top strong {
   font-size: 24px;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .management-grid {
@@ -87,9 +124,7 @@ mat-card {
 }
 
 h2 {
-  margin: 0 0 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e4e7ec;
+  margin: 0;
   font-size: 18px;
 }
 
@@ -102,7 +137,23 @@ h2 {
 
 .table-header {
   justify-content: space-between;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.table-header > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.table-header p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 table {

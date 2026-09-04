@@ -6,14 +6,25 @@
           <mat-icon>hub</mat-icon>
           <span>IIIS</span>
         </div>
-        <span class="secure-pill">
-          <mat-icon>shield</mat-icon>
-          Enterprise RBAC
-        </span>
+        <div class="brand-actions">
+          <span class="secure-pill">
+            <mat-icon>shield</mat-icon>
+            Enterprise RBAC
+          </span>
+          <button
+            class="theme-toggle-button"
+            type="button"
+            [attr.aria-label]="themeToggleLabel()"
+            [title]="themeToggleLabel()"
+            (click)="toggleTheme()"
+          >
+            <mat-icon>{{ themeIcon() }}</mat-icon>
+          </button>
+        </div>
       </div>
 
       <div class="brand-copy">
-        <span class="eyebrow">Incident intelligence platform</span>
+        <span class="eyebrow">Enterprise RBAC</span>
         <h1>Intelligent Incident Investigation System</h1>
         <p>Correlate logs, metrics, deployments, and service health into one investigation workspace with explainable root-cause prediction.</p>
       </div>
@@ -21,10 +32,10 @@
       <div class="ops-board" aria-label="Operational overview">
         <header class="ops-board-header">
           <span>Live operations</span>
-          <strong>96.4% SLA</strong>
+          <strong>{{ operationsSummary()?.slaCompliance ?? '-' }}% SLA</strong>
         </header>
         <div class="ops-list">
-          @for (item of operationSignals; track item.label) {
+          @for (item of operationSignals(); track item.label) {
             <div class="ops-item">
               <span><mat-icon>{{ item.icon }}</mat-icon></span>
               <p>{{ item.label }}</p>

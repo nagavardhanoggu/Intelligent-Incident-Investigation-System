@@ -62,6 +62,22 @@ p {
   gap: 14px;
 }
 
+.error-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #b42318;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.error-state mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

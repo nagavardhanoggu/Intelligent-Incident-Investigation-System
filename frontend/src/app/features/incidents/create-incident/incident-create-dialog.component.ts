@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Incident } from '../../../models/incident.model';
-import { IncidentAssignee, IncidentService } from '../../../services/incident.service';
+import { IncidentAssignee, IncidentFieldOptions, IncidentService } from '../../../services/incident.service';
 
 export interface IncidentCreateValue {
   title: string;
@@ -28,6 +28,13 @@ export interface IncidentDialogResult {
   incidentId?: number;
   value: IncidentCreateValue;
 }
+
+const emptyIncidentFieldOptions = (): IncidentFieldOptions['options'] => ({
+  priority: [],
+  impact: [],
+  urgency: [],
+  status: [],
+});
 
 @Component({
   selector: 'app-incident-create-dialog',
@@ -50,17 +57,38 @@ export class IncidentCreateDialogComponent implements OnInit {
   readonly data = inject<IncidentDialogData | null>(MAT_DIALOG_DATA, { optional: true });
   readonly isEdit = this.data?.mode === 'edit';
   readonly assignees = signal<IncidentAssignee[]>([]);
+  readonly fieldOptions = signal<IncidentFieldOptions['options']>(emptyIncidentFieldOptions());
+  readonly optionsLoading = signal(false);
+  readonly optionsError = signal('');
 
   readonly form = this.fb.nonNullable.group({
     title: [this.data?.incident?.title ?? '', Validators.required],
     description: [this.data?.incident?.description ?? '', Validators.required],
-    priority: [this.data?.incident?.priority ?? 'HIGH', Validators.required],
-    impact: [this.data?.incident?.impact ?? 'HIGH', Validators.required],
-    urgency: [this.data?.incident?.urgency ?? 'HIGH', Validators.required],
+    priority: [this.data?.incident?.priority ?? '', Validators.required],
+    impact: [this.data?.incident?.impact ?? '', Validators.required],
+    urgency: [this.data?.incident?.urgency ?? '', Validators.required],
     assignedUserId: this.fb.control<number | null>(null),
   });
 
   ngOnInit(): void {
+    this.optionsLoading.set(true);
+    this.incidentService.getIncidentOptions().subscribe({
+      next: data => {
+        this.fieldOptions.set({
+          priority: data.options.priority ?? [],
+          impact: data.options.impact ?? [],
+          urgency: data.options.urgency ?? [],
+          status: data.options.status ?? [],
+        });
+        this.applyDefaults(data.defaults);
+        this.optionsLoading.set(false);
+      },
+      error: () => {
+        this.optionsError.set('Incident field options could not be loaded.');
+        this.optionsLoading.set(false);
+      },
+    });
+
     this.incidentService.listAssignees().subscribe(assignees => {
       this.assignees.set(assignees);
       const assignedUser = this.data?.incident?.assignedUser;
@@ -74,7 +102,7 @@ export class IncidentCreateDialogComponent implements OnInit {
   }
 
   createIncident(): void {
-    if (this.form.invalid) {
+    if (this.form.invalid || this.optionsLoading()) {
       this.form.markAllAsTouched();
       return;
     }
@@ -82,8 +110,26 @@ export class IncidentCreateDialogComponent implements OnInit {
     this.dialogRef.close({
       mode: this.isEdit ? 'edit' : 'create',
       incidentId: this.data?.incident?.id,
-      value: this.form.getRawValue(),
+      value: this.form.getRawValue() as IncidentCreateValue,
     });
   }
 
+  private applyDefaults(defaults: IncidentFieldOptions['defaults']): void {
+    if (this.isEdit) {
+      return;
+    }
+
+    this.form.patchValue({
+      priority: this.optionDefault(defaults.priority, this.fieldOptions().priority),
+      impact: this.optionDefault(defaults.impact, this.fieldOptions().impact),
+      urgency: this.optionDefault(defaults.urgency, this.fieldOptions().urgency),
+    });
+  }
+
+  private optionDefault<T extends string>(value: string | undefined, options: T[]): T | '' {
+    if (value && options.includes(value as T)) {
+      return value as T;
+    }
+    return options[0] ?? '';
+  }
 }

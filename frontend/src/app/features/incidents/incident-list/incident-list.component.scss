@@ -25,10 +25,13 @@ h1 {
   gap: 12px;
   margin-bottom: 12px;
   padding: 14px;
-  border: 1px solid #e4e7ec;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+  border: 0;
+  border-radius: 12px;
+  background: #f4f3f6;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
 }
 
 .filters-panel mat-form-field {
@@ -102,15 +105,55 @@ h1 {
 
 .table-summary {
   display: flex;
+  align-items: flex-start;
   justify-content: flex-end;
-  margin: 0 2px 16px;
+  gap: 12px;
+  margin: 0 2px 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e7ec;
   color: #667085;
   font-size: 13px;
   font-weight: 700;
 }
 
+.table-summary div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  margin-right: auto;
+}
+
+.table-summary h2 {
+  margin: 0;
+  color: #101828;
+  font-size: 18px;
+}
+
+.table-summary p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.table-panel {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  overflow: hidden;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
 .incident-table {
   width: 100%;
+  min-width: 920px;
   max-width: 100%;
   overflow: hidden;
   border-radius: 8px;

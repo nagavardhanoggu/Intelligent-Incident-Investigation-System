@@ -112,6 +112,16 @@ mat-card {
   max-width: 360px;
 }
 
+:host ::ng-deep .summary-meta .mat-mdc-chip {
+  --mdc-chip-container-height: 34px;
+  --mdc-chip-label-text-size: 13px;
+  --mdc-chip-label-text-weight: 600;
+}
+
+:host ::ng-deep .summary-meta .mat-mdc-chip .mdc-evolution-chip__text-label {
+  font-size: 13px;
+}
+
 .signal-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -119,35 +129,43 @@ mat-card {
 }
 
 .signal-grid mat-card {
-  display: block;
+  display: flex;
+  align-items: center;
   min-height: 118px;
-  padding: 18px;
+  padding: 18px 24px;
   background: #ffffff;
 }
 
-.signal-grid div {
-  display: grid;
-  gap: 9px;
-  min-width: 0;
-  justify-items: start;
-  text-align: left;
-}
-
-.signal-grid span {
-  display: inline-flex;
+.signal-grid .summary-card-top {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
 }
 
-.signal-grid mat-icon {
-  width: 28px;
-  height: 28px;
-  padding: 5px;
+.signal-grid .summary-card-top div {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.signal-grid .summary-card-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
   border-radius: 8px;
-  background: #fff1eb;
+  background: #ffe1d8;
   color: #f04b23;
-  font-size: 18px;
+}
+
+.signal-grid .summary-card-icon mat-icon {
+  width: 21px;
+  height: 21px;
+  font-size: 21px;
 }
 
 .signal-grid span,
@@ -157,8 +175,15 @@ mat-card {
   font-size: 13px;
 }
 
+.signal-grid .summary-card-top span:not(.summary-card-icon) {
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
 .signal-grid strong {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 1;
 }
@@ -170,7 +195,8 @@ mat-card {
 }
 
 .workspace-card {
-  margin-top: 0;
+  width: calc(100% - 8px);
+  margin: 0 4px 12px;
   padding: 20px 22px;
   overflow: hidden;
 }
@@ -178,6 +204,10 @@ mat-card {
 .workspace-tabs {
   display: block;
   margin-top: 8px;
+}
+
+:host ::ng-deep .workspace-tabs .mat-mdc-tab-body-content {
+  padding: 0 0 12px;
 }
 
 :host ::ng-deep .workspace-tabs .mat-mdc-tab-header {
@@ -207,9 +237,21 @@ mat-card {
   border-bottom: 1px solid #e4e7ec;
 }
 
+.section-title > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
 .section-title h2 {
   font-size: 20px;
   font-weight: 700;
+}
+
+.section-title p {
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .timeline {

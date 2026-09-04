@@ -31,10 +31,13 @@ mat-card {
 
 .summary-card {
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr);
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
   align-items: center;
-  gap: 4px 12px;
+  align-content: center;
+  gap: 6px 14px;
   min-height: 118px;
+  padding: 18px 24px;
   border-left: 4px solid #f04b23;
 }
 
@@ -45,10 +48,10 @@ mat-card {
 .summary-card mat-icon {
   grid-row: span 3;
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   place-items: center;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #fff1eb;
   color: #f04b23;
   font-size: 22px;
@@ -69,11 +72,14 @@ small {
   margin-top: 0;
   color: #111827;
   font-size: 24px;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .summary-card span {
-  font-size: 13px;
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
 }
 
 .summary-card small {
@@ -94,6 +100,19 @@ h2 {
   margin-bottom: 14px;
   padding-bottom: 12px;
   border-bottom: 1px solid #e4e7ec;
+}
+
+.card-title > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.card-title p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .card-title span {
@@ -215,19 +234,27 @@ mat-chip {
 .threshold-list article {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 58px 76px;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
   gap: 12px;
   padding: 12px;
 }
 
 .threshold-list article div {
+  display: grid;
   min-width: 0;
+  gap: 3px;
 }
 
 .threshold-list small {
   display: block;
-  margin-top: 4px;
+  line-height: 1.35;
+}
+
+.threshold-list b,
+.threshold-list .status {
+  align-self: start;
+  margin-top: 1px;
 }
 
 .correlation-card {
@@ -241,20 +268,150 @@ mat-chip {
 
 time {
   display: grid;
-  width: 54px;
-  height: 34px;
+  width: 82px;
+  min-height: 38px;
   place-items: center;
   border-radius: 8px;
+  padding: 5px 8px;
   background: #fff1eb;
   color: #d43f1d;
   font-size: 13px;
   font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .correlation-list p {
   margin: 4px 0 0;
   color: #5d6b7a;
   line-height: 1.35;
+}
+
+:host-context(html[data-theme='dark']) {
+  span,
+  small {
+    color: #b3c0d1;
+  }
+
+  h2,
+  .summary-card span,
+  .summary-card strong,
+  .service-head strong,
+  .threshold-list strong,
+  .threshold-list b,
+  .metric-line b,
+  .correlation-list strong {
+    color: #f8fafc;
+  }
+
+  .page-subtitle,
+  .summary-card small,
+  .card-title p,
+  .service-footer,
+  .threshold-list small,
+  .correlation-list p {
+    color: #b3c0d1;
+  }
+
+  .card-title {
+    border-bottom-color: #303743;
+  }
+
+  mat-chip {
+    --mdc-chip-label-text-color: #dbe7f7;
+    --mdc-chip-elevated-container-color: #20252d;
+    --mdc-chip-outline-color: transparent;
+    --mdc-chip-outline-width: 0;
+    --mdc-chip-focus-outline-color: transparent;
+    --mdc-chip-focus-state-layer-opacity: 0;
+    --mdc-chip-hover-state-layer-opacity: 0;
+    outline: none !important;
+    border: 1px solid #303743 !important;
+    background: #20252d !important;
+    color: #dbe7f7 !important;
+    box-shadow: none !important;
+  }
+
+  ::ng-deep .card-title .mat-mdc-chip .mdc-evolution-chip__action {
+    outline: none !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  ::ng-deep .card-title .mat-mdc-chip::before,
+  ::ng-deep .card-title .mat-mdc-chip::after,
+  ::ng-deep .card-title .mat-mdc-chip .mdc-evolution-chip__action::before,
+  ::ng-deep .card-title .mat-mdc-chip .mdc-evolution-chip__action::after {
+    outline: none !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  ::ng-deep .card-title .mat-mdc-chip .mat-mdc-chip-focus-overlay,
+  ::ng-deep .card-title .mat-mdc-chip .mat-mdc-chip-ripple {
+    background: transparent !important;
+  }
+
+  ::ng-deep .card-title .mat-mdc-chip .mdc-evolution-chip__text-label {
+    color: #dbe7f7 !important;
+  }
+
+  .service-list {
+    scrollbar-color: #465365 transparent;
+  }
+
+  .service-list::-webkit-scrollbar-thumb {
+    border-color: #1a1e25;
+    background: #465365;
+  }
+
+  .service-list article,
+  .threshold-list article,
+  .correlation-list article {
+    border: 1px solid #303743;
+    background: #20252d;
+  }
+
+  .correlation-list article {
+    border-color: #2d3542;
+    background: #1f242c;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.025),
+      0 10px 22px rgba(0, 0, 0, 0.16);
+  }
+
+  .correlation-list article:hover {
+    border-color: rgba(255, 112, 74, 0.36);
+    background: #242a34;
+  }
+
+  .correlation-list p {
+    color: #aab7c8;
+  }
+
+  .status {
+    background: rgba(255, 112, 74, 0.15);
+    color: #ff9b7a;
+  }
+
+  .status.healthy {
+    background: rgba(52, 211, 153, 0.14);
+    color: #55e0ae;
+  }
+
+  time {
+    border: 1px solid rgba(255, 112, 74, 0.34);
+    background: rgba(255, 112, 74, 0.12);
+    color: #ffb49e;
+    line-height: 1.15;
+  }
+
+  ::ng-deep .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: #ff704a;
+    --mdc-linear-progress-track-color: rgba(255, 112, 74, 0.18);
+  }
 }
 
 @media (max-width: 900px) {

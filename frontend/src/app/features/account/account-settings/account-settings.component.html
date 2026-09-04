@@ -13,7 +13,12 @@
 
 <section class="settings-grid">
   <mat-card>
-    <h2>Notification Preferences</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Notification Preferences</h2>
+        <p>Control which incident and operations alerts interrupt your workflow.</p>
+      </div>
+    </div>
     <div class="setting-list">
       <article>
         <mat-icon>notifications_active</mat-icon>
@@ -51,7 +56,12 @@
   </mat-card>
 
   <mat-card>
-    <h2>Security</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Security</h2>
+        <p>Authentication controls and session policies protecting this account.</p>
+      </div>
+    </div>
     <div class="setting-list">
       <article>
         <mat-icon>verified_user</mat-icon>
@@ -77,7 +87,12 @@
 
 <section class="settings-grid lower-grid">
   <mat-card>
-    <h2>Workspace Preferences</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Workspace Preferences</h2>
+        <p>Adjust investigation behavior, density, and export permissions.</p>
+      </div>
+    </div>
     <div class="setting-list">
       <article>
         <mat-icon>assignment_ind</mat-icon>
@@ -108,7 +123,10 @@
 
   <mat-card>
     <div class="card-heading">
-      <h2>Active Sessions</h2>
+      <div>
+        <h2>Active Sessions</h2>
+        <p>Signed-in devices and recent access locations for this account.</p>
+      </div>
       <button mat-button type="button" (click)="signOutAll()">Sign out all</button>
     </div>
     <div class="session-list">

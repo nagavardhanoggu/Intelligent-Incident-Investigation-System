@@ -72,9 +72,16 @@ mat-card {
   width: 44px;
   height: 44px;
   place-items: center;
+  border: 1px solid #ffc7b6;
   border-radius: 8px;
   color: #f04b23;
-  background: #fff1eb;
+  background: #ffe1d8;
+}
+
+.result-card .heading-icon {
+  border-color: #b8ebd3 !important;
+  background: #d9f7e8 !important;
+  color: #059669 !important;
 }
 
 .card-heading h2 {
@@ -108,9 +115,9 @@ form {
   align-items: center;
   margin-top: 2px;
   padding: 12px;
-  border: 1px solid #ffe0d7;
+  border: 1px solid #d8c9ff;
   border-radius: 8px;
-  background: #fff7f3;
+  background: #f7f3ff;
 }
 
 .advanced-heading mat-icon {
@@ -118,9 +125,10 @@ form {
   width: 34px;
   height: 34px;
   place-items: center;
+  border: 1px solid #d8c9ff;
   border-radius: 8px;
-  color: #f04b23;
-  background: #ffffff;
+  color: #7c3aed;
+  background: #eee7ff;
 }
 
 .advanced-heading strong,
@@ -176,7 +184,7 @@ button[mat-flat-button] {
   min-width: 190px;
   height: 46px;
   padding: 0 22px;
-  border-radius: 999px;
+  border-radius: 8px;
   background: #f04b23;
   color: #ffffff;
   font-weight: 800;

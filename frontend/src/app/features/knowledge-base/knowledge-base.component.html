@@ -11,10 +11,16 @@
 } @else {
   <section class="summary-grid">
     @for (item of summary(); track item.label) {
-      <mat-card>
-        <mat-icon>{{ item.icon }}</mat-icon>
-        <span>{{ item.label }}</span>
-        <strong>{{ item.value }}</strong>
+      <mat-card class="summary-card">
+        <div class="summary-card-top">
+          <span class="summary-card-icon">
+            <mat-icon>{{ item.icon }}</mat-icon>
+          </span>
+          <div>
+            <span>{{ item.label }}</span>
+            <strong>{{ item.value }}</strong>
+          </div>
+        </div>
       </mat-card>
     }
   </section>
@@ -49,7 +55,12 @@
     </mat-card>
 
     <mat-card class="quick-card">
-      <h2>Recent Resolutions</h2>
+      <div class="card-heading">
+        <div>
+          <h2>Recent Resolutions</h2>
+          <p>Latest stored fixes available for fast investigation reuse.</p>
+        </div>
+      </div>
       <div class="quick-links">
         @for (article of recentArticles(); track article.id) {
           <button type="button" (click)="findArticle(article)">
@@ -65,7 +76,10 @@
 
   <mat-card class="article-card">
     <div class="section-title">
-      <h2>Resolution Articles</h2>
+      <div>
+        <h2>Resolution Articles</h2>
+        <p>Searchable incident resolutions, prevention steps, and root-cause notes.</p>
+      </div>
       <span>{{ filteredArticles().length }} articles</span>
     </div>
 

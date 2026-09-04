@@ -3,10 +3,16 @@
 
 <section class="scope-grid">
   @for (item of scopeCards; track item.label) {
-    <mat-card>
-      <mat-icon>{{ item.icon }}</mat-icon>
-      <span>{{ item.label }}</span>
-      <strong>{{ item.value }}</strong>
+    <mat-card class="summary-card">
+      <div class="summary-card-top">
+        <span class="summary-card-icon">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </span>
+        <div>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+        </div>
+      </div>
     </mat-card>
   }
 </section>
@@ -32,17 +38,24 @@
   </mat-card>
 
   <mat-card>
-    <h2>Permission Matrix</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Permission Matrix</h2>
+        <p>Role permissions mapped to investigation and administration areas.</p>
+      </div>
+    </div>
     <div class="permission-list">
       @for (permission of permissions; track permission.label) {
-        <article>
+        <article [class.allowed]="permission.enabled" [class.blocked]="!permission.enabled">
           <mat-icon>{{ permission.enabled ? 'check_circle' : 'cancel' }}</mat-icon>
           <div>
             <strong>{{ permission.label }}</strong>
             <span>{{ permission.description }}</span>
           </div>
           <small>{{ permission.area }}</small>
-          <mat-chip>{{ permission.enabled ? 'Allowed' : 'Blocked' }}</mat-chip>
+          <mat-chip [class.allowed]="permission.enabled" [class.blocked]="!permission.enabled">
+            {{ permission.enabled ? 'Allowed' : 'Blocked' }}
+          </mat-chip>
         </article>
       }
     </div>
@@ -51,7 +64,12 @@
 
 <section class="access-grid">
   <mat-card>
-    <h2>Access Boundaries</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Access Boundaries</h2>
+        <p>Route, data, and workflow limits applied to the current account.</p>
+      </div>
+    </div>
     <div class="boundary-list">
       @for (item of boundaries; track item.label) {
         <article>
@@ -63,7 +81,12 @@
   </mat-card>
 
   <mat-card>
-    <h2>Audit Trail</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Audit Trail</h2>
+        <p>Recent account activity and permission review events.</p>
+      </div>
+    </div>
     <div class="audit-list">
       @for (item of auditTrail; track item.event) {
         <article>

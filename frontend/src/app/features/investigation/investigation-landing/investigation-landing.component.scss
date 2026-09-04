@@ -32,29 +32,42 @@ h1 {
 }
 
 .summary-card {
-  min-height: 116px;
-}
-
-.summary-card mat-card-header {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  padding: 20px;
+  justify-content: flex-start;
+  min-height: 118px;
+  padding: 18px;
 }
 
-.summary-card mat-card-title {
-  margin-bottom: 5px;
-  color: #17202a;
-  font-size: 28px;
-  font-weight: 700;
+.summary-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.summary-card-top div {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+}
+
+.summary-card-top span:not(.summary-card-icon) {
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.summary-card-top strong {
+  color: #101828;
+  font-size: 24px;
   line-height: 1;
 }
 
-.summary-card mat-card-subtitle {
-  color: #667085;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.summary-icon,
+.summary-card-icon,
 .incident-icon {
   display: inline-grid;
   place-items: center;
@@ -63,16 +76,36 @@ h1 {
   color: #f04b23;
 }
 
-.summary-icon {
-  width: 44px;
-  height: 44px;
+.summary-card-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
   margin-bottom: 0;
+  border-radius: 8px;
 }
 
-.summary-icon mat-icon {
+.summary-card-icon mat-icon {
   width: 22px;
   height: 22px;
   font-size: 22px;
+}
+
+.summary-card:nth-child(1) .summary-card-icon {
+  border: 1px solid #aee3ec;
+  background: #d6f4f9;
+  color: #0891b2;
+}
+
+.summary-card:nth-child(2) .summary-card-icon {
+  border: 1px solid #bdd4ff;
+  background: #dfeaff;
+  color: #2563eb;
+}
+
+.summary-card:nth-child(3) .summary-card-icon {
+  border: 1px solid #ffc7b6;
+  background: #ffe1d8;
+  color: #dc2626;
 }
 
 .selector-card {
@@ -146,6 +179,33 @@ h1 {
   width: 42px;
   height: 42px;
   margin-bottom: 0;
+  border: 1px solid #ffc7b6;
+  background: #ffe1d8;
+  color: #f04b23;
+}
+
+.incident-card:nth-child(4n + 1) .incident-icon {
+  border-color: #ffc7b6;
+  background: #ffe1d8;
+  color: #dc2626;
+}
+
+.incident-card:nth-child(4n + 2) .incident-icon {
+  border-color: #bdd4ff;
+  background: #dfeaff;
+  color: #2563eb;
+}
+
+.incident-card:nth-child(4n + 3) .incident-icon {
+  border-color: #b8ebd3;
+  background: #d9f7e8;
+  color: #059669;
+}
+
+.incident-card:nth-child(4n + 4) .incident-icon {
+  border-color: #d8c9ff;
+  background: #eee7ff;
+  color: #7c3aed;
 }
 
 .incident-card mat-card-title {

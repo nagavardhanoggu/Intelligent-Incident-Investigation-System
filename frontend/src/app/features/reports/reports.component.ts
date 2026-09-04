@@ -26,6 +26,19 @@ export class ReportsComponent implements OnInit {
 
   readonly columns = ['month', 'incidents', 'critical', 'mttr', 'sla'];
   readonly kpis = signal<ReportKpis | null>(null);
+  readonly reportCards = computed(() => {
+    const reportKpis = this.kpis();
+
+    if (!reportKpis) {
+      return [];
+    }
+
+    return [
+      { label: 'Average MTTR', value: reportKpis.averageMttr, icon: 'timer' },
+      { label: 'SLA Compliance', value: reportKpis.slaCompliance, icon: 'verified_user' },
+      { label: 'Repeat Incidents', value: String(reportKpis.repeatIncidents), icon: 'restart_alt' },
+    ];
+  });
   readonly rows = signal<MonthlyReportRow[]>([]);
   readonly insights = signal<ReportInsight[]>([]);
   readonly reviewItems = signal<ReportReviewItem[]>([]);

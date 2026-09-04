@@ -7,10 +7,13 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.dependencies import require_permissions
-from app.models.entities import Incident, User
-from app.schemas.schemas import IncidentCreate, IncidentResponse, IncidentUpdate
+from app.models.entities import Incident, OperationalPage, User
+from app.schemas.schemas import IncidentCreate, IncidentOptionsResponse, IncidentResponse, IncidentUpdate
 
 router = APIRouter(prefix="/incidents", tags=["Incidents"])
+
+INCIDENT_OPTIONS_PAGE_KEY = "incident-form-options"
+INCIDENT_OPTION_FIELDS = ["priority", "impact", "urgency", "status"]
 
 
 def _to_response(incident: Incident, db: Session) -> IncidentResponse:
@@ -42,6 +45,34 @@ def list_incidents(
 ) -> list[IncidentResponse]:
     incidents = db.scalars(select(Incident).order_by(Incident.created_at.desc())).all()
     return [_to_response(incident, db) for incident in incidents]
+
+
+@router.get("/options", response_model=IncidentOptionsResponse)
+def get_incident_options(
+    _: dict = Depends(require_permissions("incidents:view")),
+    db: Session = Depends(get_db),
+) -> IncidentOptionsResponse:
+    page = db.get(OperationalPage, INCIDENT_OPTIONS_PAGE_KEY)
+    payload = page.payload if page else {}
+    configured_options = payload.get("options") or {}
+    defaults = dict(payload.get("defaults") or {})
+    stored_values: dict[str, list[str]] = {field: [] for field in INCIDENT_OPTION_FIELDS}
+
+    for incident in db.scalars(select(Incident)).all():
+        _append_option(stored_values["priority"], incident.priority)
+        _append_option(stored_values["impact"], incident.impact)
+        _append_option(stored_values["urgency"], incident.urgency)
+        _append_option(stored_values["status"], incident.status)
+
+    options = {
+        field: _merge_options(configured_options.get(field, []), stored_values[field])
+        for field in INCIDENT_OPTION_FIELDS
+    }
+    for field, values in options.items():
+        if values and field not in defaults:
+            defaults[field] = values[0]
+
+    return IncidentOptionsResponse(defaults=defaults, options=options)
 
 
 @router.get("/{incident_id}", response_model=IncidentResponse)
@@ -138,3 +169,23 @@ def delete_incident(
     db.delete(incident)
     db.commit()
     return {"message": f"Incident {incident_id} deleted successfully"}
+
+
+def _append_option(values: list[str], value: object) -> None:
+    normalized = _normalize_option(value)
+    if normalized and normalized not in values:
+        values.append(normalized)
+
+
+def _merge_options(configured: list[str], stored: list[str]) -> list[str]:
+    values: list[str] = []
+    for value in [*configured, *stored]:
+        _append_option(values, value)
+    return values
+
+
+def _normalize_option(value: object) -> str | None:
+    text = str(value or "").strip().upper()
+    if not text:
+        return None
+    return text

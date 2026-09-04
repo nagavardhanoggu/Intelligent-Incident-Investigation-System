@@ -63,6 +63,7 @@ def summary(
         if predictions
         else 0
     )
+    critical_incidents = sum(1 for incident in incidents if incident.priority == "CRITICAL")
 
     priority_counts = {
         priority: sum(1 for incident in open_incidents if incident.priority == priority)
@@ -116,19 +117,82 @@ def summary(
 
     now = datetime.utcnow()
     return {
+        "sectionHeadings": {
+            "kpis": {
+                "title": "Incident Overview",
+                "subtitle": f"{total} incident records are currently available in the database.",
+                "icon": "dashboard",
+            },
+            "serviceHealth": {
+                "title": "Service Health Signals",
+                "subtitle": f"{len(metrics)} metric samples and {len(predictions)} predictions are feeding this summary.",
+                "icon": "monitoring",
+            },
+            "incidentTrends": {
+                "title": "Incident Trends",
+                "subtitle": f"{total} incidents grouped by created month from the incident database.",
+                "icon": "show_chart",
+            },
+            "rootCauseDistribution": {
+                "title": "Root Cause Distribution",
+                "subtitle": f"{len(cause_counts)} confirmed cause categories from resolved incidents.",
+                "icon": "donut_large",
+            },
+            "priorityBreakdown": {
+                "title": "Open Incidents by Priority",
+                "subtitle": f"{len(open_incidents)} active incidents grouped by priority.",
+                "icon": "priority_high",
+            },
+            "assignmentGroups": {
+                "title": "Top Assignment Groups",
+                "subtitle": f"{len(assignee_counts)} assignees or queues own the tracked incidents.",
+                "icon": "groups",
+            },
+            "recentCauses": {
+                "title": "Recent ML Root Causes",
+                "subtitle": f"{len(predictions)} prediction records compared with confirmed causes.",
+                "icon": "psychology",
+            },
+            "activeQueue": {
+                "title": "Active Investigation Queue",
+                "subtitle": f"{len(open_incidents)} open or investigating incidents need attention.",
+                "icon": "manage_search",
+            },
+            "anomalySignals": {
+                "title": "Anomaly Signals",
+                "subtitle": f"{len(anomaly_signals)} peak metrics detected from uploaded telemetry.",
+                "icon": "sensors",
+            },
+            "controlActions": {
+                "title": "Operational Control Actions",
+                "subtitle": f"{min(len([resolution for resolution in resolutions if resolution.prevention_steps]), 6)} prevention actions from resolution records.",
+                "icon": "tune",
+            },
+            "recommendedActions": {
+                "title": "Recommended Actions",
+                "subtitle": f"{min(len([resolution for resolution in resolutions if resolution.prevention_steps]), 6)} prevention actions from resolution records.",
+                "icon": "task_alt",
+            },
+        },
         "totalIncidents": total,
         "openIncidents": len(open_incidents),
         "closedIncidents": len(closed_incidents),
-        "criticalIncidents": sum(1 for incident in incidents if incident.priority == "CRITICAL"),
+        "criticalIncidents": critical_incidents,
+        "kpiCards": [
+            {"label": "Total Incidents", "value": str(total), "helper": "All incident records", "icon": "receipt_long"},
+            {"label": "Open Incidents", "value": str(len(open_incidents)), "helper": "Open and investigating", "icon": "pending_actions"},
+            {"label": "Closed Incidents", "value": str(len(closed_incidents)), "helper": "Resolved and closed", "icon": "verified"},
+            {"label": "Critical Incidents", "value": str(critical_incidents), "helper": "Priority marked critical", "icon": "warning"},
+        ],
         "slaCompliance": round(
             (sum(1 for incident in incidents if incident.sla_status == "WITHIN_SLA") / total) * 100,
             1,
         ) if total else 0,
         "serviceHealth": [
-            {"label": "Average MTTR", "value": _duration_label(average_mttr), "trend": f"{len(closed_incidents)} resolved"},
-            {"label": "SLA Breaches", "value": str(breaches), "trend": f"{total} incidents tracked"},
-            {"label": "Reopened", "value": str(reopened), "trend": "Database total"},
-            {"label": "Predictions", "value": str(len(predictions)), "trend": f"{round(average_confidence * 100)}% avg confidence"},
+            {"label": "Average MTTR", "value": _duration_label(average_mttr), "trend": f"{len(closed_incidents)} resolved", "icon": "timer"},
+            {"label": "SLA Breaches", "value": str(breaches), "trend": f"{total} incidents tracked", "icon": "gpp_maybe"},
+            {"label": "Reopened", "value": str(reopened), "trend": "Database total", "icon": "restart_alt"},
+            {"label": "Predictions", "value": str(len(predictions)), "trend": f"{round(average_confidence * 100)}% avg confidence", "icon": "model_training"},
         ],
         "priorityBreakdown": [
             {"label": priority.title(), "value": count}

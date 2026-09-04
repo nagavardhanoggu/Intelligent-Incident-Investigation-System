@@ -9,9 +9,14 @@
 <section class="summary-grid">
   @for (item of kpis; track item.label) {
     <mat-card class="kpi-card">
-      <span><mat-icon>{{ item.icon }}</mat-icon>{{ item.label }}</span>
-      <strong>{{ item.value }}</strong>
-      <small>{{ item.helper }}</small>
+      <div class="kpi-card-top">
+        <span class="kpi-card-icon"><mat-icon>{{ item.icon }}</mat-icon></span>
+        <div>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+          <small>{{ item.helper }}</small>
+        </div>
+      </div>
     </mat-card>
   }
 </section>
@@ -19,7 +24,10 @@
 <section class="content-grid">
   <mat-card class="section-card">
     <div class="section-title">
-      <h2>Recent Deployments</h2>
+      <div>
+        <h2>Recent Deployments</h2>
+        <p>Production changes correlated with active incident timelines.</p>
+      </div>
       <span>{{ deployments.length }} changes</span>
     </div>
     <div class="item-list">
@@ -39,7 +47,10 @@
 
   <mat-card class="section-card">
     <div class="section-title">
-      <h2>Rollback Checklist</h2>
+      <div>
+        <h2>Rollback Checklist</h2>
+        <p>Recommended validation steps before or during rollback review.</p>
+      </div>
       <span>Recommended</span>
     </div>
     <div class="side-list">

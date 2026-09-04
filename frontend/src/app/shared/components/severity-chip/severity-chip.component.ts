@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
         min-width: 82px;
         justify-content: center;
         border-radius: 999px;
+        border: 1px solid transparent;
         padding: 4px 10px;
         font-size: 12px;
         font-weight: 700;
@@ -29,6 +30,26 @@ import { Component, Input } from '@angular/core';
       .low {
         background: #e7f8ef;
         color: #087443;
+      }
+      :host-context(html[data-theme='dark']) .critical {
+        border-color: rgba(248, 113, 113, 0.28);
+        background: rgba(248, 113, 113, 0.14);
+        color: #ffb4a8;
+      }
+      :host-context(html[data-theme='dark']) .high {
+        border-color: rgba(251, 191, 36, 0.28);
+        background: rgba(251, 191, 36, 0.14);
+        color: #ffd36b;
+      }
+      :host-context(html[data-theme='dark']) .medium {
+        border-color: rgba(255, 112, 74, 0.28);
+        background: rgba(255, 112, 74, 0.13);
+        color: #ff9b7a;
+      }
+      :host-context(html[data-theme='dark']) .low {
+        border-color: rgba(52, 211, 153, 0.28);
+        background: rgba(52, 211, 153, 0.14);
+        color: #55e0ae;
       }
     `,
   ],

@@ -28,31 +28,37 @@
         <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always" class="incident-select-field">
           <mat-label>Priority</mat-label>
           <mat-select formControlName="priority">
-            <mat-option value="LOW">LOW</mat-option>
-            <mat-option value="MEDIUM">MEDIUM</mat-option>
-            <mat-option value="HIGH">HIGH</mat-option>
-            <mat-option value="CRITICAL">CRITICAL</mat-option>
+            @for (priority of fieldOptions().priority; track priority) {
+              <mat-option [value]="priority">{{ priority }}</mat-option>
+            }
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always" class="incident-select-field">
           <mat-label>Impact</mat-label>
           <mat-select formControlName="impact">
-            <mat-option value="LOW">LOW Impact</mat-option>
-            <mat-option value="MEDIUM">MEDIUM Impact</mat-option>
-            <mat-option value="HIGH">HIGH Impact</mat-option>
+            @for (impact of fieldOptions().impact; track impact) {
+              <mat-option [value]="impact">{{ impact }} Impact</mat-option>
+            }
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always" class="incident-select-field">
           <mat-label>Urgency</mat-label>
           <mat-select formControlName="urgency">
-            <mat-option value="LOW">LOW Urgency</mat-option>
-            <mat-option value="MEDIUM">MEDIUM Urgency</mat-option>
-            <mat-option value="HIGH">HIGH Urgency</mat-option>
+            @for (urgency of fieldOptions().urgency; track urgency) {
+              <mat-option [value]="urgency">{{ urgency }} Urgency</mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>
+
+      @if (optionsError()) {
+        <p class="error-state">
+          <mat-icon>error</mat-icon>
+          {{ optionsError() }}
+        </p>
+      }
 
       <mat-form-field appearance="outline" subscriptSizing="dynamic" floatLabel="always" class="incident-select-field">
         <mat-label>Assigned investigator</mat-label>
@@ -67,7 +73,7 @@
 
   <mat-dialog-actions align="end" class="dialog-footer">
     <button mat-button type="button" (click)="close()">Cancel</button>
-    <button mat-flat-button type="button" (click)="createIncident()">
+    <button mat-flat-button type="button" [disabled]="optionsLoading()" (click)="createIncident()">
       <mat-icon>{{ isEdit ? 'save' : 'add_alert' }}</mat-icon>
       {{ isEdit ? 'Update Incident' : 'Create Incident' }}
     </button>

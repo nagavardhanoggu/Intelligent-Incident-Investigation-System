@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Permission, Role } from '../../core/auth/rbac';
 import { AuthService } from '../../core/services/auth.service';
+import { ThemeService } from '../../core/services/theme.service';
 import { NotificationService } from '../../services/notification.service';
 
 interface NavItem {
@@ -34,6 +35,10 @@ interface SearchResult {
   permissions?: Permission[];
 }
 
+interface AccountMenuLink extends NavItem {
+  detail: string;
+}
+
 interface DashboardSummary {
   totalIncidents: number;
   openIncidents: number;
@@ -53,9 +58,11 @@ export class ShellLayoutComponent implements OnInit {
   private readonly auth = inject(AuthService);
   private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
+  readonly theme = inject(ThemeService);
   private readonly notificationService = inject(NotificationService);
   @ViewChild('globalSearchInput') private searchInput?: ElementRef<HTMLInputElement>;
   readonly user = computed(() => this.auth.currentUser());
+  readonly permissionCount = computed(() => this.user()?.permissions.length ?? 0);
   readonly searchQuery = signal('');
   readonly searchFocused = signal(false);
   readonly navGroups: NavGroup[] = [
@@ -123,6 +130,9 @@ export class ShellLayoutComponent implements OnInit {
       ],
     },
   ];
+  readonly accountMenuLinks: AccountMenuLink[] = [
+    { label: 'Profile', detail: 'Identity and activity', route: '/account/profile', icon: 'person' },
+  ];
   readonly visibleNavGroups = computed(() =>
     this.navGroups
       .map(group => ({
@@ -131,11 +141,14 @@ export class ShellLayoutComponent implements OnInit {
       }))
       .filter(group => group.items.length > 0),
   );
+  readonly visibleAccountMenuLinks = computed(() => this.accountMenuLinks.filter(item => this.auth.canAccess(item.roles, item.permissions)));
 
   readonly alerts = this.notificationService.notifications;
   readonly unreadAlerts = this.notificationService.unreadCount;
   readonly unreadAlertItems = computed(() => this.alerts().filter(alert => !alert.read));
   readonly dashboardSummary = signal<DashboardSummary | null>(null);
+  readonly themeIcon = computed(() => this.theme.isDark() ? 'light_mode' : 'dark_mode');
+  readonly themeToggleLabel = computed(() => this.theme.isDark() ? 'Switch to light theme' : 'Switch to dark theme');
   readonly searchResults = computed(() => {
     const query = this.searchQuery().trim().toLowerCase();
 
@@ -237,6 +250,10 @@ export class ShellLayoutComponent implements OnInit {
 
   logout(): void {
     this.auth.logout();
+  }
+
+  toggleTheme(): void {
+    this.theme.toggle();
   }
 
   private loadDashboardSummary(): void {

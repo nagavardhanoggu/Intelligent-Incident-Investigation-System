@@ -19,6 +19,16 @@ export interface IncidentPayload {
   assignedUserId: number | null;
 }
 
+export interface IncidentFieldOptions {
+  defaults: Partial<Record<'priority' | 'impact' | 'urgency' | 'status', string>>;
+  options: {
+    priority: Incident['priority'][];
+    impact: Incident['impact'][];
+    urgency: Incident['urgency'][];
+    status: Incident['status'][];
+  };
+}
+
 @Injectable({ providedIn: 'root' })
 export class IncidentService {
   private readonly http = inject(HttpClient);
@@ -71,5 +81,9 @@ export class IncidentService {
 
   listAssignees(): Observable<IncidentAssignee[]> {
     return this.http.get<IncidentAssignee[]>(`${this.apiUrl}/users/assignees`);
+  }
+
+  getIncidentOptions(): Observable<IncidentFieldOptions> {
+    return this.http.get<IncidentFieldOptions>(`${this.apiUrl}/incidents/options`);
   }
 }

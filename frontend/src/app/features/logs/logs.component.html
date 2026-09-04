@@ -49,7 +49,7 @@
   }
 </mat-card>
 
-<section class="filters-panel" aria-label="Log filters">
+<mat-card class="filters-panel" aria-label="Log filters">
   <mat-form-field appearance="outline" class="search-filter">
     <mat-icon matPrefix>search</mat-icon>
     <input
@@ -105,66 +105,72 @@
     <mat-icon>filter_alt_off</mat-icon>
     Clear
   </button>
-</section>
+</mat-card>
 
-<div class="table-summary">
-  <span>{{ filteredLogs().length }} logs shown</span>
-</div>
+<mat-card class="logs-table-card">
+  <div class="table-summary">
+    <div>
+      <h2>Uploaded Logs</h2>
+      <p>Parsed files attached to incidents for investigation evidence.</p>
+    </div>
+    <span>{{ filteredLogs().length }} logs shown</span>
+  </div>
 
-<mat-card>
-  <table mat-table [dataSource]="filteredLogs()">
-    <ng-container matColumnDef="incidentKey">
-      <th mat-header-cell *matHeaderCellDef>Incident</th>
-      <td mat-cell *matCellDef="let log">{{ log.incidentKey }}</td>
-    </ng-container>
-    <ng-container matColumnDef="fileName">
-      <th mat-header-cell *matHeaderCellDef>File</th>
-      <td mat-cell *matCellDef="let log">{{ log.fileName }}</td>
-    </ng-container>
-    <ng-container matColumnDef="format">
-      <th mat-header-cell *matHeaderCellDef>Format</th>
-      <td mat-cell *matCellDef="let log">{{ log.format }}</td>
-    </ng-container>
-    <ng-container matColumnDef="uploadedAt">
-      <th mat-header-cell *matHeaderCellDef>Uploaded</th>
-      <td mat-cell *matCellDef="let log">{{ log.uploadedAt }}</td>
-    </ng-container>
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let log">{{ log.status }}</td>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let log" class="actions-cell">
-        <div class="row-actions">
-          <button
-            mat-icon-button
-            type="button"
-            class="view-data-action"
-            aria-label="View log data"
-            matTooltip="View data"
-            matTooltipPosition="below"
-            (click)="viewLogData(log)"
-          >
-            <mat-icon>visibility</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            type="button"
-            class="delete-log-action"
-            aria-label="Delete log"
-            matTooltip="Delete log"
-            matTooltipPosition="below"
-            (click)="deleteLog(log)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="columns"></tr>
-    <tr mat-row *matRowDef="let row; columns: columns"></tr>
-  </table>
+  <div class="table-scroll">
+    <table mat-table [dataSource]="filteredLogs()">
+      <ng-container matColumnDef="incidentKey">
+        <th mat-header-cell *matHeaderCellDef>Incident</th>
+        <td mat-cell *matCellDef="let log">{{ log.incidentKey }}</td>
+      </ng-container>
+      <ng-container matColumnDef="fileName">
+        <th mat-header-cell *matHeaderCellDef>File</th>
+        <td mat-cell *matCellDef="let log">{{ log.fileName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="format">
+        <th mat-header-cell *matHeaderCellDef>Format</th>
+        <td mat-cell *matCellDef="let log">{{ log.format }}</td>
+      </ng-container>
+      <ng-container matColumnDef="uploadedAt">
+        <th mat-header-cell *matHeaderCellDef>Uploaded</th>
+        <td mat-cell *matCellDef="let log">{{ log.uploadedAt }}</td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let log">{{ log.status }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let log" class="actions-cell">
+          <div class="row-actions">
+            <button
+              mat-icon-button
+              type="button"
+              class="view-data-action"
+              aria-label="View log data"
+              matTooltip="View data"
+              matTooltipPosition="below"
+              (click)="viewLogData(log)"
+            >
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              type="button"
+              class="delete-log-action"
+              aria-label="Delete log"
+              matTooltip="Delete log"
+              matTooltipPosition="below"
+              (click)="deleteLog(log)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+  </div>
   @if (!logRows().length) {
     <div class="empty-state">
       <mat-icon>folder_open</mat-icon>

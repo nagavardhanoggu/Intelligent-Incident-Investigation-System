@@ -3,36 +3,67 @@
 
 <mat-card>
   <div class="section-title">
-    <div>
+    <div class="section-copy">
       <h2>All Notifications</h2>
-      <span>{{ visibleNotifications().length }} visible · {{ unreadCount() }} unread</span>
+      <p>Filter incident alerts, SLA warnings, and operational updates.</p>
     </div>
-    <div class="toolbar-actions">
-      <button mat-button type="button" [class.active]="filter() === 'all'" (click)="setFilter('all')">All</button>
-      <button mat-button type="button" [class.active]="filter() === 'unread'" (click)="setFilter('unread')">Unread</button>
-      <button mat-button type="button" (click)="markAllRead()">Mark all read</button>
-      <button mat-button type="button" class="danger" (click)="clearAll()">Clear all</button>
+    <div class="section-actions">
+      <span class="notification-count">{{ visibleNotifications().length }} visible · {{ unreadCount() }} unread</span>
+      <div class="toolbar-actions">
+        <button mat-button type="button" [class.active]="filter() === 'all'" (click)="setFilter('all')">All</button>
+        <button mat-button type="button" [class.active]="filter() === 'unread'" (click)="setFilter('unread')">Unread</button>
+        <button mat-button type="button" (click)="markAllRead()">Mark all read</button>
+        <button mat-button type="button" class="danger" (click)="clearAll()">Clear all</button>
+      </div>
     </div>
   </div>
   <div class="notification-list">
     @for (item of visibleNotifications(); track item.id) {
-      <article [class.read]="item.read">
+      <article
+        [class.read]="item.read"
+        [class.critical]="item.severity === 'critical'"
+        [class.warning]="item.severity === 'warning'"
+        [class.info]="item.severity === 'info'"
+      >
         <span class="notification-icon">
           <mat-icon>{{ item.icon }}</mat-icon>
         </span>
-        <div>
+        <div class="copy">
           <strong>{{ item.title }}</strong>
           <p>{{ item.detail }}</p>
           <small>{{ item.time }}</small>
         </div>
-        <mat-chip [class]="item.severity">{{ severityLabel(item) }}</mat-chip>
-        <div class="row-actions">
-          <button mat-icon-button type="button" [matTooltip]="item.read ? 'Mark unread' : 'Mark read'" (click)="toggleRead(item.id)">
-            <mat-icon>{{ item.read ? 'mark_email_unread' : 'drafts' }}</mat-icon>
-          </button>
-          <button mat-icon-button type="button" matTooltip="Delete notification" (click)="deleteNotification(item.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
+        <div class="controls">
+          <span
+            class="severity"
+            [class.critical]="item.severity === 'critical'"
+            [class.warning]="item.severity === 'warning'"
+            [class.info]="item.severity === 'info'"
+          >
+            {{ severityLabel(item) }}
+          </span>
+          <div class="row-actions">
+            <button
+              mat-icon-button
+              type="button"
+              class="read-action view-action"
+              [attr.aria-label]="item.read ? 'Mark unread' : 'Mark read'"
+              [matTooltip]="item.read ? 'Mark unread' : 'Mark read'"
+              (click)="toggleRead(item.id)"
+            >
+              <mat-icon>{{ item.read ? 'mark_email_unread' : 'drafts' }}</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              type="button"
+              class="delete-action"
+              aria-label="Delete notification"
+              matTooltip="Delete notification"
+              (click)="deleteNotification(item.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
       </article>
     } @empty {

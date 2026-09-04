@@ -1,36 +1,75 @@
 <h1>Dashboard</h1>
 <p class="page-subtitle">Monitor incident volume, service risk, SLA health, and predicted root cause patterns.</p>
 <section class="kpis">
-  <mat-card><span>Total Incidents</span><strong>{{ kpis.total }}</strong></mat-card>
-  <mat-card><span>Open Incidents</span><strong>{{ kpis.open }}</strong></mat-card>
-  <mat-card><span>Closed Incidents</span><strong>{{ kpis.closed }}</strong></mat-card>
-  <mat-card><span>Critical Incidents</span><strong>{{ kpis.critical }}</strong></mat-card>
+  @for (card of kpiCards; track card.label) {
+    <mat-card class="summary-card">
+      <div class="summary-card-top">
+        <span class="summary-card-icon">
+          <mat-icon>{{ card.icon || 'analytics' }}</mat-icon>
+        </span>
+        <div>
+          <span>{{ card.label }}</span>
+          <strong>{{ card.value }}</strong>
+        </div>
+      </div>
+    </mat-card>
+  }
 </section>
 
 <section class="health-grid">
   @for (item of serviceHealth; track item.label) {
-    <mat-card>
-      <span>{{ item.label }}</span>
-      <strong>{{ item.value }}</strong>
-      <small>{{ item.trend }}</small>
+    <mat-card class="summary-card health-card">
+      <div class="summary-card-top">
+        <span class="summary-card-icon">
+          <mat-icon>{{ item.icon || 'monitoring' }}</mat-icon>
+        </span>
+        <div>
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+        </div>
+      </div>
     </mat-card>
   }
 </section>
 
 <section class="charts">
   <mat-card>
-    <h2>Incident Trends</h2>
+    <div class="card-heading">
+      <span class="card-heading-icon">
+        <mat-icon>{{ sectionHeadings.incidentTrends.icon }}</mat-icon>
+      </span>
+      <div>
+        <h2>{{ sectionHeadings.incidentTrends.title }}</h2>
+        <p>{{ sectionHeadings.incidentTrends.subtitle }}</p>
+      </div>
+    </div>
     <canvas #trend></canvas>
   </mat-card>
   <mat-card>
-    <h2>Root Cause Distribution</h2>
+    <div class="card-heading">
+      <span class="card-heading-icon">
+        <mat-icon>{{ sectionHeadings.rootCauseDistribution.icon }}</mat-icon>
+      </span>
+      <div>
+        <h2>{{ sectionHeadings.rootCauseDistribution.title }}</h2>
+        <p>{{ sectionHeadings.rootCauseDistribution.subtitle }}</p>
+      </div>
+    </div>
     <canvas #causes></canvas>
   </mat-card>
 </section>
 
 <section class="data-grid">
   <mat-card>
-    <h2>Open Incidents by Priority</h2>
+    <div class="card-heading">
+      <span class="card-heading-icon">
+        <mat-icon>{{ sectionHeadings.priorityBreakdown.icon }}</mat-icon>
+      </span>
+      <div>
+        <h2>{{ sectionHeadings.priorityBreakdown.title }}</h2>
+        <p>{{ sectionHeadings.priorityBreakdown.subtitle }}</p>
+      </div>
+    </div>
     <div class="stack-list">
       @for (item of priorityBreakdown; track item.label) {
         <div>
@@ -42,7 +81,15 @@
   </mat-card>
 
   <mat-card>
-    <h2>Top Assignment Groups</h2>
+    <div class="card-heading">
+      <span class="card-heading-icon">
+        <mat-icon>{{ sectionHeadings.assignmentGroups.icon }}</mat-icon>
+      </span>
+      <div>
+        <h2>{{ sectionHeadings.assignmentGroups.title }}</h2>
+        <p>{{ sectionHeadings.assignmentGroups.subtitle }}</p>
+      </div>
+    </div>
     <div class="stack-list">
       @for (group of assignmentGroups; track group.name) {
         <div>
@@ -54,12 +101,20 @@
   </mat-card>
 
   <mat-card>
-    <h2>Recent ML Root Causes</h2>
+    <div class="card-heading">
+      <span class="card-heading-icon">
+        <mat-icon>{{ sectionHeadings.recentCauses.icon }}</mat-icon>
+      </span>
+      <div>
+        <h2>{{ sectionHeadings.recentCauses.title }}</h2>
+        <p>{{ sectionHeadings.recentCauses.subtitle }}</p>
+      </div>
+    </div>
     <div class="root-causes">
       @for (cause of recentCauses; track cause.cause) {
         <div>
           <strong>{{ cause.cause }}</strong>
-          <span>{{ cause.count }} incidents · {{ cause.confidence }} confidence</span>
+          <span>{{ cause.count }} incidents &middot; {{ cause.confidence }} confidence</span>
         </div>
       }
     </div>
@@ -69,7 +124,15 @@
 @if (canViewInvestigationWidgets()) {
   <section class="investigation-grid">
     <mat-card>
-      <h2>Active Investigation Queue</h2>
+      <div class="card-heading">
+        <span class="card-heading-icon">
+          <mat-icon>{{ sectionHeadings.activeQueue.icon }}</mat-icon>
+        </span>
+        <div>
+          <h2>{{ sectionHeadings.activeQueue.title }}</h2>
+          <p>{{ sectionHeadings.activeQueue.subtitle }}</p>
+        </div>
+      </div>
       <div class="queue-list">
         @for (incident of activeQueue; track incident.key) {
           <article>
@@ -77,7 +140,7 @@
               <strong>{{ incident.key }}</strong>
               <span>{{ incident.service }}</span>
             </div>
-            <span class="priority">{{ incident.priority }}</span>
+            <app-severity-chip [value]="incident.priority" />
             <span>{{ incident.status }}</span>
             <span>{{ incident.owner }}</span>
             <span>{{ incident.mttr }}</span>
@@ -87,10 +150,23 @@
     </mat-card>
 
     <mat-card>
-      <h2>Anomaly Signals</h2>
+      <div class="card-heading">
+        <span class="card-heading-icon">
+          <mat-icon>{{ sectionHeadings.anomalySignals.icon }}</mat-icon>
+        </span>
+        <div>
+          <h2>{{ sectionHeadings.anomalySignals.title }}</h2>
+          <p>{{ sectionHeadings.anomalySignals.subtitle }}</p>
+        </div>
+      </div>
       <div class="anomaly-list">
         @for (signal of anomalySignals; track signal.metric) {
-          <div>
+          <div
+            [class.critical]="signal.severity.toLowerCase() === 'critical'"
+            [class.high]="signal.severity.toLowerCase() === 'high'"
+            [class.warning]="signal.severity.toLowerCase() === 'warning'"
+            [class.info]="signal.severity.toLowerCase() === 'info'"
+          >
             <span>
               <strong>{{ signal.metric }}</strong>
               <small>{{ signal.source }}</small>
@@ -103,7 +179,15 @@
     </mat-card>
 
     <mat-card>
-      <h2>{{ canViewAdminWidgets() ? 'Operational Control Actions' : 'Recommended Actions' }}</h2>
+      <div class="card-heading">
+        <span class="card-heading-icon">
+          <mat-icon>{{ actionHeading().icon }}</mat-icon>
+        </span>
+        <div>
+          <h2>{{ actionHeading().title }}</h2>
+          <p>{{ actionHeading().subtitle }}</p>
+        </div>
+      </div>
       <div class="actions-list">
         @for (action of actionItems; track action) {
           <div>

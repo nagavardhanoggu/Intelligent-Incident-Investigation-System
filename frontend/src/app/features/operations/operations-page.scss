@@ -61,39 +61,54 @@ mat-card {
 }
 
 .kpi-card {
+  display: flex;
+  align-items: center;
+  min-height: 118px;
+  padding: 18px 24px;
+}
+
+.kpi-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.kpi-card-top div {
   display: grid;
-  gap: 10px;
-  min-height: 112px;
-  padding: 18px;
+  gap: 6px;
+  min-width: 0;
 }
 
-.kpi-card span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #53627a;
-  font-size: 13px;
-  font-weight: 600;
+.kpi-card-top span:not(.kpi-card-icon) {
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
 }
 
-.kpi-card mat-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  min-width: 28px;
-  height: 28px;
-  padding: 5px;
+.kpi-card-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
   border-radius: 8px;
-  background: #fff1eb;
+  background: #ffe1d8;
   color: #f04b23;
-  font-size: 18px;
-  line-height: 1;
+}
+
+.kpi-card-icon mat-icon {
+  width: 21px;
+  height: 21px;
+  font-size: 22px;
 }
 
 .kpi-card strong {
   color: #111827;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
 }
 
@@ -127,6 +142,18 @@ mat-card {
   font-weight: 700;
 }
 
+.section-title div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.section-title p {
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .section-title span {
   color: #53627a;
   font-size: 13px;
@@ -145,13 +172,19 @@ mat-card {
 .item-row {
   display: grid;
   grid-template-columns: 42px minmax(0, 1fr) auto;
-  align-items: center;
+  align-items: start;
   gap: 12px;
   min-height: 68px;
-  padding: 12px;
+  padding: 14px 12px;
   border: 1px solid #edf0f4;
   border-radius: 8px;
   background: #f8fafc;
+}
+
+.item-row > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
 }
 
 .item-icon {
@@ -194,17 +227,21 @@ mat-card {
 }
 
 .item-row div > span {
-  margin-top: 4px;
   color: #53627a;
   font-size: 13px;
+  line-height: 1.35;
 }
 
 .item-row small {
   color: #667085;
   font-size: 12px;
+  line-height: 1.35;
 }
 
 .status-chip {
+  align-self: start;
+  justify-self: end;
+  margin-top: 2px;
   border-radius: 999px;
   padding: 5px 10px;
   background: #e7f8ef;
@@ -260,5 +297,9 @@ mat-card {
 
   .summary-grid {
     grid-template-columns: 1fr;
+  }
+
+  .status-chip {
+    justify-self: start;
   }
 }

@@ -1,14 +1,13 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppNotification, NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-notifications',
-  imports: [MatButtonModule, MatCardModule, MatChipsModule, MatIconModule, MatTooltipModule],
+  imports: [MatButtonModule, MatCardModule, MatIconModule, MatTooltipModule],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.scss',
 })

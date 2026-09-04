@@ -25,6 +25,7 @@ export interface FeaturePageItem {
   progress?: number;
   tags?: string[];
   route?: string;
+  detailKey?: string;
 }
 
 export interface FeaturePageSection {
@@ -39,14 +40,21 @@ export interface FeaturePageData {
   pill?: FeaturePagePill;
   kpis: FeaturePageKpi[];
   sections: FeaturePageSection[];
+  parentTitle?: string;
 }
+
+export type FeaturePageSource = 'feature-pages' | 'operations';
 
 @Injectable({ providedIn: 'root' })
 export class FeaturePageService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'http://localhost:8000/api/v1';
 
-  getPage(pageKey: string): Observable<FeaturePageData> {
-    return this.http.get<FeaturePageData>(`${this.apiUrl}/feature-pages/${pageKey}`);
+  getPage(pageKey: string, source: FeaturePageSource = 'feature-pages'): Observable<FeaturePageData> {
+    return this.http.get<FeaturePageData>(`${this.apiUrl}/${source}/${pageKey}`);
+  }
+
+  getSubpage(pageKey: string, subpageKey: string, source: FeaturePageSource = 'feature-pages'): Observable<FeaturePageData> {
+    return this.http.get<FeaturePageData>(`${this.apiUrl}/${source}/${pageKey}/subpages/${subpageKey}`);
   }
 }

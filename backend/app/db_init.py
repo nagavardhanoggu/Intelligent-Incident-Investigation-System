@@ -4,7 +4,7 @@ from sqlalchemy import delete, inspect, select, text
 from sqlalchemy.orm import Session
 
 from app.database import Base, engine
-from app.feature_pages import DEFAULT_FEATURE_PAGES
+from app.feature_pages import DEFAULT_OPERATIONAL_PAGES
 from app.models.entities import Incident, Log, Metric, OperationalPage, Permission, Prediction, Role, RolePermission, Timeline, User, UserAccountSettings, UserRole
 from app.rbac import PERMISSIONS, ROLES, ROLE_PERMISSIONS
 from app.utils.security import hash_password
@@ -635,7 +635,7 @@ def initialize_database() -> None:
 
         _seed_investigation_profiles(session)
 
-        for page_key, payload in DEFAULT_FEATURE_PAGES.items():
+        for page_key, payload in DEFAULT_OPERATIONAL_PAGES.items():
             page = session.get(OperationalPage, page_key)
             if page:
                 page.payload = payload

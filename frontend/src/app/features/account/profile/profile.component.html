@@ -38,7 +38,12 @@
   </mat-card>
 
   <mat-card class="details-card">
-    <h2>Account Details</h2>
+    <div class="card-heading">
+      <div>
+        <h2>Account Details</h2>
+        <p>Identity, role, and operational ownership stored for your account.</p>
+      </div>
+    </div>
     <div class="detail-list">
       @for (item of details(); track item.label) {
         <article>
@@ -54,7 +59,12 @@
 </section>
 
 <mat-card class="activity-card">
-  <h2>Recent Activity</h2>
+  <div class="card-heading">
+    <div>
+      <h2>Recent Activity</h2>
+      <p>Latest audit events connected to your platform session.</p>
+    </div>
+  </div>
   <div class="activity-list">
     @for (item of activity(); track item.title) {
       <article>

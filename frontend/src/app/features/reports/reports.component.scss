@@ -40,6 +40,66 @@ h1 {
   margin-bottom: 16px;
 }
 
+.cards mat-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 118px;
+  padding: 18px 24px;
+}
+
+.summary-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.summary-card-top div {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.summary-card-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
+  border-radius: 8px;
+  background: #ffe1d8;
+  color: #f04b23;
+}
+
+.summary-card-icon mat-icon {
+  width: 21px;
+  height: 21px;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.cards mat-card:nth-child(1) .summary-card-icon {
+  border-color: #b8ebd3 !important;
+  background: #d9f7e8 !important;
+  color: #059669 !important;
+}
+
+.cards mat-card:nth-child(2) .summary-card-icon {
+  border-color: #bdd4ff !important;
+  background: #dfeaff !important;
+  color: #2563eb !important;
+}
+
+.cards mat-card:nth-child(3) .summary-card-icon {
+  border-color: #ffc7b6 !important;
+  background: #ffe1d8 !important;
+  color: #dc2626 !important;
+}
+
 mat-card {
   max-width: 100%;
   overflow: hidden;
@@ -59,8 +119,16 @@ strong {
 }
 
 .cards strong {
-  margin-top: 6px;
-  font-size: 20px;
+  margin-top: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.summary-card-top span:not(.summary-card-icon) {
+  color: #25324b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
 }
 
 table {
@@ -73,10 +141,27 @@ td {
 }
 
 h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card-heading {
   margin: 0 0 14px;
   padding-bottom: 12px;
   border-bottom: 1px solid #e4e7ec;
-  font-size: 18px;
+}
+
+.card-heading div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.card-heading p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .report-grid {

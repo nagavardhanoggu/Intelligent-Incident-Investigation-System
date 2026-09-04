@@ -14,6 +14,35 @@ class LoginRequest(BaseModel):
     password: str = Field(min_length=1)
 
 
+class PasswordResetRequest(BaseModel):
+    email: EmailStr
+
+
+class PasswordResetResponse(BaseModel):
+    message: str
+    email: EmailStr | None = None
+    expiresInMinutes: int | None = None
+    debugOtp: str | None = None
+
+
+class PasswordResetOtpVerifyRequest(BaseModel):
+    email: EmailStr
+    otp: str = Field(min_length=4, max_length=4, pattern=r"^\d{4}$")
+
+
+class PasswordResetOtpVerifyResponse(BaseModel):
+    message: str
+    resetToken: str
+
+
+class PasswordResetConfirmRequest(BaseModel):
+    email: EmailStr
+    otp: str = Field(min_length=4, max_length=4, pattern=r"^\d{4}$")
+    resetToken: str = Field(min_length=16, max_length=256)
+    newPassword: str = Field(min_length=8, max_length=128)
+    confirmPassword: str = Field(min_length=8, max_length=128)
+
+
 class UserResponse(BaseModel):
     id: int
     fullName: str
@@ -159,6 +188,11 @@ class IncidentUpdate(BaseModel):
     finalRootCause: str | None = None
 
 
+class IncidentOptionsResponse(BaseModel):
+    defaults: dict[str, str] = Field(default_factory=dict)
+    options: dict[str, list[str]] = Field(default_factory=dict)
+
+
 class IncidentResponse(BaseModel):
     id: int
     incidentKey: str
@@ -215,6 +249,11 @@ class PredictRequest(BaseModel):
     contactType: str | None = Field(default="UNKNOWN", alias="contact_type")
     knowledge: str | None = "UNKNOWN"
     sysModCount: int = Field(default=0, ge=0, alias="sys_mod_count")
+
+
+class PredictOptionsResponse(BaseModel):
+    defaults: dict[str, str | int] = Field(default_factory=dict)
+    options: dict[str, list[str]] = Field(default_factory=dict)
 
 
 class ProbableCause(BaseModel):

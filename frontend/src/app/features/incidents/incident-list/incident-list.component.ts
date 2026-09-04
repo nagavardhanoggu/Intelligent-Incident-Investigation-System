@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,6 +29,7 @@ interface IncidentFilters {
   imports: [
     RouterLink,
     MatButtonModule,
+    MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
@@ -47,14 +49,14 @@ export class IncidentListComponent {
   private readonly dialog = inject(MatDialog);
   private readonly snackBar = inject(MatSnackBar);
   private readonly incidents = toSignal(this.incidentService.listIncidents(), { initialValue: [] });
-  readonly priorityOptions: Priority[] = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
-  readonly statusOptions: IncidentStatus[] = ['OPEN', 'INVESTIGATING', 'RESOLVED', 'CLOSED'];
   readonly filters = signal<IncidentFilters>({
     query: '',
     priority: 'ALL',
     status: 'ALL',
     assignee: 'ALL',
   });
+  readonly priorityOptions = computed(() => this.uniqueValues(this.incidents().map(incident => incident.priority)));
+  readonly statusOptions = computed(() => this.uniqueValues(this.incidents().map(incident => incident.status)));
   readonly assigneeOptions = computed(() =>
     Array.from(new Set(this.incidents().map(incident => incident.assignedUser))).sort(),
   );
@@ -154,5 +156,9 @@ export class IncidentListComponent {
       status: 'ALL',
       assignee: 'ALL',
     });
+  }
+
+  private uniqueValues<T extends string>(values: T[]): T[] {
+    return Array.from(new Set(values)).sort();
   }
 }

@@ -21,6 +21,18 @@ interface LoginResponse {
   user: SessionUser;
 }
 
+export interface PasswordResetResponse {
+  message: string;
+  email?: string;
+  expiresInMinutes?: number;
+  debugOtp?: string;
+}
+
+export interface PasswordResetOtpVerifyResponse {
+  message: string;
+  resetToken: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly apiUrl = 'http://localhost:8000/api/v1';
@@ -44,6 +56,24 @@ export class AuthService {
       }),
       map(() => true),
     );
+  }
+
+  requestPasswordReset(email: string): Observable<PasswordResetResponse> {
+    return this.http.post<PasswordResetResponse>(`${this.apiUrl}/auth/forgot-password`, { email });
+  }
+
+  verifyPasswordResetOtp(email: string, otp: string): Observable<PasswordResetOtpVerifyResponse> {
+    return this.http.post<PasswordResetOtpVerifyResponse>(`${this.apiUrl}/auth/forgot-password/verify-otp`, { email, otp });
+  }
+
+  confirmPasswordReset(email: string, otp: string, resetToken: string, newPassword: string, confirmPassword: string): Observable<PasswordResetResponse> {
+    return this.http.post<PasswordResetResponse>(`${this.apiUrl}/auth/forgot-password/reset`, {
+      email,
+      otp,
+      resetToken,
+      newPassword,
+      confirmPassword,
+    });
   }
 
   logout(): void {

@@ -67,6 +67,25 @@ h2 {
   font-size: 20px;
 }
 
+.card-heading {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.card-heading div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.card-heading p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 p {
   margin: 0;
   color: #667085;
@@ -169,21 +188,31 @@ mat-chip {
 .detail-list {
   display: grid;
   gap: 12px;
-  margin-top: 16px;
 }
 
 .detail-list article {
   display: grid;
-  grid-template-columns: 40px 1fr;
+  grid-template-columns: 40px minmax(0, 1fr);
   align-items: center;
-  gap: 12px;
-  padding: 12px;
+  gap: 14px;
+  min-height: 72px;
+  padding: 14px 16px;
   border-radius: 8px;
   background: #f8fafc;
 }
 
-.detail-list mat-icon {
+.detail-list mat-icon,
+.activity-list mat-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #ffc7b6;
+  border-radius: 8px;
+  background: #ffe1d8;
   color: #f04b23;
+  font-size: 22px;
+  line-height: 1;
 }
 
 .detail-list span {
@@ -201,29 +230,20 @@ mat-chip {
   padding: 20px;
 }
 
-.activity-card h2 {
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e4e7ec;
-}
-
 .activity-list {
   display: grid;
   gap: 10px;
-  margin-top: 14px;
 }
 
 .activity-list article {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
   align-items: center;
-  gap: 12px;
-  padding: 12px;
+  gap: 14px;
+  min-height: 72px;
+  padding: 14px 16px;
   border-radius: 8px;
   background: #f8fafc;
-}
-
-.activity-list mat-icon {
-  color: #f04b23;
 }
 
 .activity-list strong,

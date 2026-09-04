@@ -50,10 +50,285 @@ h1 {
   line-height: 1.5;
 }
 
+app-shell-layout .mat-mdc-card.mdc-card {
+  --mdc-elevated-card-container-color: #f4f3f6;
+  --mdc-elevated-card-container-elevation:
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #f4f3f6 !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+app-shell-layout .mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: 8px;
+  --mdc-outlined-text-field-outline-color: #cbd5e1;
+  --mdc-outlined-text-field-hover-outline-color: #98a2b3;
+  --mdc-outlined-text-field-focus-outline-color: #f04b23;
+  --mdc-outlined-text-field-label-text-color: #475467;
+  --mdc-outlined-text-field-hover-label-text-color: #344054;
+  --mdc-outlined-text-field-focus-label-text-color: #d43f1d;
+  --mdc-outlined-text-field-input-text-color: #101828;
+}
+
+app-shell-layout .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  background: #f8fafc !important;
+}
+
+app-shell-layout .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper,
+app-shell-layout .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  background: #ffffff !important;
+}
+
+app-shell-layout .mat-mdc-form-field .mdc-notched-outline__leading,
+app-shell-layout .mat-mdc-form-field .mdc-notched-outline__notch,
+app-shell-layout .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: #cbd5e1 !important;
+}
+
+app-shell-layout .mat-mdc-form-field:hover .mdc-notched-outline__leading,
+app-shell-layout .mat-mdc-form-field:hover .mdc-notched-outline__notch,
+app-shell-layout .mat-mdc-form-field:hover .mdc-notched-outline__trailing {
+  border-color: #98a2b3 !important;
+}
+
+app-shell-layout .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+app-shell-layout .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+app-shell-layout .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: #f04b23 !important;
+}
+
+app-shell-layout
+  :is(
+    .summary-grid mat-card > mat-icon,
+    .summary .summary-card > mat-icon,
+    .summary-grid .kpi-card span > mat-icon,
+    .scope-grid mat-card > mat-icon,
+    .impact-grid .impact-card > mat-icon,
+    .signal-grid mat-card > mat-icon,
+    .signal-grid .summary-card-icon,
+    .summary-icon,
+    .incident-icon,
+    .summary-card-icon,
+    .kpi-card-icon,
+    .card-heading-icon,
+    .heading-icon,
+    .upload-icon,
+    .prediction-score > mat-icon,
+    .notification-icon,
+    .quick-links button > mat-icon,
+    .detail-list article > mat-icon,
+    .activity-list article > mat-icon,
+    .permission-list article > mat-icon,
+    .setting-list article > mat-icon,
+    .session-list article > mat-icon,
+    .audit-list article > mat-icon,
+    .insight-icon
+  ) {
+  border-color: #ffc7b6 !important;
+  background: #ffe1d8 !important;
+  color: #f04b23 !important;
+}
+
+app-shell-layout
+  :is(
+    .summary-grid mat-card:nth-child(4n + 1) > mat-icon,
+    .summary-grid mat-card:nth-child(4n + 1) .summary-card-icon,
+    .summary .summary-card:nth-child(4n + 1) > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 1) span > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 1) .kpi-card-icon,
+    .scope-grid mat-card:nth-child(4n + 1) > mat-icon,
+    .impact-grid .impact-card:nth-child(4n + 1) > mat-icon,
+    .signal-grid mat-card:nth-child(4n + 1) > mat-icon,
+    .signal-grid mat-card:nth-child(4n + 1) .summary-card-icon,
+    .feature-list .feature-item:nth-child(4n + 1) .item-icon,
+    .notification-list article:nth-child(4n + 1) .notification-icon,
+    .quick-links button:nth-child(4n + 1) > mat-icon,
+    .detail-list article:nth-child(4n + 1) > mat-icon,
+    .activity-list article:nth-child(4n + 1) > mat-icon,
+    .permission-list article:nth-child(4n + 1) > mat-icon,
+    .setting-list article:nth-child(4n + 1) > mat-icon,
+    .session-list article:nth-child(4n + 1) > mat-icon,
+    .audit-list article:nth-child(4n + 1) > mat-icon,
+    .insight-list article:nth-child(4n + 1) .insight-icon
+  ) {
+  border-color: #ffc7b6 !important;
+  background: #ffe1d8 !important;
+  color: #dc2626 !important;
+}
+
+app-shell-layout
+  :is(
+    .summary-grid mat-card:nth-child(4n + 2) > mat-icon,
+    .summary-grid mat-card:nth-child(4n + 2) .summary-card-icon,
+    .summary .summary-card:nth-child(4n + 2) > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 2) span > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 2) .kpi-card-icon,
+    .scope-grid mat-card:nth-child(4n + 2) > mat-icon,
+    .impact-grid .impact-card:nth-child(4n + 2) > mat-icon,
+    .signal-grid mat-card:nth-child(4n + 2) > mat-icon,
+    .signal-grid mat-card:nth-child(4n + 2) .summary-card-icon,
+    .feature-list .feature-item:nth-child(4n + 2) .item-icon,
+    .notification-list article:nth-child(4n + 2) .notification-icon,
+    .quick-links button:nth-child(4n + 2) > mat-icon,
+    .detail-list article:nth-child(4n + 2) > mat-icon,
+    .activity-list article:nth-child(4n + 2) > mat-icon,
+    .permission-list article:nth-child(4n + 2) > mat-icon,
+    .setting-list article:nth-child(4n + 2) > mat-icon,
+    .session-list article:nth-child(4n + 2) > mat-icon,
+    .audit-list article:nth-child(4n + 2) > mat-icon,
+    .insight-list article:nth-child(4n + 2) .insight-icon
+  ) {
+  border-color: #bdd4ff !important;
+  background: #dfeaff !important;
+  color: #2563eb !important;
+}
+
+app-shell-layout
+  :is(
+    .summary-grid mat-card:nth-child(4n + 3) > mat-icon,
+    .summary-grid mat-card:nth-child(4n + 3) .summary-card-icon,
+    .summary .summary-card:nth-child(4n + 3) > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 3) span > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 3) .kpi-card-icon,
+    .scope-grid mat-card:nth-child(4n + 3) > mat-icon,
+    .impact-grid .impact-card:nth-child(4n + 3) > mat-icon,
+    .signal-grid mat-card:nth-child(4n + 3) > mat-icon,
+    .signal-grid mat-card:nth-child(4n + 3) .summary-card-icon,
+    .feature-list .feature-item:nth-child(4n + 3) .item-icon,
+    .notification-list article:nth-child(4n + 3) .notification-icon,
+    .quick-links button:nth-child(4n + 3) > mat-icon,
+    .detail-list article:nth-child(4n + 3) > mat-icon,
+    .activity-list article:nth-child(4n + 3) > mat-icon,
+    .permission-list article:nth-child(4n + 3) > mat-icon,
+    .setting-list article:nth-child(4n + 3) > mat-icon,
+    .session-list article:nth-child(4n + 3) > mat-icon,
+    .audit-list article:nth-child(4n + 3) > mat-icon,
+    .insight-list article:nth-child(4n + 3) .insight-icon
+  ) {
+  border-color: #b8ebd3 !important;
+  background: #d9f7e8 !important;
+  color: #059669 !important;
+}
+
+app-shell-layout
+  :is(
+    .summary-grid mat-card:nth-child(4n) > mat-icon,
+    .summary-grid mat-card:nth-child(4n) .summary-card-icon,
+    .summary .summary-card:nth-child(4n) > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n) span > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n) .kpi-card-icon,
+    .scope-grid mat-card:nth-child(4n) > mat-icon,
+    .impact-grid .impact-card:nth-child(4n) > mat-icon,
+    .signal-grid mat-card:nth-child(4n) > mat-icon,
+    .signal-grid mat-card:nth-child(4n) .summary-card-icon,
+    .feature-list .feature-item:nth-child(4n) .item-icon,
+    .notification-list article:nth-child(4n) .notification-icon,
+    .quick-links button:nth-child(4n) > mat-icon,
+    .detail-list article:nth-child(4n) > mat-icon,
+    .activity-list article:nth-child(4n) > mat-icon,
+    .permission-list article:nth-child(4n) > mat-icon,
+    .setting-list article:nth-child(4n) > mat-icon,
+    .session-list article:nth-child(4n) > mat-icon,
+    .audit-list article:nth-child(4n) > mat-icon,
+    .insight-list article:nth-child(4n) .insight-icon
+  ) {
+  border-color: #d8c9ff !important;
+  background: #eee7ff !important;
+  color: #7c3aed !important;
+}
+
+app-shell-layout .prediction-layout > mat-card:nth-child(1) .heading-icon,
+app-shell-layout .analysis-card .heading-icon,
+app-shell-layout .upload-card .upload-icon {
+  border-color: #bdd4ff !important;
+  background: #dfeaff !important;
+  color: #2563eb !important;
+}
+
+app-shell-layout .prediction-layout > mat-card:nth-child(2) .heading-icon,
+app-shell-layout .role-hero > mat-icon,
+app-shell-layout .advanced-heading > mat-icon {
+  border-color: #d8c9ff !important;
+  background: #eee7ff !important;
+  color: #7c3aed !important;
+}
+
+app-shell-layout .kpis mat-card:nth-child(1) .summary-card-icon,
+app-shell-layout .summary-grid .summary-card:nth-child(1) .summary-icon,
+app-shell-layout .data-grid mat-card:nth-child(3) .card-heading-icon {
+  border-color: #aee3ec !important;
+  background: #d6f4f9 !important;
+  color: #0891b2 !important;
+}
+
+app-shell-layout .kpis mat-card:nth-child(2) .summary-card-icon,
+app-shell-layout .kpi-grid mat-card:nth-child(2) .summary-card-icon,
+app-shell-layout .health-grid mat-card:nth-child(4) .summary-card-icon,
+app-shell-layout .summary-grid .summary-card:nth-child(2) .summary-icon,
+app-shell-layout .charts mat-card:nth-child(1) .card-heading-icon,
+app-shell-layout .investigation-grid mat-card:nth-child(1) .card-heading-icon,
+app-shell-layout .incident-grid .incident-card:nth-child(4n + 2) .incident-icon,
+app-shell-layout .item-list .item-row:nth-child(4n + 2) .item-icon {
+  border-color: #bdd4ff !important;
+  background: #dfeaff !important;
+  color: #2563eb !important;
+}
+
+app-shell-layout .kpis mat-card:nth-child(3) .summary-card-icon,
+app-shell-layout .health-grid mat-card:nth-child(1) .summary-card-icon,
+app-shell-layout .data-grid mat-card:nth-child(2) .card-heading-icon,
+app-shell-layout .incident-grid .incident-card:nth-child(4n + 3) .incident-icon,
+app-shell-layout .item-list .item-row:nth-child(4n + 3) .item-icon {
+  border-color: #b8ebd3 !important;
+  background: #d9f7e8 !important;
+  color: #059669 !important;
+}
+
+app-shell-layout .kpis mat-card:nth-child(4) .summary-card-icon,
+app-shell-layout .kpi-grid mat-card:nth-child(1) .summary-card-icon,
+app-shell-layout .health-grid mat-card:nth-child(2) .summary-card-icon,
+app-shell-layout .summary-grid .summary-card:nth-child(3) .summary-icon,
+app-shell-layout .data-grid mat-card:nth-child(1) .card-heading-icon,
+app-shell-layout .incident-grid .incident-card:nth-child(4n + 1) .incident-icon,
+app-shell-layout .item-list .item-row:nth-child(4n + 1) .item-icon {
+  border-color: #ffc7b6 !important;
+  background: #ffe1d8 !important;
+  color: #dc2626 !important;
+}
+
+app-shell-layout .kpi-grid mat-card:nth-child(3) .summary-card-icon,
+app-shell-layout .health-grid mat-card:nth-child(3) .summary-card-icon,
+app-shell-layout .charts mat-card:nth-child(2) .card-heading-icon,
+app-shell-layout .investigation-grid mat-card:nth-child(2) .card-heading-icon,
+app-shell-layout .incident-grid .incident-card:nth-child(4n) .incident-icon,
+app-shell-layout .item-list .item-row:nth-child(4n) .item-icon {
+  border-color: #d8c9ff !important;
+  background: #eee7ff !important;
+  color: #7c3aed !important;
+}
+
+app-shell-layout .kpi-grid mat-card:nth-child(4) .summary-card-icon {
+  border-color: #b8ebd3 !important;
+  background: #d9f7e8 !important;
+  color: #059669 !important;
+}
+
+app-shell-layout .investigation-grid mat-card:nth-child(3) .card-heading-icon {
+  border-color: #cbd5e1 !important;
+  background: #edf2f7 !important;
+  color: #475569 !important;
+}
+
 .cdk-overlay-pane:has(.profile-menu-panel) {
-  width: 236px !important;
-  min-width: 236px !important;
-  max-width: 236px !important;
+  width: min(280px, calc(100vw - 24px)) !important;
+  min-width: min(280px, calc(100vw - 24px)) !important;
+  max-width: calc(100vw - 24px) !important;
 }
 
 .cdk-overlay-pane:has(.alerts-menu-panel) {
@@ -64,9 +339,9 @@ h1 {
 
 .mat-mdc-menu-panel.profile-menu-panel {
   --mat-menu-container-shape: 16px;
-  width: 236px !important;
-  min-width: 236px !important;
-  max-width: 236px !important;
+  width: min(280px, calc(100vw - 24px)) !important;
+  min-width: min(280px, calc(100vw - 24px)) !important;
+  max-width: calc(100vw - 24px) !important;
   overflow: hidden !important;
   border: 1px solid #e4e7ec;
   background: #ffffff;
@@ -79,16 +354,95 @@ h1 {
 
 .profile-menu-panel .mat-mdc-menu-content {
   display: grid;
-  padding: 10px;
+  padding: 0;
+}
+
+.profile-menu-summary {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 10px 12px;
+  padding: 16px;
+  border-bottom: 1px solid #e4e7ec;
+  background: #fff8f4;
+}
+
+.profile-menu-summary .avatar {
+  grid-row: 1 / span 2;
+  align-self: start;
+  box-shadow: 0 8px 18px rgba(240, 75, 35, 0.26);
+}
+
+.profile-menu-identity {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+  align-self: center;
+}
+
+.profile-menu-identity strong,
+.profile-menu-identity small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-menu-identity strong {
+  color: #17202a;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.profile-menu-identity small {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.profile-menu-meta {
+  display: flex;
+  grid-column: 2;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-menu-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  padding: 0 8px;
+  background: #ffffff;
+  color: #53627a;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.profile-menu-meta .role-pill {
+  border-color: #ffd5c7;
+  background: #ffffff;
+  color: #d43f1d;
+}
+
+.profile-menu-links {
+  display: grid;
+  gap: 2px;
+  padding: 8px;
+  background: #ffffff;
 }
 
 .profile-menu-panel .mat-mdc-menu-item {
   min-height: 58px;
   border: 1px solid transparent;
-  border-radius: 12px;
-  padding: 0 14px;
+  border-radius: 8px;
+  padding: 0 10px;
   color: #17202a;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   transition:
     background 160ms ease,
@@ -100,22 +454,24 @@ h1 {
 .profile-menu-panel .mat-mdc-menu-item-text {
   display: flex;
   align-items: center;
-  gap: 0;
+  width: 100%;
+  min-width: 0;
+  gap: 12px;
 }
 
 .profile-menu-panel .mat-mdc-menu-item:hover {
   border-color: #ffe2d6;
   background: #fff7f3;
-  transform: translateY(-1px);
 }
 
 .profile-menu-panel .mat-mdc-menu-item .mat-icon {
   display: grid;
-  width: 36px;
-  height: 40px;
-  margin-right: 0;
+  width: 38px;
+  height: 38px;
+  margin-right: 12px;
+  flex: 0 0 38px;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 8px;
   background: #f5f7fb;
   color: #334155;
   font-size: 21px;
@@ -124,30 +480,45 @@ h1 {
     color 160ms ease;
 }
 
-.profile-menu-panel .mat-mdc-menu-item:first-child {
-  display: flex;
-  gap: 12px;
-  background: #f8fafc;
+.menu-link-copy {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+  line-height: 1.2;
 }
 
-.profile-menu-panel .mat-mdc-menu-item:nth-child(2) {
-  display: flex;
-  gap: 12px;
+.menu-link-copy strong,
+.menu-link-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-link-copy strong {
+  color: #17202a;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.menu-link-copy small {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profile-menu-footer {
+  padding: 8px;
+  border-top: 1px solid #e4e7ec;
+  background: #fbfcfe;
 }
 
 .profile-menu-panel .signout-menu-item {
-  position: relative;
   color: #17202a;
 }
 
-.profile-menu-panel .signout-menu-item::before {
-  position: absolute;
-  top: -7px;
-  left: 14px;
-  right: 14px;
-  height: 1px;
-  background: #eef2f6;
-  content: '';
+.profile-menu-panel .signout-menu-item .mat-icon {
+  background: #f5f7fb;
+  color: #334155;
 }
 
 .profile-menu-panel .mat-mdc-menu-item:hover .mat-icon {
@@ -439,6 +810,26 @@ h1 {
 
 .mat-mdc-dialog-panel {
   --mat-dialog-container-shape: 12px;
+  overflow: visible;
+  border-radius: var(--mat-dialog-container-shape);
+}
+
+.mat-mdc-dialog-panel .mat-mdc-dialog-container {
+  box-sizing: border-box;
+  overflow: visible;
+  border-radius: var(--mat-dialog-container-shape) !important;
+}
+
+.mat-mdc-dialog-panel .mat-mdc-dialog-surface {
+  box-sizing: border-box;
+  overflow: hidden !important;
+  border-radius: var(--mat-dialog-container-shape) !important;
+}
+
+.mat-mdc-dialog-panel :is(.dialog-shell, .log-dialog-shell) {
+  min-height: 0;
+  overflow: hidden;
+  border-radius: inherit;
 }
 
 .user-access-dialog-panel {
@@ -507,4 +898,3376 @@ h1 {
 .app-dialog-backdrop {
   background: rgba(15, 23, 42, 0.36);
   backdrop-filter: blur(5px);
+}
+
+button.theme-toggle-button {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 1px solid #ffd7ca;
+  border-radius: 50%;
+  background: #fff1eb;
+  color: #f04b23;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+button.theme-toggle-button:hover {
+  border-color: #f04b23;
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+button.theme-toggle-button.mat-mdc-icon-button {
+  --mdc-icon-button-state-layer-size: 40px;
+  padding: 0;
+}
+
+button.theme-toggle-button mat-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --mat-sys-primary: #ff6a3d;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #5f1c0d;
+  --mat-sys-on-primary-container: #ffd5c7;
+  --mat-sys-surface: #121a27;
+  --mat-sys-on-surface: #eef2f7;
+  --mat-sys-surface-container: #182131;
+  --mat-sys-surface-container-high: #1f2a3a;
+  --mat-sys-outline: #334155;
+  --mat-sys-outline-variant: #263244;
+}
+
+html[data-theme='dark'],
+html[data-theme='dark'] body,
+html[data-theme='dark'] app-root {
+  background: #0b111a;
+  color: #e5edf7;
+}
+
+html[data-theme='dark'] button.theme-toggle-button {
+  border-color: #5d2b20;
+  background: #2a1816;
+  color: #ff7a52;
+}
+
+html[data-theme='dark'] button.theme-toggle-button:hover {
+  border-color: #ff7a52;
+  background: #351d18;
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) {
+  color: #e5edf7;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.shell, .content),
+html[data-theme='dark'] :is(app-login .login-page, app-forgot-password .forgot-page) {
+  background: #0b111a !important;
+  color: #e5edf7 !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.nav, .topbar),
+html[data-theme='dark'] :is(app-login .brand-panel, app-login .login-card, app-forgot-password .recovery-panel, app-forgot-password .forgot-card) {
+  border-color: #263244 !important;
+  background:
+    linear-gradient(135deg, rgba(240, 75, 35, 0.1), rgba(18, 26, 39, 0) 58%),
+    #121a27 !important;
+  color: #e5edf7 !important;
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.34) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar {
+  background: rgba(18, 26, 39, 0.96) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav {
+  background: #111827 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .mat-mdc-card.mdc-card,
+html[data-theme='dark'] app-shell-layout :is(.section-card, .table-card, .workspace-card, .activity-card),
+html[data-theme='dark'] .mat-mdc-dialog-surface,
+html[data-theme='dark'] .mat-mdc-menu-panel,
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel .mdc-snackbar__surface {
+  --mdc-elevated-card-container-color: #151e2b;
+  --mdc-elevated-card-container-elevation:
+    0 2px 1px -1px rgba(0, 0, 0, 0.55),
+    0 1px 1px 0 rgba(0, 0, 0, 0.42),
+    0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  border-color: #263244 !important;
+  background: #151e2b !important;
+  color: #e5edf7 !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.55),
+    0 1px 1px 0 rgba(0, 0, 0, 0.42),
+    0 1px 3px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .feature-item,
+    .item-row,
+    .setting-list article,
+    .session-list article,
+    .permission-list article,
+    .audit-list article,
+    .boundary-list article,
+    .service-list article,
+    .threshold-list article,
+    .correlation-list article,
+    .notification-list article,
+    .detail-list article,
+    .activity-list article,
+    .role-card,
+    .meta-grid div,
+    .timeline li > div,
+    .metric-list article,
+    .resolution-list article,
+    .quick-links button,
+    .article-columns section,
+    .detail-grid section,
+    .root-cause-card,
+    .confidence-card,
+    .metadata article,
+    .signal-grid article,
+    .insight-list article
+  ),
+html[data-theme='dark'] :is(app-login .ops-board, app-login .ops-item, app-login .signal-grid article, app-forgot-password .recovery-list article, app-forgot-password .success-panel) {
+  border-color: #2d3a4e !important;
+  background: #1a2433 !important;
+  color: #e5edf7 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .feature-item.clickable:hover,
+html[data-theme='dark'] app-shell-layout .quick-links button:hover,
+html[data-theme='dark'] app-shell-layout .nav a:hover {
+  border-color: #663022 !important;
+  background: #221b1d !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav a.active {
+  background: #2a1816 !important;
+  color: #ff7a52 !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(h1, h2, h3, strong, b, dt, dd, th, td, label, .product-name, .summary-card-top span:not(.summary-card-icon), .kpi-card-top span:not(.kpi-card-icon), .ops-board-header span),
+html[data-theme='dark'] :is(app-login, app-forgot-password) :is(h1, h2, strong, .ops-board-header span, .signal-grid strong, .recovery-list span) {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    p,
+    small,
+    .page-subtitle,
+    .product-subtitle,
+    .nav-section-title,
+    .user-copy small,
+    .chevron,
+    .section-title span,
+    .section-title small,
+    .card-title p,
+    .card-title span,
+    .card-heading p,
+    .table-header p,
+    .item-copy p,
+    .item-copy small,
+    .timeline p,
+    .threshold-list small,
+    .service-footer,
+    .meta-grid dt,
+    .search-hint,
+    .global-search mat-icon
+  ),
+html[data-theme='dark'] :is(app-login, app-forgot-password) :is(p, small, .form-options, .back-link) {
+  color: #9aa8ba !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(.eyebrow, .brand, .brand-mark, .role-text, .resolution-list span, .boundary-list strong),
+html[data-theme='dark'] :is(app-login, app-forgot-password) :is(.eyebrow, .brand-mark) {
+  color: #ff7a52 !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.global-search, .search-results, .profile-menu-summary, .profile-menu-links, .profile-menu-footer, .alerts-header, .alerts-footer),
+html[data-theme='dark'] .mat-mdc-select-panel,
+html[data-theme='dark'] .mat-mdc-autocomplete-panel {
+  border-color: #2d3a4e !important;
+  background: #121a27 !important;
+  color: #e5edf7 !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.global-search input, .search-results button, .search-empty, .profile-menu-links a, .profile-menu-footer button, .alert-item),
+html[data-theme='dark'] .mat-mdc-menu-item,
+html[data-theme='dark'] .mat-mdc-option {
+  color: #e5edf7 !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.search-results button:hover, .alert-item:hover),
+html[data-theme='dark'] .mat-mdc-menu-item:hover,
+html[data-theme='dark'] .mat-mdc-option:hover {
+  background: #1a2433 !important;
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) .mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: #334155;
+  --mdc-outlined-text-field-hover-outline-color: #526176;
+  --mdc-outlined-text-field-focus-outline-color: #ff6a3d;
+  --mdc-outlined-text-field-label-text-color: #9aa8ba;
+  --mdc-outlined-text-field-hover-label-text-color: #cbd5e1;
+  --mdc-outlined-text-field-focus-label-text-color: #ff7a52;
+  --mdc-outlined-text-field-input-text-color: #f8fafc;
+  --mdc-outlined-text-field-caret-color: #ff6a3d;
+  --mat-select-enabled-trigger-text-color: #f8fafc;
+  --mat-select-enabled-arrow-color: #9aa8ba;
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) .mat-mdc-form-field .mat-mdc-text-field-wrapper,
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) :is(input, textarea, select) {
+  background: #111827 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper,
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  background: #151e2b !important;
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) .mat-mdc-form-field .mdc-notched-outline__leading,
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) .mat-mdc-form-field .mdc-notched-outline__notch,
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password) .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: #334155 !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.mat-mdc-table, table, thead, tbody, tr, .mat-mdc-header-row, .mat-mdc-row) {
+  background: #151e2b !important;
+  color: #e5edf7 !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(th.mat-mdc-header-cell, td.mat-mdc-cell) {
+  border-color: #263244 !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .summary-grid mat-card > mat-icon,
+    .summary .summary-card > mat-icon,
+    .summary-grid .kpi-card span > mat-icon,
+    .scope-grid mat-card > mat-icon,
+    .impact-grid .impact-card > mat-icon,
+    .signal-grid mat-card > mat-icon,
+    .signal-grid .summary-card-icon,
+    .summary-icon,
+    .incident-icon,
+    .summary-card-icon,
+    .kpi-card-icon,
+    .card-heading-icon,
+    .heading-icon,
+    .upload-icon,
+    .prediction-score > mat-icon,
+    .notification-icon,
+    .quick-links button > mat-icon,
+    .detail-list article > mat-icon,
+    .activity-list article > mat-icon,
+    .permission-list article > mat-icon,
+    .setting-list article > mat-icon,
+    .session-list article > mat-icon,
+    .audit-list article > mat-icon,
+    .insight-icon
+  ),
+html[data-theme='dark'] :is(app-login, app-forgot-password) :is(.secure-badge, .forgot-icon, .ops-item span, .recovery-list mat-icon) {
+  border-color: rgba(255, 122, 82, 0.35) !important;
+  background: rgba(255, 122, 82, 0.14) !important;
+  color: #ff7a52 !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .summary-grid mat-card:nth-child(4n + 2) > mat-icon,
+    .summary-grid mat-card:nth-child(4n + 2) .summary-card-icon,
+    .summary .summary-card:nth-child(4n + 2) > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 2) span > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 2) .kpi-card-icon,
+    .feature-list .feature-item:nth-child(4n + 2) .item-icon,
+    .notification-list article:nth-child(4n + 2) .notification-icon,
+    .quick-links button:nth-child(4n + 2) > mat-icon,
+    .detail-list article:nth-child(4n + 2) > mat-icon,
+    .activity-list article:nth-child(4n + 2) > mat-icon,
+    .permission-list article:nth-child(4n + 2) > mat-icon,
+    .setting-list article:nth-child(4n + 2) > mat-icon,
+    .session-list article:nth-child(4n + 2) > mat-icon,
+    .audit-list article:nth-child(4n + 2) > mat-icon,
+    .insight-list article:nth-child(4n + 2) .insight-icon
+  ) {
+  border-color: rgba(96, 165, 250, 0.38) !important;
+  background: rgba(96, 165, 250, 0.16) !important;
+  color: #60a5fa !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .summary-grid mat-card:nth-child(4n + 3) > mat-icon,
+    .summary-grid mat-card:nth-child(4n + 3) .summary-card-icon,
+    .summary .summary-card:nth-child(4n + 3) > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 3) span > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n + 3) .kpi-card-icon,
+    .feature-list .feature-item:nth-child(4n + 3) .item-icon,
+    .notification-list article:nth-child(4n + 3) .notification-icon,
+    .quick-links button:nth-child(4n + 3) > mat-icon,
+    .detail-list article:nth-child(4n + 3) > mat-icon,
+    .activity-list article:nth-child(4n + 3) > mat-icon,
+    .permission-list article:nth-child(4n + 3) > mat-icon,
+    .setting-list article:nth-child(4n + 3) > mat-icon,
+    .session-list article:nth-child(4n + 3) > mat-icon,
+    .audit-list article:nth-child(4n + 3) > mat-icon,
+    .insight-list article:nth-child(4n + 3) .insight-icon
+  ) {
+  border-color: rgba(52, 211, 153, 0.38) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .summary-grid mat-card:nth-child(4n) > mat-icon,
+    .summary-grid mat-card:nth-child(4n) .summary-card-icon,
+    .summary .summary-card:nth-child(4n) > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n) span > mat-icon,
+    .summary-grid .kpi-card:nth-child(4n) .kpi-card-icon,
+    .feature-list .feature-item:nth-child(4n) .item-icon,
+    .notification-list article:nth-child(4n) .notification-icon,
+    .quick-links button:nth-child(4n) > mat-icon,
+    .detail-list article:nth-child(4n) > mat-icon,
+    .activity-list article:nth-child(4n) > mat-icon,
+    .permission-list article:nth-child(4n) > mat-icon,
+    .setting-list article:nth-child(4n) > mat-icon,
+    .session-list article:nth-child(4n) > mat-icon,
+    .audit-list article:nth-child(4n) > mat-icon,
+    .insight-list article:nth-child(4n) .insight-icon
+  ) {
+  border-color: rgba(167, 139, 250, 0.42) !important;
+  background: rgba(167, 139, 250, 0.16) !important;
+  color: #a78bfa !important;
+}
+
+html[data-theme='dark'] :is(.status-chip, .status, mat-chip) {
+  --mdc-chip-elevated-container-color: rgba(255, 122, 82, 0.16);
+  --mdc-chip-label-text-color: #ff9b7a;
+  background: rgba(255, 122, 82, 0.16) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] :is(.status-chip.critical, .status-chip.blocked, .status.at-risk, .status.critical, mat-chip.critical) {
+  --mdc-chip-elevated-container-color: rgba(248, 113, 113, 0.14);
+  --mdc-chip-label-text-color: #ffb4a8;
+  border-color: rgba(248, 113, 113, 0.28) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark']
+  :is(
+    .status-chip.high,
+    .status-chip.warning,
+    .status-chip.watch,
+    .status-chip.needs-review,
+    .status-chip.pending,
+    .status-chip.action-open,
+    .status-chip.draft,
+    .status-chip.planned,
+    .status-chip.review,
+    .status.active,
+    .status.warning,
+    mat-chip.warning
+  ) {
+  --mdc-chip-elevated-container-color: rgba(251, 191, 36, 0.16);
+  --mdc-chip-label-text-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.16) !important;
+  color: #fbbf24 !important;
+}
+
+html[data-theme='dark']
+  :is(
+    .status-chip.healthy,
+    .status-chip.complete,
+    .status-chip.connected,
+    .status-chip.published,
+    .status-chip.active,
+    .status-chip.allowed,
+    .status-chip.ready,
+    .status-chip.enforced,
+    .status-chip.enabled,
+    .status-chip.in-progress,
+    .status.healthy,
+    .status.success
+  ) {
+  --mdc-chip-elevated-container-color: rgba(52, 211, 153, 0.16);
+  --mdc-chip-label-text-color: #34d399;
+  background: rgba(52, 211, 153, 0.16) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme='dark'] mat-chip.info {
+  --mdc-chip-elevated-container-color: rgba(96, 165, 250, 0.16);
+  --mdc-chip-label-text-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.16) !important;
+  color: #60a5fa !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .header-pill {
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ff9b7a !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .header-pill mat-icon {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip {
+  --mdc-chip-container-height: 30px;
+  --mdc-chip-label-text-color: #dbe7f7;
+  --mdc-chip-elevated-container-color: #20252d;
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  --mdc-chip-focus-outline-color: transparent;
+  --mdc-chip-focus-state-layer-opacity: 0;
+  --mdc-chip-hover-state-layer-opacity: 0;
+  min-height: 30px !important;
+  outline: none !important;
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #dbe7f7 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip:nth-child(3n + 1) {
+  border-color: rgba(248, 113, 113, 0.28) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip:nth-child(3n + 2) {
+  border-color: rgba(96, 165, 250, 0.32) !important;
+  background: rgba(96, 165, 250, 0.15) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip:nth-child(3n) {
+  border-color: rgba(251, 191, 36, 0.28) !important;
+  background: rgba(251, 191, 36, 0.14) !important;
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action,
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip::before,
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip::after,
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action::before,
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action::after {
+  outline: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action {
+  padding: 0 9px !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip :is(.mat-mdc-chip-focus-overlay, .mat-mdc-chip-ripple) {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .mat-mdc-chip .mdc-evolution-chip__text-label {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-shell-layout .mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #ff6a3d;
+  --mdc-linear-progress-track-color: #293548;
+}
+
+html[data-theme='dark'] :is(.mat-mdc-snack-bar-container.app-snackbar-panel, .mat-mdc-snack-bar-container.app-snackbar-panel .mdc-snackbar__label) {
+  --mdc-snackbar-container-color: #151e2b;
+  --mdc-snackbar-supporting-text-color: #e5edf7;
+  --mat-snack-bar-button-color: #ff7a52;
+  color: #e5edf7 !important;
+}
+
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel {
+  --mdc-snackbar-container-color: #1a1e25;
+  --mdc-snackbar-supporting-text-color: #f8fafc;
+  --mat-snack-bar-button-color: #aab7c8;
+}
+
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel .mdc-snackbar__surface {
+  min-height: 54px;
+  border: 1px solid #303743 !important;
+  border-left: 6px solid #ff704a !important;
+  border-radius: 12px !important;
+  background: #1a1e25 !important;
+  color: #f8fafc !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel .mdc-snackbar__label,
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel .mat-mdc-snack-bar-label {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel .mat-mdc-snack-bar-action {
+  min-width: 34px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid transparent !important;
+  border-radius: 50% !important;
+  color: #91a3ba !important;
+}
+
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel .mat-mdc-snack-bar-action:hover {
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.12) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .mat-mdc-snack-bar-container.app-snackbar-panel .mat-mdc-snack-bar-action .mdc-button__label {
+  color: inherit !important;
+  font-size: 26px;
+  line-height: 1;
+}
+
+html[data-theme='dark'] ::selection {
+  background: rgba(255, 106, 61, 0.35);
+  color: #ffffff;
+}
+
+html[data-theme='dark'] {
+  --iiis-dark-page: #101114;
+  --iiis-dark-shell: #14171d;
+  --iiis-dark-card: #181b21;
+  --iiis-dark-card-soft: #1f232b;
+  --iiis-dark-border: #303743;
+  --iiis-dark-border-soft: #252b35;
+  --iiis-dark-text: #f8fafc;
+  --iiis-dark-body: #d7e0ed;
+  --iiis-dark-muted: #aab7c8;
+  --iiis-dark-faint: #7f8da1;
+  --iiis-dark-accent: #ff704a;
+}
+
+html[data-theme='dark'],
+html[data-theme='dark'] body,
+html[data-theme='dark'] app-root,
+html[data-theme='dark'] app-shell-layout,
+html[data-theme='dark'] app-shell-layout :is(.shell, .content) {
+  background: var(--iiis-dark-page) !important;
+  color: var(--iiis-dark-body) !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.nav, .topbar) {
+  border-color: var(--iiis-dark-border-soft) !important;
+  background: var(--iiis-dark-shell) !important;
+  color: var(--iiis-dark-text) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav :is(a[mat-button], a[mat-button] mat-icon, .signout, .signout mat-icon) {
+  color: var(--iiis-dark-muted) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav :is(a[mat-button]:hover, a[mat-button]:hover mat-icon, .signout:hover, .signout:hover mat-icon) {
+  color: var(--iiis-dark-text) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav :is(a[mat-button].active, a[mat-button].active mat-icon) {
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: var(--iiis-dark-accent) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav-section-title {
+  color: var(--iiis-dark-faint) !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.global-search, .search-results),
+html[data-theme='dark'] .cdk-overlay-container :is(.mat-mdc-menu-panel, .mat-mdc-select-panel, .mat-mdc-autocomplete-panel) {
+  border-color: var(--iiis-dark-border) !important;
+  background: #11141a !important;
+  color: var(--iiis-dark-text) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .global-search input,
+html[data-theme='dark'] app-shell-layout .global-search input::placeholder {
+  color: var(--iiis-dark-muted) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .search-hint {
+  border-color: var(--iiis-dark-border) !important;
+  background: #f3f4f6 !important;
+  color: #64748b !important;
+}
+
+html[data-theme='dark'] app-shell-layout .mat-mdc-card.mdc-card,
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .section-card,
+    .table-card,
+    .workspace-card,
+    .activity-card,
+    .selector-card,
+    .incident-card,
+    .filters-panel,
+    .table-panel,
+    .upload-card,
+    .logs-table-card,
+    .analysis-card,
+    .result-card,
+    .search-card,
+    .quick-card,
+    .article-card,
+    .identity-card,
+    .details-card,
+    .overview-card,
+    .prediction-card,
+    .correlation-card,
+    .empty-state,
+    .status-card
+  ),
+html[data-theme='dark'] .cdk-overlay-container .mat-mdc-dialog-surface {
+  --mdc-elevated-card-container-color: var(--iiis-dark-card);
+  --mdc-elevated-card-container-elevation:
+    0 2px 1px -1px rgba(0, 0, 0, 0.72),
+    0 1px 1px 0 rgba(0, 0, 0, 0.56),
+    0 1px 3px 0 rgba(0, 0, 0, 0.52);
+  border: 1px solid var(--iiis-dark-border-soft) !important;
+  background: var(--iiis-dark-card) !important;
+  color: var(--iiis-dark-body) !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.72),
+    0 1px 1px 0 rgba(0, 0, 0, 0.56),
+    0 1px 3px 0 rgba(0, 0, 0, 0.52) !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .feature-item,
+    .item-row,
+    .setting-list article,
+    .session-list article,
+    .permission-list article,
+    .audit-list article,
+    .boundary-list article,
+    .service-list article,
+    .threshold-list article,
+    .correlation-list article,
+    .notification-list article,
+    .detail-list article,
+    .activity-list article,
+    .role-card,
+    .meta-grid div,
+    .timeline li > div,
+    .metric-list article,
+    .resolution-list article,
+    .review-list article,
+    .quick-links button,
+    .article-columns section,
+    .detail-grid section,
+    .root-cause-card,
+    .confidence-card,
+    .metadata article,
+    .signal-grid article,
+    .insight-list article,
+    .ops-item
+  ),
+html[data-theme='dark'] :is(app-login .ops-board, app-login .ops-item, app-login .signal-grid article, app-forgot-password .recovery-list article, app-forgot-password .success-panel) {
+  border-color: var(--iiis-dark-border) !important;
+  background: var(--iiis-dark-card-soft) !important;
+  color: var(--iiis-dark-body) !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .selector-header,
+    .card-heading,
+    .card-title,
+    .section-title,
+    .table-header,
+    .incident-meta,
+    .profile-menu-footer,
+    .profile-menu-summary,
+    .alerts-header,
+    .alerts-footer,
+    th.mat-mdc-header-cell,
+    td.mat-mdc-cell
+  ) {
+  border-color: var(--iiis-dark-border) !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b,
+    label,
+    mat-card-title,
+    .mat-mdc-card-title,
+    .mat-mdc-card-title-text,
+    .product-name,
+    .selector-header h2,
+    .summary-card-top strong,
+    .summary-card-top span:not(.summary-icon):not(.summary-card-icon),
+    .kpi-card strong,
+    .kpi-card-top strong,
+    .kpi-card-top span:not(.kpi-card-icon),
+    .card-heading h2,
+    .card-title h2,
+    .card-title strong,
+    .card-title span:not(.summary-card-icon):not(.kpi-card-icon),
+    .section-title h2,
+    .section-title strong,
+    .table-header h2,
+    .table-header strong,
+    .item-copy strong,
+    .item-title-stack strong,
+    .identity-copy h2,
+    .identity-copy strong,
+    .role-meta strong,
+    .service-list strong,
+    .threshold-list strong,
+    .correlation-list strong,
+    .resolution-list strong,
+    .review-list strong,
+    .article-columns h3,
+    .detail-grid h3,
+    .root-cause-card strong,
+    .confidence-card strong,
+    .result-card h2,
+    .analysis-card h2
+  ),
+html[data-theme='dark'] .cdk-overlay-container :is(h1, h2, h3, h4, h5, h6, strong, b, label, .mat-mdc-dialog-title, .header-copy strong) {
+  color: var(--iiis-dark-text) !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    p,
+    small,
+    mat-card-subtitle,
+    .mat-mdc-card-subtitle,
+    .page-subtitle,
+    .product-subtitle,
+    .selector-header p,
+    .mat-mdc-card-content p,
+    .mat-mdc-card-content small,
+    .card-heading p,
+    .card-title p,
+    .section-title p,
+    .table-header p,
+    .incident-description,
+    .incident-meta span,
+    .item-title-stack span,
+    .item-copy p,
+    .item-copy small,
+    .role-meta span,
+    .service-footer,
+    .helper,
+    .detail,
+    .description,
+    .time,
+    .owner,
+    .email,
+    .location,
+    .lastSeen,
+    .table-summary,
+    .empty-state span,
+    .review-list p,
+    .review-list small
+  ),
+html[data-theme='dark'] .cdk-overlay-container :is(p, small, .header-copy p, .mat-mdc-dialog-content) {
+  color: var(--iiis-dark-muted) !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(a[mat-stroked-button], button[mat-stroked-button], .incident-actions a:first-child) {
+  border-color: var(--iiis-dark-border) !important;
+  color: var(--iiis-dark-body) !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.mat-mdc-button:not(.mat-primary), .mat-mdc-outlined-button:not(.mat-primary)) {
+  color: var(--iiis-dark-body) !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.incident-actions a:last-child, .mat-mdc-unelevated-button.mat-primary, .mat-mdc-raised-button.mat-primary) {
+  background: #f04b23 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password, .cdk-overlay-container) .mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: var(--iiis-dark-border);
+  --mdc-outlined-text-field-hover-outline-color: #4b5565;
+  --mdc-outlined-text-field-focus-outline-color: var(--iiis-dark-accent);
+  --mdc-outlined-text-field-label-text-color: var(--iiis-dark-muted);
+  --mdc-outlined-text-field-hover-label-text-color: var(--iiis-dark-body);
+  --mdc-outlined-text-field-focus-label-text-color: var(--iiis-dark-accent);
+  --mdc-outlined-text-field-input-text-color: var(--iiis-dark-text);
+  --mdc-outlined-text-field-caret-color: var(--iiis-dark-accent);
+  --mat-select-enabled-trigger-text-color: var(--iiis-dark-text);
+  --mat-select-enabled-arrow-color: var(--iiis-dark-muted);
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password, .cdk-overlay-container) .mat-mdc-form-field .mat-mdc-text-field-wrapper,
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password, .cdk-overlay-container) :is(input, textarea, select) {
+  background: #11141a !important;
+  color: var(--iiis-dark-text) !important;
+}
+
+html[data-theme='dark'] :is(app-shell-layout, app-login, app-forgot-password, .cdk-overlay-container) :is(input, textarea)::placeholder {
+  color: var(--iiis-dark-faint) !important;
+}
+
+html[data-theme='dark'] app-shell-layout :is(.mat-mdc-table, table, thead, tbody, tr, .mat-mdc-header-row, .mat-mdc-row) {
+  background: var(--iiis-dark-card) !important;
+  color: var(--iiis-dark-body) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar {
+  border-bottom-color: #303846 !important;
+  background:
+    linear-gradient(180deg, rgba(255, 112, 74, 0.04), rgba(255, 112, 74, 0)),
+    #171c24 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar-grid {
+  height: 100%;
+}
+
+html[data-theme='dark'] app-shell-layout .title-block {
+  gap: 4px;
+}
+
+html[data-theme='dark'] app-shell-layout .product-name {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-shell-layout .product-subtitle {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .global-search {
+  border-color: #344054 !important;
+  background: #111722 !important;
+  color: #dbe7f7 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .global-search:focus-within {
+  border-color: #ff704a !important;
+  background: #141b27 !important;
+  box-shadow: 0 0 0 3px rgba(255, 112, 74, 0.18) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .global-search mat-icon {
+  color: #91a3ba !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .global-search input {
+  background: transparent !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .global-search input::placeholder {
+  color: #93a3b8 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .search-hint {
+  border-color: #3b4656 !important;
+  background: #202838 !important;
+  color: #dbe7f7 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .search-results button:nth-child(5n + 1) mat-icon {
+  border: 1px solid rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .search-results button:nth-child(5n + 2) mat-icon {
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .search-results button:nth-child(5n + 3) mat-icon {
+  border: 1px solid rgba(248, 113, 113, 0.34) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .search-results button:nth-child(5n + 4) mat-icon {
+  border: 1px solid rgba(251, 191, 36, 0.32) !important;
+  background: rgba(251, 191, 36, 0.14) !important;
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .search-results button:nth-child(5n) mat-icon {
+  border: 1px solid rgba(167, 139, 250, 0.36) !important;
+  background: rgba(167, 139, 250, 0.14) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .status-strip {
+  gap: 10px;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .topbar-actions {
+  gap: 10px;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .status {
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .status.at-risk {
+  border-color: rgba(248, 113, 113, 0.28) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .status.active {
+  border-color: rgba(251, 191, 36, 0.28) !important;
+  background: rgba(251, 191, 36, 0.14) !important;
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .status.healthy {
+  border-color: rgba(52, 211, 153, 0.28) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .theme-toggle-button,
+html[data-theme='dark'] app-shell-layout .topbar .alerts-button {
+  --mdc-icon-button-icon-color: #dbe7f7;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #344054 !important;
+  border-radius: 50%;
+  background: #202733 !important;
+  color: #dbe7f7 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .theme-toggle-button {
+  --mdc-icon-button-icon-color: #ff8b65;
+  border-color: rgba(255, 112, 74, 0.42) !important;
+  background: rgba(255, 112, 74, 0.12) !important;
+  color: #ff8b65 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .theme-toggle-button:hover,
+html[data-theme='dark'] app-shell-layout .topbar .alerts-button:hover {
+  border-color: #ff704a !important;
+  background: #2a211f !important;
+  color: #ff8b65 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .alerts-button .mat-icon,
+html[data-theme='dark'] app-shell-layout .topbar .theme-toggle-button .mat-icon {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .alerts-button .mat-badge-content {
+  border-color: #171c24 !important;
+  background: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .user-panel {
+  border-left-color: #344054 !important;
+  margin-left: 4px;
+  padding-left: 16px;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .user-copy strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-shell-layout .topbar .user-copy small,
+html[data-theme='dark'] app-shell-layout .topbar .chevron {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] .mat-mdc-menu-panel.profile-menu-panel {
+  --mat-menu-container-color: #191d24;
+  --mat-menu-item-label-text-color: #d7e0ed;
+  --mat-menu-item-icon-color: #d7e0ed;
+  overflow: hidden !important;
+  border: 1px solid #303743 !important;
+  background: #191d24 !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 18px 42px rgba(0, 0, 0, 0.42) !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .mat-mdc-menu-content {
+  background: #191d24 !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .profile-menu-summary {
+  border-bottom-color: #303743 !important;
+  background:
+    linear-gradient(135deg, rgba(255, 112, 74, 0.12), rgba(255, 112, 74, 0) 58%),
+    #1f232b !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .profile-menu-identity strong,
+html[data-theme='dark'] .profile-menu-panel .menu-link-copy strong,
+html[data-theme='dark'] .profile-menu-panel .mat-mdc-menu-item {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .profile-menu-identity small,
+html[data-theme='dark'] .profile-menu-panel .menu-link-copy small {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .profile-menu-meta span {
+  border-color: #3a4350 !important;
+  background: #171c24 !important;
+  color: #b8c4d4 !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .profile-menu-meta .role-pill {
+  border-color: rgba(255, 112, 74, 0.42) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .profile-menu-links,
+html[data-theme='dark'] .profile-menu-panel .profile-menu-footer {
+  background: #191d24 !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .profile-menu-footer {
+  border-top-color: #303743 !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .mat-mdc-menu-item {
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .mat-mdc-menu-item:hover {
+  border-color: #3a4350 !important;
+  background: #20252d !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .mat-mdc-menu-item .mat-icon,
+html[data-theme='dark'] .profile-menu-panel .signout-menu-item .mat-icon {
+  background: #20252d !important;
+  color: #b8c4d4 !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .mat-mdc-menu-item:hover .mat-icon {
+  background: rgba(255, 112, 74, 0.15) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .profile-menu-panel .signout-menu-item,
+html[data-theme='dark'] .profile-menu-panel .signout-menu-item span {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel {
+  --mat-menu-container-color: #191d24;
+  overflow: hidden !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .mat-mdc-menu-content {
+  overflow: hidden !important;
+  border: 1px solid #303743 !important;
+  border-radius: 16px;
+  background: #191d24 !important;
+  color: #d7e0ed !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 18px 42px rgba(0, 0, 0, 0.42) !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-header,
+html[data-theme='dark'] .alerts-menu-panel .alerts-footer {
+  border-color: #303743 !important;
+  background: #191d24 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-header strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-header span,
+html[data-theme='dark'] .alerts-menu-panel .alerts-header button {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-header button:hover {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-list {
+  background: #11141a !important;
+  scrollbar-color: #465365 transparent;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-list::-webkit-scrollbar-thumb {
+  border-color: #11141a !important;
+  background: #465365 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-item {
+  border-color: #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-item:hover {
+  border-color: rgba(255, 112, 74, 0.48) !important;
+  background: #252b35 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-copy strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-copy small {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-copy em {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-icon.critical {
+  background: rgba(248, 113, 113, 0.16) !important;
+  color: #fca5a5 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-icon.warning {
+  background: rgba(251, 191, 36, 0.16) !important;
+  color: #fbbf24 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alert-icon.info {
+  background: rgba(52, 211, 153, 0.16) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-footer a {
+  border-color: #3a4350 !important;
+  background: #20252d !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .alerts-menu-panel .alerts-footer a:hover {
+  border-color: rgba(255, 112, 74, 0.5) !important;
+  background: #252b35 !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .summary-card-icon,
+    .summary-icon,
+    .kpi-card-icon,
+    .card-heading-icon,
+    .heading-icon,
+    .upload-icon,
+    .incident-icon,
+    .notification-icon,
+    .item-icon,
+    .insight-icon
+  ) {
+  border-color: rgba(255, 112, 74, 0.38) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .kpis mat-card:nth-child(1) .summary-card-icon,
+    .summary-grid .summary-card:nth-child(1) .summary-icon,
+    .summary-grid .summary-card:nth-child(1) .summary-card-icon,
+    .scope-grid mat-card:nth-child(1) .summary-card-icon,
+    .cards mat-card:nth-child(1) .summary-card-icon,
+    .data-grid mat-card:nth-child(3) .card-heading-icon,
+    .quick-links button:nth-child(4n + 1) > mat-icon,
+    .detail-list article:nth-child(4n + 1) > mat-icon,
+    .activity-list article:nth-child(4n + 1) > mat-icon,
+    .permission-list article:nth-child(4n + 1) > mat-icon,
+    .setting-list article:nth-child(4n + 1) > mat-icon,
+    .session-list article:nth-child(4n + 1) > mat-icon,
+    .audit-list article:nth-child(4n + 1) > mat-icon,
+    .insight-list article:nth-child(4n + 1) .insight-icon
+  ) {
+  border-color: rgba(34, 211, 238, 0.42) !important;
+  background: rgba(34, 211, 238, 0.14) !important;
+  color: #22d3ee !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .kpis mat-card:nth-child(2) .summary-card-icon,
+    .kpi-grid mat-card:nth-child(2) .summary-card-icon,
+    .health-grid mat-card:nth-child(4) .summary-card-icon,
+    .summary-grid .summary-card:nth-child(2) .summary-icon,
+    .summary-grid .summary-card:nth-child(2) .summary-card-icon,
+    .scope-grid mat-card:nth-child(2) .summary-card-icon,
+    .cards mat-card:nth-child(2) .summary-card-icon,
+    .charts mat-card:nth-child(1) .card-heading-icon,
+    .investigation-grid mat-card:nth-child(1) .card-heading-icon,
+    .prediction-layout > mat-card:nth-child(1) .heading-icon,
+    .analysis-card .heading-icon,
+    .upload-card .upload-icon,
+    .incident-grid .incident-card:nth-child(4n + 2) .incident-icon,
+    .item-list .item-row:nth-child(4n + 2) .item-icon,
+    .quick-links button:nth-child(4n + 2) > mat-icon,
+    .detail-list article:nth-child(4n + 2) > mat-icon,
+    .activity-list article:nth-child(4n + 2) > mat-icon,
+    .permission-list article:nth-child(4n + 2) > mat-icon,
+    .setting-list article:nth-child(4n + 2) > mat-icon,
+    .session-list article:nth-child(4n + 2) > mat-icon,
+    .audit-list article:nth-child(4n + 2) > mat-icon,
+    .insight-list article:nth-child(4n + 2) .insight-icon
+  ) {
+  border-color: rgba(96, 165, 250, 0.45) !important;
+  background: rgba(96, 165, 250, 0.16) !important;
+  color: #60a5fa !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .kpis mat-card:nth-child(3) .summary-card-icon,
+    .kpi-grid mat-card:nth-child(4) .summary-card-icon,
+    .health-grid mat-card:nth-child(1) .summary-card-icon,
+    .data-grid mat-card:nth-child(2) .card-heading-icon,
+    .incident-grid .incident-card:nth-child(4n + 3) .incident-icon,
+    .item-list .item-row:nth-child(4n + 3) .item-icon,
+    .quick-links button:nth-child(4n + 3) > mat-icon,
+    .detail-list article:nth-child(4n + 3) > mat-icon,
+    .activity-list article:nth-child(4n + 3) > mat-icon,
+    .permission-list article:nth-child(4n + 3) > mat-icon,
+    .setting-list article:nth-child(4n + 3) > mat-icon,
+    .session-list article:nth-child(4n + 3) > mat-icon,
+    .audit-list article:nth-child(4n + 3) > mat-icon,
+    .insight-list article:nth-child(4n + 3) .insight-icon
+  ) {
+  border-color: rgba(52, 211, 153, 0.45) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #34d399 !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .kpis mat-card:nth-child(4) .summary-card-icon,
+    .kpi-grid mat-card:nth-child(1) .summary-card-icon,
+    .health-grid mat-card:nth-child(2) .summary-card-icon,
+    .summary-grid .summary-card:nth-child(3) .summary-icon,
+    .summary-grid .summary-card:nth-child(3) .summary-card-icon,
+    .scope-grid mat-card:nth-child(3) .summary-card-icon,
+    .cards mat-card:nth-child(3) .summary-card-icon,
+    .data-grid mat-card:nth-child(1) .card-heading-icon,
+    .incident-grid .incident-card:nth-child(4n + 1) .incident-icon,
+    .item-list .item-row:nth-child(4n + 1) .item-icon
+  ) {
+  border-color: rgba(255, 112, 74, 0.42) !important;
+  background: rgba(255, 112, 74, 0.15) !important;
+  color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .kpi-grid mat-card:nth-child(3) .summary-card-icon,
+    .health-grid mat-card:nth-child(3) .summary-card-icon,
+    .charts mat-card:nth-child(2) .card-heading-icon,
+    .investigation-grid mat-card:nth-child(2) .card-heading-icon,
+    .prediction-layout > mat-card:nth-child(2) .heading-icon,
+    .role-hero > mat-icon,
+    .advanced-heading > mat-icon,
+    .incident-grid .incident-card:nth-child(4n) .incident-icon,
+    .item-list .item-row:nth-child(4n) .item-icon,
+    .quick-links button:nth-child(4n) > mat-icon,
+    .detail-list article:nth-child(4n) > mat-icon,
+    .activity-list article:nth-child(4n) > mat-icon,
+    .permission-list article:nth-child(4n) > mat-icon,
+    .setting-list article:nth-child(4n) > mat-icon,
+    .session-list article:nth-child(4n) > mat-icon,
+    .audit-list article:nth-child(4n) > mat-icon,
+    .insight-list article:nth-child(4n) .insight-icon
+  ) {
+  border-color: rgba(167, 139, 250, 0.48) !important;
+  background: rgba(167, 139, 250, 0.16) !important;
+  color: #a78bfa !important;
+}
+
+html[data-theme='dark'] app-shell-layout .investigation-grid mat-card:nth-child(3) .card-heading-icon {
+  border-color: rgba(148, 163, 184, 0.42) !important;
+  background: rgba(148, 163, 184, 0.14) !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme='dark'] app-dashboard
+  :is(
+    .stack-list div,
+    .root-causes div,
+    .queue-list article,
+    .anomaly-list div,
+    .actions-list div
+  ) {
+  border-color: #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035) !important;
+}
+
+html[data-theme='dark'] app-dashboard .root-causes div {
+  border-left-color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-dashboard
+  :is(
+    .stack-list span,
+    .root-causes span,
+    .queue-list article > span,
+    .queue-list article div span,
+    .anomaly-list small,
+    .anomaly-list em,
+    .actions-list p
+  ) {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] app-dashboard
+  :is(
+    .stack-list strong,
+    .root-causes strong,
+    .queue-list article strong,
+    .anomaly-list b
+  ) {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list span {
+  background: rgba(255, 112, 74, 0.15) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list div:nth-child(3n + 1) {
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: #20252d !important;
+  box-shadow:
+    inset 3px 0 0 rgba(255, 112, 74, 0.68),
+    inset 0 0 0 1px rgba(255, 112, 74, 0.1) !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list div:nth-child(3n + 2) {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: #20252d !important;
+  box-shadow:
+    inset 3px 0 0 rgba(96, 165, 250, 0.66),
+    inset 0 0 0 1px rgba(96, 165, 250, 0.1) !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list div:nth-child(3n) {
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  background: #20252d !important;
+  box-shadow:
+    inset 3px 0 0 rgba(52, 211, 153, 0.64),
+    inset 0 0 0 1px rgba(52, 211, 153, 0.1) !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list div:nth-child(3n + 1) span {
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list div:nth-child(3n + 2) span {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list div:nth-child(3n) span {
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-dashboard .actions-list p {
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.critical,
+html[data-theme='dark'] app-dashboard .anomaly-list div.high,
+html[data-theme='dark'] app-dashboard .anomaly-list div.warning,
+html[data-theme='dark'] app-dashboard .anomaly-list div.info {
+  background: #20252d !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.critical {
+  border-color: rgba(248, 113, 113, 0.34) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(248, 113, 113, 0.68),
+    inset 0 0 0 1px rgba(248, 113, 113, 0.1) !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.warning,
+html[data-theme='dark'] app-dashboard .anomaly-list div.high {
+  border-color: rgba(251, 191, 36, 0.34) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(251, 191, 36, 0.66),
+    inset 0 0 0 1px rgba(251, 191, 36, 0.1) !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.info {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(96, 165, 250, 0.66),
+    inset 0 0 0 1px rgba(96, 165, 250, 0.1) !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.critical b {
+  color: #ffc1b8 !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.critical em {
+  border-color: rgba(248, 113, 113, 0.34) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffc1b8 !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.warning b,
+html[data-theme='dark'] app-dashboard .anomaly-list div.high b {
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.warning em,
+html[data-theme='dark'] app-dashboard .anomaly-list div.high em {
+  border-color: rgba(251, 191, 36, 0.34) !important;
+  background: rgba(251, 191, 36, 0.13) !important;
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.info b {
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-dashboard .anomaly-list div.info em {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-shell-layout .mat-mdc-card.mdc-card,
+html[data-theme='dark'] app-shell-layout
+  :is(
+    .section-card,
+    .table-card,
+    .workspace-card,
+    .activity-card,
+    .selector-card,
+    .incident-card,
+    .filters-panel,
+    .table-panel,
+    .upload-card,
+    .logs-table-card,
+    .analysis-card,
+    .result-card,
+    .search-card,
+    .quick-card,
+    .article-card,
+    .identity-card,
+    .details-card,
+    .overview-card,
+    .prediction-card,
+    .correlation-card,
+    .empty-state,
+    .status-card,
+    .summary-card,
+    .kpi-card,
+    .role-card
+  ) {
+  --mdc-elevated-card-container-elevation:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95);
+  position: relative;
+  z-index: 2;
+  border: 0 !important;
+  background: #1a1e25 !important;
+  filter: none;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .feature-item {
+  border-color: #303743 !important;
+  background: #20252d !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 10px 22px rgba(0, 0, 0, 0.14) !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .feature-item.clickable:hover {
+  border-color: rgba(255, 112, 74, 0.38) !important;
+  background: #252b35 !important;
+}
+
+html[data-theme='dark'] app-feature-page.triage-page .feature-list .feature-item .status-chip.critical {
+  border-color: rgba(248, 113, 113, 0.34) !important;
+  background: rgba(248, 113, 113, 0.16) !important;
+  color: #ffc1b8 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .row-actions :is(a[mat-icon-button], button[mat-icon-button]) {
+  --mdc-icon-button-icon-color: #dbe7f7;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border: 1px solid #303743 !important;
+  border-radius: 50%;
+  background: #20252d !important;
+  color: #dbe7f7 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-shell-layout .row-actions :is(.view-action, .view-data-action, a[aria-label*='View'], button[aria-label*='View']) {
+  --mdc-icon-button-icon-color: #8ec5ff;
+  border-color: rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-shell-layout .row-actions :is(.edit-action, button[aria-label*='Edit']) {
+  --mdc-icon-button-icon-color: #ff9b7a;
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-shell-layout .row-actions :is(.delete-action, .delete-log-action, button[aria-label*='Delete']) {
+  --mdc-icon-button-icon-color: #ffb4a8;
+  border-color: rgba(248, 113, 113, 0.32) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .row-actions :is(a[mat-icon-button], button[mat-icon-button]):hover {
+  border-color: rgba(219, 231, 247, 0.38) !important;
+  background: #252b35 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .row-actions :is(a[mat-icon-button], button[mat-icon-button]) mat-icon {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell {
+  background: #11141a !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .mat-mdc-dialog-surface {
+  border: 1px solid #3a4350 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-header,
+html[data-theme='dark'] .cdk-overlay-container .dialog-footer {
+  border-color: #303743 !important;
+  background: #11141a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-body {
+  background: #11141a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-header .header-icon {
+  border: 1px solid rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-header h2 {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-header p {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-header .close-button {
+  --mdc-icon-button-icon-color: #b3c0d1;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-header .close-button:hover {
+  border-color: #303743 !important;
+  background: #20252d !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-footer button[mat-button] {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-footer button[mat-flat-button] {
+  background: #f04b23 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-text-field-wrapper {
+  background: #11141a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mdc-notched-outline__leading,
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mdc-notched-outline__notch,
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mdc-notched-outline__trailing {
+  border-color: #3a4350 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field:hover .mdc-notched-outline__leading,
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field:hover .mdc-notched-outline__notch,
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field:hover .mdc-notched-outline__trailing {
+  border-color: #526073 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: #ff704a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mdc-floating-label {
+  background: #11141a !important;
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field.mat-focused .mdc-floating-label,
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-form-field.mat-form-field-should-float .mdc-floating-label {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell :is(input, textarea, .mat-mdc-select-value, .mat-mdc-select-value-text) {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell .mat-mdc-select-arrow {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .dialog-shell :is(.form-error, .error-state, mat-error) {
+  color: #fca5a5 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-shell {
+  background: #11141a !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-header,
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-actions {
+  border-color: #303743 !important;
+  background: #11141a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-header {
+  border-bottom: 1px solid #303743 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-actions {
+  border-top: 1px solid #303743 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-content {
+  background: #11141a !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-header .dialog-icon {
+  border: 1px solid rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-header h2 {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-header p {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-header button[mat-icon-button] {
+  --mdc-icon-button-icon-color: #b3c0d1;
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-header button[mat-icon-button]:hover {
+  background: #20252d !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-content pre {
+  border-color: #303743 !important;
+  background: #171c24 !important;
+  color: #d7e0ed !important;
+  scrollbar-color: #465365 transparent;
+}
+
+html[data-theme='dark'] .cdk-overlay-container .log-dialog-actions button[mat-flat-button] {
+  background: #f04b23 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme='dark'] app-login .login-page {
+  background:
+    radial-gradient(circle at 28% 20%, rgba(255, 112, 74, 0.06), transparent 32%),
+    #101114 !important;
+}
+
+html[data-theme='dark'] app-login .brand-panel,
+html[data-theme='dark'] app-login .login-card,
+html[data-theme='dark'] app-login .login-card.mat-mdc-card.mdc-card {
+  --mdc-elevated-card-container-color: #181b21;
+  --mdc-elevated-card-container-elevation:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95);
+  border: 1px solid #303743 !important;
+  background: #181b21 !important;
+  color: #d7e0ed !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme='dark'] app-login :is(.brand-mark, .eyebrow) {
+  color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-login :is(h1, h2, .ops-board-header span, .signal-grid strong) {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-login :is(.brand-panel p, .form-header p, .ops-item p, .signal-grid span, .form-options, small) {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-login .secure-pill,
+html[data-theme='dark'] app-login .secure-badge,
+html[data-theme='dark'] app-login .theme-toggle-button {
+  border-color: rgba(255, 112, 74, 0.38) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-login .theme-toggle-button:hover {
+  border-color: rgba(255, 112, 74, 0.58) !important;
+  background: rgba(255, 112, 74, 0.2) !important;
+}
+
+html[data-theme='dark'] app-login .ops-board {
+  border-color: #303743 !important;
+  background: #1f232b !important;
+}
+
+html[data-theme='dark'] app-login .ops-board-header strong {
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-login .ops-item,
+html[data-theme='dark'] app-login .signal-grid article {
+  border: 1px solid #303743 !important;
+  background: #15191f !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-login .ops-item:nth-child(1) span {
+  border: 1px solid rgba(248, 113, 113, 0.32) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-login .ops-item:nth-child(2) span {
+  border: 1px solid rgba(251, 191, 36, 0.3) !important;
+  background: rgba(251, 191, 36, 0.14) !important;
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-login .ops-item:nth-child(3) span {
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-login .signal-grid article:nth-child(1) mat-icon {
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-login .signal-grid article:nth-child(2) mat-icon {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-login .signal-grid article:nth-child(3) mat-icon {
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-login .access-strip {
+  border: 1px solid #303743 !important;
+  background: #10141b !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+html[data-theme='dark'] app-login .access-strip button {
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-login .access-strip button.active {
+  border-color: rgba(255, 112, 74, 0.42) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ff9b7a !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-login .access-strip button:hover {
+  border-color: rgba(255, 112, 74, 0.28) !important;
+  background: rgba(255, 112, 74, 0.08) !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: #3a4350;
+  --mdc-outlined-text-field-hover-outline-color: #526073;
+  --mdc-outlined-text-field-focus-outline-color: #ff704a;
+  --mdc-outlined-text-field-label-text-color: #aab7c8;
+  --mdc-outlined-text-field-hover-label-text-color: #d7e0ed;
+  --mdc-outlined-text-field-focus-label-text-color: #ff9b7a;
+  --mdc-outlined-text-field-input-text-color: #f8fafc;
+  --mdc-outlined-text-field-caret-color: #ff704a;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  background: #10141b !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper,
+html[data-theme='dark'] app-login .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  background: #121821 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mdc-notched-outline__leading,
+html[data-theme='dark'] app-login .mat-mdc-form-field .mdc-notched-outline__notch,
+html[data-theme='dark'] app-login .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: #3a4350 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mdc-notched-outline__leading {
+  border-right: 0 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mdc-notched-outline__notch {
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-left: 0 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field:hover .mdc-notched-outline__leading,
+html[data-theme='dark'] app-login .mat-mdc-form-field:hover .mdc-notched-outline__notch,
+html[data-theme='dark'] app-login .mat-mdc-form-field:hover .mdc-notched-outline__trailing {
+  border-color: #526073 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+html[data-theme='dark'] app-login .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+html[data-theme='dark'] app-login .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mat-mdc-input-element {
+  color: #f8fafc !important;
+  caret-color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mat-mdc-input-element::placeholder {
+  color: #7f8da1 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field :is(.mat-mdc-form-field-icon-prefix, .mat-mdc-form-field-icon-suffix, .mat-mdc-icon-button, mat-icon) {
+  color: #9fb0c5 !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-form-field .mat-mdc-icon-button:hover mat-icon {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-login .mdc-floating-label {
+  background: #181b21 !important;
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] app-login .form-options .mdc-label,
+html[data-theme='dark'] app-login .form-options {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-login .form-options a {
+  color: #ff8b65 !important;
+}
+
+html[data-theme='dark'] app-login .form-options a:hover {
+  color: #ffb49e !important;
+}
+
+html[data-theme='dark'] app-login .mat-mdc-checkbox {
+  --mdc-checkbox-selected-checkmark-color: #ffffff;
+  --mdc-checkbox-selected-focus-icon-color: #f04b23;
+  --mdc-checkbox-selected-hover-icon-color: #f04b23;
+  --mdc-checkbox-selected-icon-color: #f04b23;
+  --mdc-checkbox-selected-pressed-icon-color: #f04b23;
+  --mdc-checkbox-unselected-focus-icon-color: #b3c0d1;
+  --mdc-checkbox-unselected-hover-icon-color: #b3c0d1;
+  --mdc-checkbox-unselected-icon-color: #53627a;
+  --mdc-checkbox-unselected-pressed-icon-color: #b3c0d1;
+}
+
+html[data-theme='dark'] app-login .login-error {
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-login button[mat-flat-button] {
+  background: linear-gradient(135deg, #f04b23, #e23d18) !important;
+  color: #ffffff !important;
+  box-shadow: 0 14px 28px rgba(240, 75, 35, 0.2) !important;
+}
+
+html:not([data-theme='dark']) app-forgot-password .recovery-list article:nth-child(1) mat-icon {
+  border: 1px solid #bdd4ff !important;
+  background: #dfeaff !important;
+  color: #2563eb !important;
+}
+
+html:not([data-theme='dark']) app-forgot-password .recovery-list article:nth-child(2) mat-icon {
+  border: 1px solid #d8c9ff !important;
+  background: #eee7ff !important;
+  color: #7c3aed !important;
+}
+
+html:not([data-theme='dark']) app-forgot-password .recovery-list article:nth-child(3) mat-icon {
+  border: 1px solid #b8ebd3 !important;
+  background: #d9f7e8 !important;
+  color: #059669 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .forgot-page {
+  background:
+    radial-gradient(circle at 28% 20%, rgba(255, 112, 74, 0.06), transparent 32%),
+    #101114 !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-forgot-password .recovery-panel,
+html[data-theme='dark'] app-forgot-password .forgot-card,
+html[data-theme='dark'] app-forgot-password .forgot-card.mat-mdc-card.mdc-card {
+  --mdc-elevated-card-container-color: #181b21;
+  --mdc-elevated-card-container-elevation:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95);
+  border: 1px solid #303743 !important;
+  background: #181b21 !important;
+  color: #d7e0ed !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme='dark'] app-forgot-password :is(.brand-mark, .eyebrow) {
+  color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-forgot-password :is(h1, h2, .recovery-list span, .success-panel strong) {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-forgot-password :is(.recovery-copy p, .forgot-header p, .success-panel span, .inline-status) {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .theme-toggle-button,
+html[data-theme='dark'] app-forgot-password .forgot-icon {
+  border-color: rgba(255, 112, 74, 0.38) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-forgot-password .theme-toggle-button:hover {
+  border-color: rgba(255, 112, 74, 0.58) !important;
+  background: rgba(255, 112, 74, 0.2) !important;
+}
+
+html[data-theme='dark'] app-forgot-password .back-link {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .back-link:hover {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-forgot-password .recovery-list article,
+html[data-theme='dark'] app-forgot-password .success-panel {
+  border: 1px solid #303743 !important;
+  background: #15191f !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-forgot-password .recovery-list article:nth-child(1) mat-icon {
+  border: 1px solid rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-forgot-password .recovery-list article:nth-child(2) mat-icon {
+  border: 1px solid rgba(167, 139, 250, 0.36) !important;
+  background: rgba(167, 139, 250, 0.16) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-forgot-password .recovery-list article:nth-child(3) mat-icon {
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: #3a4350;
+  --mdc-outlined-text-field-hover-outline-color: #526073;
+  --mdc-outlined-text-field-focus-outline-color: #ff704a;
+  --mdc-outlined-text-field-label-text-color: #aab7c8;
+  --mdc-outlined-text-field-hover-label-text-color: #d7e0ed;
+  --mdc-outlined-text-field-focus-label-text-color: #ff9b7a;
+  --mdc-outlined-text-field-input-text-color: #f8fafc;
+  --mdc-outlined-text-field-caret-color: #ff704a;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  background: #10141b !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper,
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  background: #121821 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field .mdc-notched-outline__leading,
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field .mdc-notched-outline__notch,
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: #3a4350 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field:hover .mdc-notched-outline__leading,
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field:hover .mdc-notched-outline__notch,
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field:hover .mdc-notched-outline__trailing {
+  border-color: #526073 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field .mat-mdc-input-element {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field .mat-mdc-input-element::placeholder {
+  color: #7f8da1 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mat-mdc-form-field :is(.mat-mdc-form-field-icon-prefix, .mat-mdc-form-field-icon-suffix, .mat-mdc-icon-button, mat-icon) {
+  color: #9fb0c5 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .mdc-floating-label {
+  background: #181b21 !important;
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .form-error {
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .otp-digit {
+  border-color: #3a4350 !important;
+  background: #10141b !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-forgot-password .otp-digit:focus {
+  border-color: #ff704a !important;
+  box-shadow: 0 0 0 3px rgba(255, 112, 74, 0.18) !important;
+}
+
+html[data-theme='dark'] app-forgot-password .otp-grid.has-error .otp-digit {
+  border-color: #ff766a !important;
+}
+
+html[data-theme='dark'] app-forgot-password .otp-code-button {
+  background: transparent !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .otp-code-button:hover {
+  background: transparent !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-forgot-password .expiry-chip {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .text-action {
+  color: #b3c0d1 !important;
+}
+
+html[data-theme='dark'] app-forgot-password .text-action:hover {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-forgot-password :is(button[mat-flat-button], a[mat-flat-button]) {
+  background: linear-gradient(135deg, #f04b23, #e23d18) !important;
+  color: #ffffff !important;
+  box-shadow: 0 14px 28px rgba(240, 75, 35, 0.2) !important;
+}
+
+html[data-theme='dark'] app-incident-details .details-page {
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-incident-details .eyebrow {
+  color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-incident-details .hero-actions a[mat-flat-button] {
+  background: #f04b23 !important;
+  color: #ffffff !important;
+  box-shadow: 0 12px 24px rgba(240, 75, 35, 0.18) !important;
+}
+
+html[data-theme='dark'] app-incident-details mat-card.mat-mdc-card,
+html[data-theme='dark'] app-incident-details :is(.overview-card, .prediction-card, .impact-card, .empty-state) {
+  --mdc-elevated-card-container-color: #1a1e25;
+  --mdc-elevated-card-container-elevation:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95);
+  border: 0 !important;
+  background: #1a1e25 !important;
+  color: #d7e0ed !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme='dark'] app-incident-details .impact-card {
+  border-left: 4px solid #ff704a !important;
+}
+
+html[data-theme='dark'] app-shell-layout app-incident-details .impact-grid .impact-card > .impact-icon,
+html[data-theme='dark'] app-incident-details .impact-grid .impact-card > .impact-icon {
+  display: grid !important;
+  place-items: center !important;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-shell-layout app-incident-details .impact-grid .impact-card > .impact-icon mat-icon,
+html[data-theme='dark'] app-incident-details .impact-grid .impact-card > .impact-icon mat-icon {
+  width: 22px;
+  height: 22px;
+  color: inherit !important;
+  font-size: 22px !important;
+  line-height: 22px !important;
+}
+
+html[data-theme='dark'] app-shell-layout app-incident-details .impact-grid .impact-card:nth-child(2) > .impact-icon,
+html[data-theme='dark'] app-incident-details .impact-grid .impact-card:nth-child(2) > .impact-icon {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.16) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-shell-layout app-incident-details .impact-grid .impact-card:nth-child(3) > .impact-icon,
+html[data-theme='dark'] app-incident-details .impact-grid .impact-card:nth-child(3) > .impact-icon {
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-shell-layout app-incident-details .impact-grid .impact-card:nth-child(4) > .impact-icon,
+html[data-theme='dark'] app-incident-details .impact-grid .impact-card:nth-child(4) > .impact-icon {
+  border-color: rgba(167, 139, 250, 0.36) !important;
+  background: rgba(167, 139, 250, 0.16) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-incident-details .card-title {
+  border-bottom-color: #303743 !important;
+}
+
+html[data-theme='dark'] app-incident-details :is(h1, h2, dd, .impact-card strong, .prediction-score strong, .timeline strong, .resolution-list strong) {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-incident-details :is(.page-subtitle, .impact-card span, .impact-card small, .card-title p, .card-title span, dt, small, p, .prediction-score span, .metric-list span) {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] app-incident-details .status-pill {
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-incident-details .prediction-score b,
+html[data-theme='dark'] app-incident-details .resolution-list span {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-incident-details :is(.meta-grid div, .timeline li > div, .metric-list article, .resolution-list article) {
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-incident-details time {
+  border: 1px solid rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-incident-details .timeline::before {
+  background: #303743 !important;
+}
+
+html[data-theme='dark'] app-incident-details .timeline-marker::before {
+  border-color: #1a1e25 !important;
+  background: #ff704a !important;
+  box-shadow: 0 0 0 4px rgba(255, 112, 74, 0.2) !important;
+}
+
+html[data-theme='dark'] app-incident-details .mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #ff704a;
+  --mdc-linear-progress-track-color: rgba(255, 112, 74, 0.18);
+}
+
+html[data-theme='dark'] app-incident-details mat-chip {
+  --mdc-chip-container-height: 36px;
+  --mdc-chip-container-shape-radius: 8px;
+  --mdc-chip-label-text-color: #8ec5ff;
+  --mdc-chip-elevated-container-color: rgba(96, 165, 250, 0.12);
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  --mdc-chip-focus-outline-color: transparent;
+  --mdc-chip-hover-state-layer-opacity: 0;
+  --mdc-chip-focus-state-layer-opacity: 0;
+  outline: none !important;
+  border: 1px solid rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.12) !important;
+  color: #8ec5ff !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-incident-details mat-chip:nth-child(2) {
+  --mdc-chip-label-text-color: #c4b5fd;
+  --mdc-chip-elevated-container-color: rgba(167, 139, 250, 0.13);
+  --mdc-chip-outline-color: transparent;
+  border-color: rgba(167, 139, 250, 0.34) !important;
+  background: rgba(167, 139, 250, 0.13) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-incident-details mat-chip:nth-child(3) {
+  --mdc-chip-label-text-color: #ffd36b;
+  --mdc-chip-elevated-container-color: rgba(251, 191, 36, 0.13);
+  --mdc-chip-outline-color: transparent;
+  border-color: rgba(251, 191, 36, 0.34) !important;
+  background: rgba(251, 191, 36, 0.13) !important;
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-incident-details mat-chip .mdc-evolution-chip__action,
+html[data-theme='dark'] app-incident-details mat-chip::before,
+html[data-theme='dark'] app-incident-details mat-chip::after,
+html[data-theme='dark'] app-incident-details mat-chip .mdc-evolution-chip__action::before,
+html[data-theme='dark'] app-incident-details mat-chip .mdc-evolution-chip__action::after {
+  outline: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-incident-details mat-chip .mdc-evolution-chip__action {
+  padding: 0 12px !important;
+}
+
+html[data-theme='dark'] app-incident-details mat-chip :is(.mat-mdc-chip-focus-overlay, .mat-mdc-chip-ripple) {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] app-incident-details mat-chip .mdc-evolution-chip__text-label {
+  color: inherit !important;
+  font-weight: 800 !important;
+}
+
+html[data-theme='dark'] app-incident-details .log-list {
+  scrollbar-color: #465365 transparent;
+}
+
+html[data-theme='dark'] app-incident-details .log-list::-webkit-scrollbar-thumb {
+  border-color: #1a1e25 !important;
+  background: #465365 !important;
+}
+
+html[data-theme='dark'] app-incident-details .log-list code {
+  border-left-color: #ff704a !important;
+  background: #10141b !important;
+  color: #dbe7f7 !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .feature-item .item-icon {
+  display: grid !important;
+  width: 42px;
+  height: 42px;
+  place-items: center !important;
+  border: 1px solid rgba(255, 112, 74, 0.36) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff704a !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .feature-item .item-icon mat-icon {
+  display: grid !important;
+  width: 22px !important;
+  height: 22px !important;
+  place-items: center !important;
+  color: inherit !important;
+  font-size: 22px !important;
+  line-height: 22px !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .feature-item:nth-child(4n + 2) .item-icon {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .feature-item:nth-child(4n + 3) .item-icon {
+  border-color: rgba(52, 211, 153, 0.34) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .feature-item:nth-child(4n) .item-icon {
+  border-color: rgba(167, 139, 250, 0.38) !important;
+  background: rgba(167, 139, 250, 0.14) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .header-pill {
+  border: 1px solid rgba(255, 112, 74, 0.36) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .header-pill mat-icon {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip {
+  --mdc-chip-container-height: 30px;
+  --mdc-chip-label-text-color: #dbe7f7;
+  --mdc-chip-elevated-container-color: #20252d;
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  --mdc-chip-focus-outline-color: transparent;
+  --mdc-chip-hover-state-layer-opacity: 0;
+  --mdc-chip-focus-state-layer-opacity: 0;
+  min-height: 30px !important;
+  outline: none !important;
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #dbe7f7 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip:nth-child(3n + 1) {
+  border-color: rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip:nth-child(3n + 2) {
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip:nth-child(3n) {
+  border-color: rgba(167, 139, 250, 0.34) !important;
+  background: rgba(167, 139, 250, 0.13) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action,
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip::before,
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip::after,
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action::before,
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action::after {
+  outline: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action {
+  padding: 0 9px !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip :is(.mat-mdc-chip-focus-overlay, .mat-mdc-chip-ripple) {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] app-feature-page.evidence-page .feature-list .mat-mdc-chip .mdc-evolution-chip__text-label {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-account-settings .summary-grid mat-card {
+  border: 0 !important;
+  background: #1a1e25 !important;
+  color: #d7e0ed !important;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.82),
+    0 1px 1px 0 rgba(0, 0, 0, 0.64),
+    0 1px 3px 0 rgba(0, 0, 0, 0.56),
+    0 14px 24px -22px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme='dark'] app-account-settings .summary-grid span {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] app-account-settings .summary-grid strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-account-settings .summary-grid mat-card > mat-icon {
+  display: grid !important;
+  width: 40px;
+  height: 40px;
+  place-items: center !important;
+  border: 1px solid rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-account-settings .summary-grid mat-card:nth-child(2) > mat-icon {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-account-settings .summary-grid mat-card:nth-child(3) > mat-icon {
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.card-heading, h2) {
+  border-color: #303743 !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.setting-list article, .session-list article) {
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.setting-list strong, .session-list strong) {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.setting-list span, .session-list span, .card-heading p) {
+  color: #9fb0c5 !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.setting-list mat-icon, .session-list mat-icon) {
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-account-settings .setting-list article:nth-child(2n) > mat-icon,
+html[data-theme='dark'] app-account-settings .session-list article:nth-child(2n) > mat-icon {
+  border-color: rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-account-settings .setting-list article:nth-child(3n) > mat-icon,
+html[data-theme='dark'] app-account-settings .session-list article:nth-child(3n) > mat-icon {
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-account-settings .setting-list article:nth-child(4n) > mat-icon,
+html[data-theme='dark'] app-account-settings .session-list article:nth-child(4n) > mat-icon {
+  border-color: rgba(167, 139, 250, 0.36) !important;
+  background: rgba(167, 139, 250, 0.14) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.read-only-row mat-chip, .session-list mat-chip) {
+  --mdc-chip-container-height: 32px;
+  --mdc-chip-label-text-color: #55e0ae;
+  --mdc-chip-elevated-container-color: rgba(52, 211, 153, 0.13);
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  --mdc-chip-focus-outline-color: transparent;
+  --mdc-chip-hover-state-layer-opacity: 0;
+  --mdc-chip-focus-state-layer-opacity: 0;
+  outline: none !important;
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #55e0ae !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.read-only-row mat-chip, .session-list mat-chip) .mdc-evolution-chip__action,
+html[data-theme='dark'] app-account-settings :is(.read-only-row mat-chip, .session-list mat-chip)::before,
+html[data-theme='dark'] app-account-settings :is(.read-only-row mat-chip, .session-list mat-chip)::after,
+html[data-theme='dark'] app-account-settings :is(.read-only-row mat-chip, .session-list mat-chip) .mdc-evolution-chip__action::before,
+html[data-theme='dark'] app-account-settings :is(.read-only-row mat-chip, .session-list mat-chip) .mdc-evolution-chip__action::after {
+  outline: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-account-settings :is(.read-only-row mat-chip, .session-list mat-chip) .mdc-evolution-chip__text-label {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-account-settings .mat-mdc-slide-toggle {
+  --mat-slide-toggle-track-width: 54px;
+  --mat-slide-toggle-track-height: 34px;
+  --mat-slide-toggle-track-outline-width: 1px;
+  --mat-slide-toggle-track-outline-color: #465365;
+  --mat-slide-toggle-selected-track-outline-width: 1px;
+  --mat-slide-toggle-selected-track-outline-color: rgba(255, 112, 74, 0.44);
+  --mat-slide-toggle-unselected-track-color: #2b3544;
+  --mat-slide-toggle-unselected-hover-track-color: #344154;
+  --mat-slide-toggle-unselected-focus-track-color: #344154;
+  --mat-slide-toggle-unselected-pressed-track-color: #344154;
+  --mat-slide-toggle-unselected-handle-color: #d7e0ed;
+  --mat-slide-toggle-unselected-hover-handle-color: #edf3fb;
+  --mat-slide-toggle-unselected-focus-handle-color: #edf3fb;
+  --mat-slide-toggle-unselected-pressed-handle-color: #edf3fb;
+  --mat-slide-toggle-unselected-icon-color: #53627a;
+  --mat-slide-toggle-selected-track-color: #ff704a;
+  --mat-slide-toggle-selected-hover-track-color: #ff7f5e;
+  --mat-slide-toggle-selected-focus-track-color: #ff7f5e;
+  --mat-slide-toggle-selected-pressed-track-color: #ff7f5e;
+  --mat-slide-toggle-selected-handle-color: #fff7f3;
+  --mat-slide-toggle-selected-hover-handle-color: #ffffff;
+  --mat-slide-toggle-selected-focus-handle-color: #ffffff;
+  --mat-slide-toggle-selected-pressed-handle-color: #ffffff;
+  --mat-slide-toggle-selected-icon-color: #ff704a;
+  --mat-slide-toggle-unselected-hover-state-layer-opacity: 0;
+  --mat-slide-toggle-unselected-focus-state-layer-opacity: 0;
+  --mat-slide-toggle-selected-hover-state-layer-opacity: 0;
+  --mat-slide-toggle-selected-focus-state-layer-opacity: 0;
+}
+
+html[data-theme='dark'] app-account-settings .mat-mdc-slide-toggle .mdc-switch {
+  outline: none !important;
+}
+
+html[data-theme='dark'] app-account-settings .mat-mdc-slide-toggle .mdc-switch__track::before,
+html[data-theme='dark'] app-account-settings .mat-mdc-slide-toggle .mdc-switch__track::after {
+  border-width: 1px !important;
+}
+
+html[data-theme='dark'] app-account-settings .mat-mdc-slide-toggle .mdc-switch__shadow {
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-account-settings .card-heading button[mat-button] {
+  --mdc-text-button-label-text-color: #ff9b7a;
+  --mat-text-button-state-layer-color: #ff704a;
+  min-height: 34px;
+  border: 0 !important;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: transparent !important;
+  color: #ff9b7a !important;
+  font-weight: 800;
+}
+
+html[data-theme='dark'] app-account-settings .card-heading button[mat-button]:hover {
+  border: 0 !important;
+  background: transparent !important;
+  color: #ffc1b0 !important;
+}
+
+html[data-theme='dark'] app-notifications .toolbar-actions button.active {
+  --mdc-text-button-label-text-color: #ff9b7a;
+  border-color: rgba(255, 112, 74, 0.38) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-notifications .severity.critical {
+  --severity-border: rgba(248, 113, 113, 0.34);
+  --severity-bg: rgba(248, 113, 113, 0.16);
+  --severity-color: #ffc1b8;
+}
+
+html[data-theme='dark'] app-notifications .severity.warning {
+  --severity-border: rgba(251, 191, 36, 0.34);
+  --severity-bg: rgba(251, 191, 36, 0.14);
+  --severity-color: #ffd36b;
+}
+
+html[data-theme='dark'] app-notifications .severity.info {
+  --severity-border: rgba(96, 165, 250, 0.36);
+  --severity-bg: rgba(96, 165, 250, 0.14);
+  --severity-color: #9cc9ff;
+}
+
+html[data-theme='dark'] app-notifications .notification-list article.critical .notification-icon {
+  border: 1px solid rgba(248, 113, 113, 0.34) !important;
+  background: rgba(248, 113, 113, 0.13) !important;
+  color: #ff8f7f !important;
+}
+
+html[data-theme='dark'] app-notifications .notification-list article.warning .notification-icon {
+  border: 1px solid rgba(251, 191, 36, 0.34) !important;
+  background: rgba(251, 191, 36, 0.13) !important;
+  color: #ffd36b !important;
+}
+
+html[data-theme='dark'] app-notifications .notification-list article.info .notification-icon {
+  border: 1px solid rgba(96, 165, 250, 0.36) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-profile .profile-cover {
+  background:
+    radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.16), transparent 30%),
+    linear-gradient(135deg, #f04b23 0%, #cf3d22 52%, rgba(255, 112, 74, 0.16) 100%) !important;
+}
+
+html[data-theme='dark'] app-profile .avatar {
+  border-color: #181b21 !important;
+  background: #f04b23 !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 0 3px rgba(255, 112, 74, 0.2),
+    0 16px 34px rgba(0, 0, 0, 0.42) !important;
+}
+
+html[data-theme='dark'] app-profile .identity-copy p {
+  color: #bfd0e4 !important;
+}
+
+html[data-theme='dark'] app-profile .identity-tags mat-chip {
+  --mdc-chip-label-text-color: #ffc1b0;
+  --mdc-chip-elevated-container-color: rgba(255, 112, 74, 0.13);
+  --mdc-chip-outline-color: rgba(255, 112, 74, 0.36);
+  border: 1px solid rgba(255, 112, 74, 0.36) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ffc1b0 !important;
+}
+
+html[data-theme='dark'] app-profile .identity-tags mat-chip .mdc-evolution-chip__text-label {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-profile .online-status {
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #86efac !important;
+}
+
+html[data-theme='dark'] app-profile .online-status mat-icon {
+  color: #34d399 !important;
+}
+
+html[data-theme='dark'] app-profile .edit-profile-btn {
+  --mdc-filled-button-container-color: #f04b23;
+  --mdc-filled-button-label-text-color: #ffffff;
+  background: #f04b23 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme='dark'] app-profile .change-password-btn {
+  --mdc-outlined-button-label-text-color: #ff9b7a;
+  --mdc-outlined-button-outline-color: rgba(255, 112, 74, 0.42);
+  border-color: rgba(255, 112, 74, 0.42) !important;
+  background: rgba(255, 112, 74, 0.1) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-profile :is(.edit-profile-btn, .change-password-btn) mat-icon,
+html[data-theme='dark'] app-profile :is(.edit-profile-btn, .change-password-btn) .mdc-button__label {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-profile .profile-stats {
+  border-top: 1px solid #303743 !important;
+  background: #141820 !important;
+}
+
+html[data-theme='dark'] app-profile .profile-stats article + article {
+  border-left-color: #303743 !important;
+}
+
+html[data-theme='dark'] app-profile .profile-stats strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-profile .profile-stats span {
+  color: #aab7c8 !important;
+}
+
+html[data-theme='dark'] app-profile .card-heading {
+  border-bottom-color: #303743 !important;
+}
+
+html[data-theme='dark'] app-shell-layout app-investigation-landing .incident-card.mat-mdc-card.mdc-card {
+  border: 1px solid #303743 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-ml-training .model-badge {
+  border-color: rgba(255, 112, 74, 0.36) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-ml-training .advanced-heading {
+  border-color: rgba(167, 139, 250, 0.36) !important;
+  background: rgba(167, 139, 250, 0.12) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+}
+
+html[data-theme='dark'] app-ml-training .advanced-heading > mat-icon {
+  border-color: rgba(167, 139, 250, 0.46) !important;
+  background: rgba(167, 139, 250, 0.16) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-ml-training .advanced-heading strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-ml-training .advanced-heading span {
+  color: #b6c4d6 !important;
+}
+
+html[data-theme='dark'] app-ml-training .result-card :is(.empty-state, .loading-state) {
+  border: 1px dashed #303743 !important;
+  border-radius: 8px;
+  background: rgba(17, 20, 26, 0.52) !important;
+  color: #d7e0ed !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-ml-training .empty-state mat-icon {
+  color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-ml-training :is(.empty-state, .loading-state) strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-ml-training :is(.empty-state, .loading-state) p {
+  color: #b6c4d6 !important;
+}
+
+html[data-theme='dark'] app-ml-training .root-cause-card {
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: linear-gradient(135deg, rgba(255, 112, 74, 0.15), rgba(32, 37, 45, 0.96)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+}
+
+html[data-theme='dark'] app-ml-training .root-cause-card span,
+html[data-theme='dark'] app-ml-training .confidence-card span,
+html[data-theme='dark'] app-ml-training .metadata span {
+  color: #91a3bb !important;
+}
+
+html[data-theme='dark'] app-ml-training .confidence-card {
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-ml-training .cause-list div,
+html[data-theme='dark'] app-ml-training .result-section li,
+html[data-theme='dark'] app-ml-training .metadata div {
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+}
+
+html[data-theme='dark'] app-ml-training .cause-list span,
+html[data-theme='dark'] app-ml-training .result-section li {
+  color: #dbe7f7 !important;
+}
+
+html[data-theme='dark'] app-ml-training .cause-list strong {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-ml-training .result-section li mat-icon {
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-ml-training .metadata strong {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-ml-training .result-section .mat-mdc-chip {
+  --mdc-chip-container-height: 38px;
+  --mdc-chip-label-text-color: #9cc9ff;
+  --mdc-chip-elevated-container-color: rgba(96, 165, 250, 0.13);
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  --mdc-chip-focus-outline-color: transparent;
+  --mdc-chip-hover-state-layer-opacity: 0;
+  --mdc-chip-focus-state-layer-opacity: 0;
+  border: 1px solid rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-ml-training .result-section .mat-mdc-chip .mdc-evolution-chip__text-label {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-feature-page .header-pill {
+  border-color: rgba(255, 112, 74, 0.36) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ff9b7a !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page .header-pill mat-icon {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip {
+  --mdc-chip-container-height: 32px;
+  --mdc-chip-container-shape-radius: 8px;
+  --mdc-chip-label-text-color: #dbe7f7;
+  --mdc-chip-elevated-container-color: #20252d;
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  --mdc-chip-focus-outline-color: transparent;
+  --mdc-chip-hover-state-layer-opacity: 0;
+  --mdc-chip-focus-state-layer-opacity: 0;
+  min-height: 32px !important;
+  outline: none !important;
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #dbe7f7 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip:nth-child(3n + 1) {
+  --mdc-chip-label-text-color: #ffb59f;
+  --mdc-chip-elevated-container-color: rgba(255, 112, 74, 0.13);
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ffb59f !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip:nth-child(3n + 2) {
+  --mdc-chip-label-text-color: #9cc9ff;
+  --mdc-chip-elevated-container-color: rgba(96, 165, 250, 0.13);
+  border-color: rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip:nth-child(3n) {
+  --mdc-chip-label-text-color: #55e0ae;
+  --mdc-chip-elevated-container-color: rgba(52, 211, 153, 0.13);
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action,
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip::before,
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip::after,
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action::before,
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action::after {
+  outline: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip .mdc-evolution-chip__action {
+  padding: 0 10px !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip :is(.mat-mdc-chip-focus-overlay, .mat-mdc-chip-ripple) {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] app-feature-page .feature-list .mat-mdc-chip .mdc-evolution-chip__text-label {
+  color: inherit !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-tags button {
+  border: 1px solid rgba(96, 165, 250, 0.32) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-tags button.active,
+html[data-theme='dark'] app-knowledge-base .search-tags button:hover {
+  border-color: rgba(255, 112, 74, 0.42) !important;
+  background: #f04b23 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .mat-expansion-panel {
+  --mat-expansion-container-background-color: #121822;
+  --mat-expansion-container-text-color: #dbe7f7;
+  --mat-expansion-header-text-color: #dbe7f7;
+  --mat-expansion-header-description-color: #93a4ba;
+  border: 1px solid #303743 !important;
+  background: #121822 !important;
+  color: #dbe7f7 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover,
+html[data-theme='dark'] app-knowledge-base .mat-expansion-panel-header.mat-expanded {
+  background: #16202d !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .article-title {
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .article-id {
+  border: 1px solid rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.13) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-knowledge-base mat-panel-description,
+html[data-theme='dark'] app-knowledge-base mat-panel-description span:not(.cause-chip),
+html[data-theme='dark'] app-knowledge-base .article-meta span {
+  color: #9fb0c5 !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .cause-chip {
+  border: 1px solid rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.13) !important;
+  color: #9cc9ff !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .mat-expansion-indicator::after {
+  border-color: #dbe7f7 !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .mat-expansion-panel-body {
+  border-top: 1px solid #303743 !important;
+  background: #121822 !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .article-columns section,
+html[data-theme='dark'] app-knowledge-base .detail-grid section {
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .article-columns p,
+html[data-theme='dark'] app-knowledge-base .detail-row {
+  color: #b6c4d6 !important;
+}
+
+html[data-theme='dark'] app-knowledge-base :is(.article-meta mat-icon, .detail-row mat-icon) {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-card .mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: #34445a;
+  --mdc-outlined-text-field-hover-outline-color: #4a5d78;
+  --mdc-outlined-text-field-focus-outline-color: #ff704a;
+  --mdc-outlined-text-field-label-text-color: #9fb0c5;
+  --mdc-outlined-text-field-input-text-color: #dbe7f7;
+  --mdc-outlined-text-field-caret-color: #ff704a;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-card .mat-mdc-text-field-wrapper {
+  background: #121822 !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-card input.mat-mdc-input-element {
+  background: transparent !important;
+  color: #dbe7f7 !important;
+  caret-color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-card input.mat-mdc-input-element::placeholder {
+  color: #91a3bb !important;
+  opacity: 1;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-card :is(.mat-mdc-form-field-icon-prefix, .mat-mdc-form-field-icon-suffix, mat-icon) {
+  color: #91a3bb !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .search-card .mat-mdc-form-field.mat-focused :is(.mat-mdc-form-field-icon-prefix, .mat-mdc-form-field-icon-suffix, mat-icon) {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .quick-links button {
+  border-color: #303743 !important;
+  background: #20252d !important;
+  color: #dbe7f7 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .quick-links button:hover {
+  border-color: rgba(255, 112, 74, 0.38) !important;
+  background: #252b35 !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .quick-links button span {
+  color: #dbe7f7 !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .quick-links button mat-icon {
+  border: 1px solid rgba(34, 211, 238, 0.32) !important;
+  border-radius: 4px;
+  background: rgba(34, 211, 238, 0.14) !important;
+  color: #22d3ee !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .quick-links button:nth-child(2n) mat-icon {
+  border-color: rgba(96, 165, 250, 0.34) !important;
+  background: rgba(96, 165, 250, 0.14) !important;
+  color: #8ec5ff !important;
+}
+
+html[data-theme='dark'] app-knowledge-base .quick-links button:nth-child(4n) mat-icon {
+  border-color: rgba(167, 139, 250, 0.34) !important;
+  background: rgba(167, 139, 250, 0.14) !important;
+  color: #c4b5fd !important;
+}
+
+html[data-theme='dark'] app-user-management .row-actions button[mat-icon-button] {
+  display: inline-grid !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  padding: 0 !important;
+  place-items: center !important;
+  line-height: 1 !important;
+}
+
+html[data-theme='dark'] app-user-management .row-actions button[mat-icon-button] mat-icon {
+  display: grid !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  place-items: center !important;
+  color: inherit !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
+}
+
+html[data-theme='dark'] app-access-role .role-card {
+  border-left-color: #ff704a !important;
+}
+
+html[data-theme='dark'] app-access-role .role-meta {
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+}
+
+html[data-theme='dark'] app-access-role :is(.role-card span, .permission-list span, .permission-list small, .audit-list span) {
+  color: #9fb0c5 !important;
+}
+
+html[data-theme='dark'] app-access-role .role-card p {
+  color: #b6c4d6 !important;
+}
+
+html[data-theme='dark'] app-access-role .permission-list,
+html[data-theme='dark'] app-access-role .boundary-list,
+html[data-theme='dark'] app-access-role .audit-list {
+  scrollbar-color: #465365 transparent;
+}
+
+html[data-theme='dark'] app-access-role :is(.permission-list, .boundary-list, .audit-list)::-webkit-scrollbar-thumb {
+  border-color: #1a1e25 !important;
+  background: #465365 !important;
+}
+
+html[data-theme='dark'] app-access-role .permission-list article,
+html[data-theme='dark'] app-access-role .boundary-list article,
+html[data-theme='dark'] app-access-role .audit-list article {
+  border: 1px solid #303743 !important;
+  background: #20252d !important;
+  color: #d7e0ed !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+}
+
+html[data-theme='dark'] app-access-role .permission-list article.allowed > mat-icon {
+  border-color: rgba(52, 211, 153, 0.34) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-access-role .permission-list article.blocked > mat-icon {
+  border-color: rgba(248, 113, 113, 0.34) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-access-role .permission-list article > mat-icon,
+html[data-theme='dark'] app-access-role .audit-list mat-icon {
+  display: grid !important;
+  width: 40px;
+  height: 40px;
+  place-items: center !important;
+  line-height: 1 !important;
+}
+
+html[data-theme='dark'] app-access-role .audit-list mat-icon {
+  border-color: rgba(255, 112, 74, 0.34) !important;
+  background: rgba(255, 112, 74, 0.14) !important;
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-access-role .boundary-list span {
+  color: #b6c4d6 !important;
+}
+
+html[data-theme='dark'] app-access-role .boundary-list strong {
+  color: #ff9b7a !important;
+}
+
+html[data-theme='dark'] app-access-role mat-chip {
+  --mdc-chip-container-height: 32px;
+  --mdc-chip-container-shape-radius: 999px;
+  --mdc-chip-outline-color: transparent;
+  --mdc-chip-outline-width: 0;
+  --mdc-chip-focus-outline-color: transparent;
+  --mdc-chip-hover-state-layer-opacity: 0;
+  --mdc-chip-focus-state-layer-opacity: 0;
+  min-height: 32px !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-access-role mat-chip.allowed {
+  --mdc-chip-label-text-color: #55e0ae;
+  --mdc-chip-elevated-container-color: rgba(52, 211, 153, 0.13);
+  border: 1px solid rgba(52, 211, 153, 0.32) !important;
+  background: rgba(52, 211, 153, 0.13) !important;
+  color: #55e0ae !important;
+}
+
+html[data-theme='dark'] app-access-role mat-chip.blocked {
+  --mdc-chip-label-text-color: #ffb4a8;
+  --mdc-chip-elevated-container-color: rgba(248, 113, 113, 0.14);
+  border: 1px solid rgba(248, 113, 113, 0.32) !important;
+  background: rgba(248, 113, 113, 0.14) !important;
+  color: #ffb4a8 !important;
+}
+
+html[data-theme='dark'] app-access-role mat-chip .mdc-evolution-chip__action,
+html[data-theme='dark'] app-access-role mat-chip::before,
+html[data-theme='dark'] app-access-role mat-chip::after,
+html[data-theme='dark'] app-access-role mat-chip .mdc-evolution-chip__action::before,
+html[data-theme='dark'] app-access-role mat-chip .mdc-evolution-chip__action::after {
+  outline: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] app-access-role mat-chip .mdc-evolution-chip__text-label {
+  color: inherit !important;
+  font-weight: 800 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .mat-mdc-form-field input.mat-mdc-input-element,
+html[data-theme='dark'] app-shell-layout :is(.global-search, .search-card, .selector-header, .search-filter) input {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] app-logs .filters-panel .search-filter .mat-mdc-text-field-wrapper,
+html[data-theme='dark'] app-logs .filters-panel .search-filter:hover .mat-mdc-text-field-wrapper,
+html[data-theme='dark'] app-logs .filters-panel .search-filter.mat-focused .mat-mdc-text-field-wrapper {
+  background: #11141a !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav-groups {
+  scrollbar-color: #465365 transparent !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav-groups::-webkit-scrollbar {
+  width: 4px;
+  background: transparent !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav-groups::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav-groups::-webkit-scrollbar-thumb {
+  border: 0 !important;
+  border-radius: 999px;
+  background: #465365 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav-groups::-webkit-scrollbar-thumb:hover {
+  background: #5b6a80 !important;
+}
+
+html[data-theme='dark'] app-shell-layout .nav-groups::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+html[data-theme='dark'],
+html[data-theme='dark'] * {
+  scrollbar-color: #465365 transparent !important;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-track,
+html[data-theme='dark'] ::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #465365 !important;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #5b6a80 !important;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+html[data-theme='dark'] ::-webkit-scrollbar-button:single-button,
+html[data-theme='dark'] ::-webkit-scrollbar-button:increment,
+html[data-theme='dark'] ::-webkit-scrollbar-button:decrement,
+html[data-theme='dark'] ::-webkit-scrollbar-button:start,
+html[data-theme='dark'] ::-webkit-scrollbar-button:end {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
